@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute, useRouter, RouterLink } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
@@ -18,7 +18,7 @@ onMounted(async () => {
     }
     if (data === 404) {
       alert('The request page is not available')
-      router.push({ name: 'admin-announcement-listing'});
+      router.push({ name: 'admin-announcement-listing' })
     }
     // console.log(announcementsData.value)
   } catch (error) {
