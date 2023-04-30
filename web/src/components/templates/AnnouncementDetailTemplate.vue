@@ -22,39 +22,39 @@ onMounted(async () => {
 <template>
   <div class="w-screen h-screen flex justify-center items-center">
     <div class="flex flex-col gap-4 w-6/12 mb-36 p-8">
-      <!-- Title -->
       <div class="flex w-full justify-between items-center">
         <h1 class="text-xl font-bold">Announcement Detail</h1>
       </div>
 
-      <!-- Content -->
       <div class="py-4 px-12 border">
-        <div class="flex flex-col gap-6 py-6">
+        <div class="flex flex-col gap-4">
           <DetailListStatic
-            attribute="Title"
-            :detail="`${announcementsData.announcementTitle}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
           <DetailListStatic
-            attribute="Category"
-            v-for="category of announcementsData.announcementCategory"
-            :key="category.id"
-            :detail="`${category}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
           <DetailListStatic
-            attribute="Description"
-            :detail="`${announcementsData.announcementDescription}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
           <DetailListStatic
-            attribute="Publish Date"
-            :detail="`${announcementsData.publishDate}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
           <DetailListStatic
-            attribute="Close Date"
-            :detail="`${announcementsData.closeDate}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
           <DetailListStatic
-            attribute="Display"
-            :detail="`${announcementsData.announcementDisplay}`"
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
+          />
+          <DetailListStatic
+            attribute="Attribute Name"
+            :detail="Deatiail Data"
           />
         </div>
       </div>
