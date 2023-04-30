@@ -5,7 +5,6 @@ import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
-console.log(typeof useFormatTime);
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 
@@ -14,6 +13,7 @@ onMounted(async () => {
   if (data !== undefined && data.length !== 0) {
     announcementsData.value = data
   }
+  console.log(announcementsData.value)
 })
 </script>
 
@@ -54,14 +54,12 @@ onMounted(async () => {
           >
             {{ category }}
           </td>
-          <td v-if="announcement.publishDate !== null">
+          <td>
             {{ useFormatTime(announcement.publishDate) }}
           </td>
-          <td v-else>-</td>
-          <td v-if="announcement.closeDate !== null">
+          <td>
             {{ useFormatTime(announcement.closeDate) }}
           </td>
-          <td v-else>-</td>
           <td>{{ announcement.announcementDisplay }}</td>
           <td>
             <RouterLink

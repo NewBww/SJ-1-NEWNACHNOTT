@@ -10,5 +10,3 @@ defineProps({
 <template>
   <div><img class="h-4" src="src/assets/backIcon.svg" /></div>
 </template>
-
-<style scoped></style>
