@@ -19,7 +19,7 @@ public class AnnouncementService {
     private CategoryRepository categoryRepository;
     private static final String DEFAULT_CATEGORY_NAME = "General";
     public List<Announcement> findAll() { return announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id")); }
-    public Announcement findById(Integer id) { return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement ID " + id + " do not exist!")); }
+    public Announcement findById(Integer id) { return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!")); }
     public Announcement createAnnouncement(Announcement announcement) {
         Category category = announcement.getAnnouncementCategory();
         if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
