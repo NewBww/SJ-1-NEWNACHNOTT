@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import AnnouncementService from '../../../services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+// import { RouterLink } from 'vue-router'
 
 const announcementService = new AnnouncementService()
 
@@ -34,20 +35,6 @@ const date = (dateTimeZone) => {
   // console.log(localeTime);
   // console.log(changeFormat)
   return `${localeDate}, ${localeTime}`
-
-  // another option
-  // console.log(dateTimeZone)
-  // const options = {
-  //     day: 'numeric',
-  //     month: 'short',
-  //     year: 'numeric',
-  //     hour: 'numeric',
-  //     minute: 'numeric',
-  // }
-
-  // let changeFormat = new Date(dateTimeZone).toLocaleDateString("en-GB", options)
-  // console.log(changeFormat)
-  // return changeFormat
 }
 </script>
 
@@ -98,7 +85,11 @@ const date = (dateTimeZone) => {
           <td v-else>-</td>
           <td>{{ announcement.announcementDisplay }}</td>
           <td>
-            <SingleButton text="View" />
+            <RouterLink
+              :to="{ name: 'details', params: { id: announcement.id } }"
+            >
+              <SingleButton text="View" />
+            </RouterLink>
           </td>
         </tr>
       </tbody>
