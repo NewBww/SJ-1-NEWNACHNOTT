@@ -4,23 +4,24 @@ import PageTitle from '../UI/atoms/PageTitle.vue'
 import ContentSection from '../UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import { RouterLink } from 'vue-router'
+import TextButton from '@/components/UI/atoms/TextButton.vue'
 </script>
 
 <template>
   <div class="h-screen bg-[#f2f2f2]">
     <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
-      <div class="flex flex-row">
-        div
+      <div class="flex flex-row items-center justify-between">
+        <RouterLink :to="{ name: 'admin-announcement-listing' }">
+          <TextButton text="Back" />
+        </RouterLink>
         <PageTitle title="Announcement Detail" />
+        <div class="w-[83.73px]"></div>
       </div>
 
-      <ContentSection>
-        <div>
+      <ContentSection class="flex flex-col w-full px-16 items-center">
+        <div class="flex flex-col w-full gap-6">
           <DetailList />
         </div>
-        <RouterLink :to="{ name: 'home' }">
-          <SingleButton text="Back" />
-        </RouterLink>
       </ContentSection>
     </div>
   </div>

@@ -11,7 +11,7 @@ defineProps({
 })
 </script>
 <template>
-  <div>
+  <div class="flex flex-col gap-2">
     <h2 class="text-lg font-semibold">
       {{ heading }}
     </h2>
