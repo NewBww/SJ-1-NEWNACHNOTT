@@ -1,9 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterLink } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+import DetailText from '@/components/UI/atoms/DetailText.vue'
 
 const route = useRoute()
 const announcementService = new AnnouncementService()
@@ -16,7 +17,7 @@ onMounted(async () => {
     if (data !== undefined && data.length !== 0) {
       announcementsData.value = data
     }
-    // console.log(announcementsData.value)
+    console.log(announcementsData.value)
   } catch (error) {
     console.log(error)
   }
@@ -24,36 +25,35 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <h4>Title</h4>
-    <p>
-      {{ announcementsData.announcementTitle }}
-    </p>
-    <h4>Category</h4>
-    <p>
-      {{ announcementsData.announcementCategory }}
-    </p>
-    <h4>Description</h4>
-    <p>
-      {{ announcementsData.announcementDescription }}
-    </p>
-    <h4>Publish Date</h4>
-    <p>
-      {{ useFormatTime(announcementsData.publishDate) }}
-    </p>
-    <h4>Close Date</h4>
-    <p>
-      {{ useFormatTime(announcementsData.closeDate) }}
-    </p>
-    <h4>Display</h4>
-    <p>
-      {{ announcementsData.announcementDisplay }}
-    </p>
-  </div>
+  <DetailText
+    heading="Title"
+    :detail="`${announcementsData.announcementTitle}`"
+  />
+  <DetailText
+    heading="Category"
+    v-for="category of announcementsData.announcementCategory"
+    :key="category.id"
+    :detail="`${category}`"
+  />
+  <DetailText
+    heading="Description"
+    :detail="`${announcementsData.announcementDescription}`"
+  />
+  <DetailText
+    heading="Publish Date"
+    :detail="`${useFormatTime(announcementsData.publishDate)}`"
+  />
+  <DetailText
+    heading="Close Date"
+    :detail="`${useFormatTime(announcementsData.closeDate)}`"
+  />
+  <DetailText
+    heading="Display"
+    :detail="`${announcementsData.announcementDisplay}`"
+  />
   <div>
     <RouterLink :to="{ name: 'home' }">
       <SingleButton text="Back" />
     </RouterLink>
   </div>
-  <!-- </div> -->
 </template>
