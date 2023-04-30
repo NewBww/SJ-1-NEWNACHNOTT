@@ -3,13 +3,15 @@ package sit.int221.sas.exceptions;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.List;
+import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -21,7 +23,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ItemNotFoundException exception, WebRequest request) {
         HttpHeaders respondHeaders = new HttpHeaders();
         respondHeaders.set("Description", exception.getMessage());
-        return buildErrorResponse(exception, HttpStatus.NOT_FOUND, request, respondHeaders);
+        return buildErrorResponse(exception, request, HttpStatus.NOT_FOUND, respondHeaders);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatch(
+            MethodArgumentTypeMismatchException exception, WebRequest request) {
+        HttpHeaders headers = new HttpHeaders();
+        ErrorResponse errorResponse= new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), request.getDescription(false));
+        errorResponse.addValidationError(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body(errorResponse);
     }
 
     @ExceptionHandler(Exception.class)
@@ -30,22 +42,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             Exception exception, WebRequest request) {
         HttpHeaders respondHeaders = new HttpHeaders();
         return buildErrorResponse(
-                "Unknown error occurred", HttpStatus.INTERNAL_SERVER_ERROR, request
-        , respondHeaders);
+                "Unknown error occurred", request, HttpStatus.INTERNAL_SERVER_ERROR, respondHeaders
+        );
     }
 
     private ResponseEntity<ErrorResponse> buildErrorResponse(
-            Exception exception, HttpStatus httpStatus, WebRequest request, HttpHeaders headers) {
+            Exception exception, WebRequest request, HttpStatus status, HttpHeaders headers) {
 
-        return buildErrorResponse(exception.getMessage(), httpStatus, request, headers);
+        return buildErrorResponse(exception.getMessage(), request, status, headers);
     }
 
     private ResponseEntity<ErrorResponse> buildErrorResponse(
-            String message, HttpStatus httpStatus, WebRequest request, HttpHeaders headers) {
+            String message, WebRequest request, HttpStatus status, HttpHeaders headers) {
 
-        ErrorResponse errorResponse = new ErrorResponse(httpStatus.value(), message,
+        ErrorResponse errorResponse = new ErrorResponse(status.value(), message,
                 request.getDescription(false)
         );
-        return ResponseEntity.status(httpStatus).headers(headers).body(errorResponse);
+        return ResponseEntity.status(status).headers(headers).body(errorResponse);
     }
 }

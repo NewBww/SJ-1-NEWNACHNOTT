@@ -16,16 +16,14 @@ import java.util.Objects;
 class ErrorResponse {
     private final int status;
     private final String message;
-    private final String path;
+    private final String instance;
     private String stackTrace;
-    private List<ValidationError> errors;
+    private List<String> error;
 
-    private record ValidationError(String field, String message) {
-    }
-    public void addValidationError(String field, String message){
-        if(Objects.isNull(errors)){
-            errors = new ArrayList<>();
+    public void addValidationError(String validationError){
+        if(Objects.isNull(error)){
+            error = new ArrayList<>();
         }
-        errors.add(new ValidationError(field, message));
+        error.add(validationError);
     }
 }

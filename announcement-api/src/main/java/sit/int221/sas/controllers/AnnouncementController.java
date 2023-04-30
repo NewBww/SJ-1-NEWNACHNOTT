@@ -1,11 +1,15 @@
 package sit.int221.sas.controllers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sit.int221.sas.dtos.AnnouncementDTO;
+import sit.int221.sas.dtos.DetailedAnnouncementDTO;
 import sit.int221.sas.entities.Announcement;
 import sit.int221.sas.services.AnnouncementService;
+import sit.int221.sas.utils.ListMapper;
 
 import java.util.List;
 
@@ -15,10 +19,14 @@ import java.util.List;
 public class AnnouncementController {
     @Autowired
     private AnnouncementService service;
+    @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
+    private ListMapper listMapper;
 
     @GetMapping
-    public ResponseEntity<List<Announcement>> getAllAnnouncements() {
-        List<Announcement> announcementList = service.findAll();
+    public ResponseEntity<List<AnnouncementDTO>> getAllAnnouncements() {
+        List<AnnouncementDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         if (announcementList.isEmpty()) {
@@ -31,8 +39,8 @@ public class AnnouncementController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Announcement> getAnnouncementById(@PathVariable Integer id) {
-        Announcement announcement = service.findById(id);
+    public ResponseEntity<DetailedAnnouncementDTO> getAnnouncementById(@PathVariable Integer id) {
+        DetailedAnnouncementDTO announcement = modelMapper.map(service.findById(id), DetailedAnnouncementDTO.class);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         responseHeaders.set("Description", "get an announcement successfully");

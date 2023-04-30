@@ -35,7 +35,3 @@ public class Announcement {
     private Display announcementDisplay = Display.N;
 }
 
-enum Display {
-    N,
-    Y
-}

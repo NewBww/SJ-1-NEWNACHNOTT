@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
-
 const route = useRoute()
+const router = useRouter()
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 onMounted(async () => {
@@ -16,7 +16,11 @@ onMounted(async () => {
     if (data !== undefined && data.length !== 0) {
       announcementsData.value = data
     }
-    console.log(announcementsData.value)
+    if (data === 404) {
+      alert('The requested page is not available!')
+      router.push({ name: 'admin-announcement-listing'});
+    }
+    // console.log(announcementsData.value)
   } catch (error) {
     console.log(error)
   }
@@ -30,9 +34,7 @@ onMounted(async () => {
   />
   <DetailText
     heading="Category"
-    v-for="category of announcementsData.announcementCategory"
-    :key="category.id"
-    :detail="`${category}`"
+    :detail="`${announcementsData.announcementCategory}`"
   />
   <DetailText
     heading="Description"

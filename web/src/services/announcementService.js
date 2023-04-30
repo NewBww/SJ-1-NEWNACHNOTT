@@ -24,6 +24,9 @@ class AnnouncementService {
         // console.log(data)
         return data
       }
+      else if (response.status === 404) {
+        return response.status
+      }
     } catch (error) {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }

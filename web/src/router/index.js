@@ -4,14 +4,14 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/admin/announcements',
-      name: 'home',
-      component: () => import('@/components/pages/HomePage.vue'),
+      path: '/admin/announcement',
+      name: 'admin-announcement-listing',
+      component: () => import('@/components/pages/AdminAnnouncementListingPage.vue'),
     },
     {
-      path: '/admin/announcements/:id',
-      name: 'details',
-      component: () => import('@/components/pages/AnnouncementDetail.vue'),
+      path: '/admin/announcement/:id',
+      name: 'admin-announcement-detail',
+      component: () => import('@/components/pages/AdminAnnouncementDetailPage.vue'),
     },
   ],
 })
