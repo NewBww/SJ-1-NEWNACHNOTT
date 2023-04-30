@@ -6,15 +6,11 @@ import DetailList from '@/components/UI/molecules/DetailList.vue'
 import {useRoute} from "vue-router";
 
 const announcementService = new AnnouncementService()
-
 const announcementsData = ref([])
-
-const route = useRoute()
-const ancmId = route.params.id
 
 onMounted(async () => {
   try {
-      announcementsData.value = await announcementService.getAnnouncementById(ancmId)
+      announcementsData.value = await announcementService.getAnnouncementById(useRoute().params.id)
   } catch (error) {
       console.log(error)
   }
