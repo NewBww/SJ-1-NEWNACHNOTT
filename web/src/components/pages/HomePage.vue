@@ -1,5 +1,5 @@
 <script setup>
-import AnnouncementList from '../UI/molecules/AnnouncementList.vue'
+import AnnouncementList from '@/components/UI/molecules/AnnouncementList.vue'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import TimeZone from '@/components/UI/atoms/TimeZone.vue'
