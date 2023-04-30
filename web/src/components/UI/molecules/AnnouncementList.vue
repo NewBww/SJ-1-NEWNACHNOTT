@@ -59,7 +59,10 @@ onMounted(async () => {
           <td class="ann-display">{{ announcement.announcementDisplay }}</td>
           <td>
             <RouterLink
-              :to="{ name: 'admin-announcement-detail', params: { id: announcement.id } }"
+              :to="{
+                name: 'admin-announcement-detail',
+                params: { id: announcement.id },
+              }"
             >
               <SingleButton text="view" class="ann-button view" />
             </RouterLink>
