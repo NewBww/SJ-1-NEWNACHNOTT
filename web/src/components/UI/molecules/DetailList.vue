@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute, RouterLink } from 'vue-router'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
-
 const route = useRoute()
+const router = useRouter()
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 onMounted(async () => {
@@ -19,7 +19,7 @@ onMounted(async () => {
     }
     if (data === 404) {
       alert('The requested page is not available!')
-      window.location = '/admin/announcements';
+      router.push({ name: 'admin-announcement-listing'});
     }
     // console.log(announcementsData.value)
   } catch (error) {
@@ -35,9 +35,7 @@ onMounted(async () => {
   />
   <DetailText
     heading="Category"
-    v-for="category of announcementsData.announcementCategory"
-    :key="category.id"
-    :detail="`${category}`"
+    :detail="`${announcementsData.announcementCategory}`"
   />
   <DetailText
     heading="Description"
@@ -56,7 +54,7 @@ onMounted(async () => {
     :detail="`${announcementsData.announcementDisplay}`"
   />
   <div>
-    <RouterLink :to="{ name: 'home' }">
+    <RouterLink :to="{ name: 'admin-announcement-listing' }">
       <SingleButton text="Back" />
     </RouterLink>
   </div>
