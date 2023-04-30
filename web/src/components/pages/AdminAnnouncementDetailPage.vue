@@ -12,7 +12,7 @@ import TextButton from '@/components/UI/atoms/TextButton.vue'
     <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
       <div class="flex flex-row items-center justify-between">
         <RouterLink :to="{ name: 'admin-announcement-listing' }">
-          <TextButton text="Back" />
+          <TextButton class="ann-button" text="Back" />
         </RouterLink>
         <PageTitle title="Announcement Detail" />
         <div class="w-[83.73px]"></div>
