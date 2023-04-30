@@ -41,7 +41,7 @@ onMounted(async () => {
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="text-center"
+          class="ann-item text-center"
         >
           <td>{{ index + 1 }}</td>
           <td class="ann-title text-left">
@@ -61,7 +61,7 @@ onMounted(async () => {
             <RouterLink
               :to="{ name: 'admin-announcement-detail', params: { id: announcement.id } }"
             >
-              <SingleButton text="View" class="ann-button" />
+              <SingleButton text="view" class="ann-button view" />
             </RouterLink>
           </td>
         </tr>

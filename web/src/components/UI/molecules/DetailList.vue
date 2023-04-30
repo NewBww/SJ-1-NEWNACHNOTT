@@ -31,26 +31,32 @@ onMounted(async () => {
 <template>
   <DetailText
     heading="Title"
+    class="ann-title"
     :detail="`${announcementsData.announcementTitle}`"
   />
   <DetailText
     heading="Category"
+    class="ann-title"
     :detail="`${announcementsData.announcementCategory}`"
   />
   <DetailText
     heading="Description"
+    class="ann-description"
     :detail="`${announcementsData.announcementDescription}`"
   />
   <DetailText
     heading="Publish Date"
+    class="ann-title"
     :detail="`${useFormatTime(announcementsData.publishDate)}`"
   />
   <DetailText
     heading="Close Date"
+    class="ann-title"
     :detail="`${useFormatTime(announcementsData.closeDate)}`"
   />
   <DetailText
     heading="Display"
+    class="ann-title"
     :detail="`${announcementsData.announcementDisplay}`"
   />
   <div>
