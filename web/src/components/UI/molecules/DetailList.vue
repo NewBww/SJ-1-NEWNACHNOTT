@@ -17,7 +17,7 @@ onMounted(async () => {
       announcementsData.value = data
     }
     if (data === 404) {
-      alert('The requested page is not available!')
+      alert('The request page is not available')
       router.push({ name: 'admin-announcement-listing'});
     }
     // console.log(announcementsData.value)
@@ -35,7 +35,7 @@ onMounted(async () => {
   />
   <DetailText
     heading="Category"
-    class="ann-title"
+    class="ann-category"
     :detail="`${announcementsData.announcementCategory}`"
   />
   <DetailText
@@ -45,17 +45,17 @@ onMounted(async () => {
   />
   <DetailText
     heading="Publish Date"
-    class="ann-title"
+    class="ann-publish-date"
     :detail="`${useFormatTime(announcementsData.publishDate)}`"
   />
   <DetailText
     heading="Close Date"
-    class="ann-title"
+    class="ann-close-date"
     :detail="`${useFormatTime(announcementsData.closeDate)}`"
   />
   <DetailText
     heading="Display"
-    class="ann-title"
+    class="ann-display"
     :detail="`${announcementsData.announcementDisplay}`"
   />
 </template>

@@ -33,7 +33,7 @@ onMounted(async () => {
       </thead>
       <tbody v-if="announcementsData.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
-          <td class="text-center" colspan="7">No Announcement</td>
+          <td class="text-center" colspan="7">No Announcements</td>
         </tr>
       </tbody>
       <tbody class="divide-y-2" v-else>
