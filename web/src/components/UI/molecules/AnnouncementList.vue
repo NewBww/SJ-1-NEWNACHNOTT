@@ -23,11 +23,11 @@ onMounted(async () => {
       <thead class="text-center border-y-2">
         <tr>
           <th class="w-16">No.</th>
-          <th class="text-left pl-6">Title</th>
-          <th class="w-32">Category</th>
-          <th class="w-52">Publish Date</th>
-          <th class="w-52">Close Date</th>
-          <th class="w-16">Display</th>
+          <th class="ann-title text-left pl-6">Title</th>
+          <th class="ann-category w-32">Category</th>
+          <th class="ann-publish-date w-52">Publish Date</th>
+          <th class="ann-close-date w-52">Close Date</th>
+          <th class="ann-displayw-16">Display</th>
           <th class="w-32">Action</th>
         </tr>
       </thead>
@@ -44,28 +44,24 @@ onMounted(async () => {
           class="text-center"
         >
           <td>{{ index + 1 }}</td>
-          <td class="text-left">
+          <td class="ann-title text-left">
             {{ announcement.announcementTitle }}
           </td>
-          <td
-            v-for="category of announcement.announcementCategory"
-            :key="category.id"
-            :id="category.id"
-          >
-            {{ category }}
+          <td class="ann-category">
+            {{ announcement.announcementCategory }}
           </td>
-          <td>
+          <td class="ann-publish-date">
             {{ useFormatTime(announcement.publishDate) }}
           </td>
-          <td>
+          <td class="ann-close-date">
             {{ useFormatTime(announcement.closeDate) }}
           </td>
-          <td>{{ announcement.announcementDisplay }}</td>
+          <td class="ann-display">{{ announcement.announcementDisplay }}</td>
           <td>
             <RouterLink
               :to="{ name: 'details', params: { id: announcement.id } }"
             >
-              <SingleButton text="View" />
+              <SingleButton text="View" class="ann-button" />
             </RouterLink>
           </td>
         </tr>

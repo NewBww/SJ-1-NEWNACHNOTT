@@ -17,7 +17,11 @@ onMounted(async () => {
     if (data !== undefined && data.length !== 0) {
       announcementsData.value = data
     }
-    console.log(announcementsData.value)
+    if (data === 404) {
+      alert('The requested page is not available!')
+      window.location = '/admin/announcements';
+    }
+    // console.log(announcementsData.value)
   } catch (error) {
     console.log(error)
   }
