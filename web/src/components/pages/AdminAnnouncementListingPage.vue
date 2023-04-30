@@ -7,16 +7,18 @@ import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 </script>
 
 <template>
-  <div class="h-full max-w-[72rem] w-full m-auto bg-[#f2f2f2] flex flex-col">
-    <PageTitle title="SIT Announcement System (SAS)" />
-    <ContentSection>
-      <div
-        class="h-fit w-full pt-8 pb-4 pl-9 pr-9 justify-between items-center flex flex-row"
-      >
-        <TimeZone />
-        <SingleButton text="Add Announcement" />
-      </div>
-      <AnnouncementList />
-    </ContentSection>
+  <div class="h-screen bg-[#f2f2f2]">
+    <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
+      <PageTitle title="SIT Announcement System (SAS)" />
+      <ContentSection>
+        <div
+          class="h-fit w-full pt-8 pb-4 pl-9 pr-9 justify-between items-center flex flex-row"
+        >
+          <TimeZone />
+          <SingleButton text="Add Announcement" />
+        </div>
+        <AnnouncementList />
+      </ContentSection>
+    </div>
   </div>
 </template>

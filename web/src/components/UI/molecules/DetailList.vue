@@ -1,9 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute, useRouter, RouterLink } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
-import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
 const route = useRoute()
 const router = useRouter()
@@ -18,8 +17,8 @@ onMounted(async () => {
       announcementsData.value = data
     }
     if (data === 404) {
-      alert('The requested page is not available!')
-      router.push({ name: 'admin-announcement-listing'});
+      alert('The request page is not available')
+      router.push({ name: 'admin-announcement-listing' })
     }
     // console.log(announcementsData.value)
   } catch (error) {
@@ -36,7 +35,7 @@ onMounted(async () => {
   />
   <DetailText
     heading="Category"
-    class="ann-title"
+    class="ann-category"
     :detail="`${announcementsData.announcementCategory}`"
   />
   <DetailText
@@ -46,22 +45,17 @@ onMounted(async () => {
   />
   <DetailText
     heading="Publish Date"
-    class="ann-title"
+    class="ann-publish-date"
     :detail="`${useFormatTime(announcementsData.publishDate)}`"
   />
   <DetailText
     heading="Close Date"
-    class="ann-title"
+    class="ann-close-date"
     :detail="`${useFormatTime(announcementsData.closeDate)}`"
   />
   <DetailText
     heading="Display"
-    class="ann-title"
+    class="ann-display"
     :detail="`${announcementsData.announcementDisplay}`"
   />
-  <div>
-    <RouterLink :to="{ name: 'admin-announcement-listing' }">
-      <SingleButton text="Back" />
-    </RouterLink>
-  </div>
 </template>
