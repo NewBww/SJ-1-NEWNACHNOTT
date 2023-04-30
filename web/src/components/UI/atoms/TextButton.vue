@@ -9,8 +9,10 @@ defineProps({
 
 <template>
   <button
-    class="text-center w-fit py-1 px-2 border rounded bg-gray-400 text-base hover:bg-gray-300"
+    class="text-center w-fit py-1 px-2 border rounded text-base hover:text-grey"
   >
     {{ text }}
   </button>
 </template>
+
+<style scoped></style>

@@ -1,9 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute, RouterLink } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService'
-import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
 
 const route = useRoute()
@@ -51,9 +50,4 @@ onMounted(async () => {
     heading="Display"
     :detail="`${announcementsData.announcementDisplay}`"
   />
-  <div>
-    <RouterLink :to="{ name: 'home' }">
-      <SingleButton text="Back" />
-    </RouterLink>
-  </div>
 </template>
