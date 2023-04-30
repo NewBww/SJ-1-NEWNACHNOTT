@@ -2,7 +2,6 @@
 import DetailList from '@/components/UI/molecules/DetailList.vue'
 import PageTitle from '../UI/atoms/PageTitle.vue'
 import ContentSection from '../UI/organisms/ContentSection.vue'
-import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import { RouterLink } from 'vue-router'
 import TextButton from '@/components/UI/atoms/TextButton.vue'
 </script>
