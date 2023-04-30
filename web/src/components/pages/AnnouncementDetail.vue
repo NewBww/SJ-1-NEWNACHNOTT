@@ -1,21 +1,24 @@
 <script setup>
 import AnnouncementService from '@/services/announcementService'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref} from 'vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailList from '@/components/UI/molecules/DetailList.vue'
+import {useRoute} from "vue-router";
 
 const announcementService = new AnnouncementService()
 
 const announcementsData = ref([])
-const ancmAll = ref([])
+
+const route = useRoute()
+const ancmId = route.params.id
 
 onMounted(async () => {
-  announcementsData.value = await announcementService.getAnnouncementById(1)
-  ancmAll.value = await announcementService.getAllAnnouncements()
+  try {
+      announcementsData.value = await announcementService.getAnnouncementById(ancmId)
+  } catch (error) {
+      console.log(error)
+  }
 })
-
-console.log(announcementsData)
-console.log(ancmAll)
 </script>
 
 <template>
@@ -30,11 +33,16 @@ console.log(ancmAll)
       <div class="py-4 px-12 border">
         <div class="flex flex-col gap-4">
           <!--                    {{ announcementsData}}-->
+<!--            <DetailList-->
+<!--                    v-for="(ancm, index) of announcementsData"-->
+<!--                    :attribute="index"-->
+<!--                    :key="ancm.id"-->
+<!--                    :id="ancm.id"-->
+<!--                    :detail="ancm"-->
+<!--            />-->
           <DetailList
-            v-for="(ancm, index) of announcementsData"
-            :attribute="index"
-            :key="ancm.id"
-            :id="ancm.id"
+            v-for="(ancm, key) of announcementsData"
+            :attribute="key"
             :detail="ancm"
           />
         </div>
