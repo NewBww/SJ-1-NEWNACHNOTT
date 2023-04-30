@@ -25,6 +25,7 @@ const atbHeader = () => {
 
 <template>
   <div>
+    
     <h2 class="text-lg font-semibold" v-if="!attribute.includes('id')">
       {{ atbHeader() }}
     </h2>
@@ -40,5 +41,3 @@ const atbHeader = () => {
     <p class="text-base" v-else>{{ detail }}</p>
   </div>
 </template>
-
-<style scoped></style>

@@ -3,7 +3,7 @@ import AnnouncementService from '@/services/announcementService'
 import { onMounted, ref} from 'vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailList from '@/components/UI/molecules/DetailList.vue'
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
 
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])

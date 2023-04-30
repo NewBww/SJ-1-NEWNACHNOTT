@@ -1,11 +1,12 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import AnnouncementService from '../../../services/announcementService.js'
+import { RouterLink } from 'vue-router'
+import { useFormatTime } from '@/composables/date.js'
+import AnnouncementService from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-// import { RouterLink } from 'vue-router'
 
+console.log(typeof useFormatTime);
 const announcementService = new AnnouncementService()
-
 const announcementsData = ref([])
 
 onMounted(async () => {
@@ -14,28 +15,6 @@ onMounted(async () => {
     announcementsData.value = data
   }
 })
-const date = (dateTimeZone) => {
-  // console.log(dateTimeZone)
-  const optionsDate = {
-    dateStyle: 'medium',
-  }
-  const optionsTime = {
-    timeStyle: 'short',
-  }
-
-  const localeDate = new Date(dateTimeZone).toLocaleDateString(
-    'en-GB',
-    optionsDate
-  )
-  const localeTime = new Date(dateTimeZone).toLocaleTimeString(
-    'en-GB',
-    optionsTime
-  )
-  // console.log(localeDate)
-  // console.log(localeTime);
-  // console.log(changeFormat)
-  return `${localeDate}, ${localeTime}`
-}
 </script>
 
 <template>
@@ -76,11 +55,11 @@ const date = (dateTimeZone) => {
             {{ category }}
           </td>
           <td v-if="announcement.publishDate !== null">
-            {{ date(announcement.publishDate) }}
+            {{ useFormatTime(announcement.publishDate) }}
           </td>
           <td v-else>-</td>
           <td v-if="announcement.closeDate !== null">
-            {{ date(announcement.closeDate) }}
+            {{ useFormatTime(announcement.closeDate) }}
           </td>
           <td v-else>-</td>
           <td>{{ announcement.announcementDisplay }}</td>
