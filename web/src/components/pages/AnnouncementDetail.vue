@@ -2,8 +2,13 @@
 import AnnouncementService from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+<<<<<<< HEAD
 import DetailListStatic from '@/components/UI/molecules/DetailListStatic.vue'
 import { useRoute } from 'vue-router'
+=======
+import DetailList from '@/components/UI/molecules/DetailList.vue'
+import { useRoute } from "vue-router";
+>>>>>>> origin/dev
 
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
