@@ -10,3 +10,4 @@ grant alter, create, create view, delete, drop, index, insert, lock tables, sele
 grant insert, update, delete, select on *.* to 'api_announcement'@'localhost';
 
 show grants for 'api_announcement'@'localhost';
+show grants for 'dba_new'@'localhost';
