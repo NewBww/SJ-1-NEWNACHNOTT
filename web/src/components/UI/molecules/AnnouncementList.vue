@@ -13,7 +13,7 @@ onMounted(async () => {
   if (data !== undefined && data.length !== 0) {
     announcementsData.value = data
   }
-  console.log(announcementsData.value)
+  // console.log(announcementsData.value)
 })
 </script>
 
