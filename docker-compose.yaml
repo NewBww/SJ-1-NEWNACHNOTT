@@ -1,0 +1,39 @@
+services:
+  web:
+    image: webimg:1.00
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+
+        #  announcement-api:
+        #    image: announcement-api:1.00
+        #    environment:
+        #      MYSQL_SECRET: sj1sas
+        #      MYSQL_USERNAME: api_announcement
+        #      MYSQL_DATABASE: sas
+        #      DB_HOSTNAME: localhost
+        #    build:
+        #      context: ./announcement-api
+        #      dockerfile: Dockerfile
+        #    ports:
+        #      - "8080:8080"
+        #    depends_on:
+        #      - database
+        
+  database:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: hThKPEq93f
+      MYSQL_DATABASE: sas
+      LANG: en_US.UTF-8
+    restart: unless-stopped
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./database/src/init-scripts/:/docker-entrypoint-initdb.d/
+      - ./database/src/my.cnf:/etc/my.cnf
+    expose:
+      - "3306"    
+volumes:
+  dbdata:
