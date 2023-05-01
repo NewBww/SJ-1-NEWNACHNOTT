@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
+import { expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import SingleButton from '../UI/atoms/SingleButton.vue'
+import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 test("mount component",async()=>{
   expect(SingleButton).toBeTruthy();
