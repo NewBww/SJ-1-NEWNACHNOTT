@@ -24,10 +24,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: hThKPEq93f
       MYSQL_DATABASE: sas
+      MYSQL_USER: api_announcement
+      MYSQL_PASSWORD: sj1sas
       LANG: en_US.UTF-8
     volumes:
       - dbdata:/var/lib/mysql/
       - ./database/src/init-scripts/:/docker-entrypoint-initdb.d/
       - ./database/src/my.cnf:/etc/my.cnf
+    hostname: db_hostname
 volumes:
   dbdata:
