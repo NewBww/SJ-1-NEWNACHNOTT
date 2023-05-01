@@ -10,6 +10,6 @@ describe('TC-VIEW-ANNOUNCEMENT-EMPTY-1', () => {
 
     cy.wait(200) ;
     cy.get('.ann-item').should('have.length',0)
-    cy.contains('No Announcements')
+    cy.contains('No Announcement')
   })
 });
