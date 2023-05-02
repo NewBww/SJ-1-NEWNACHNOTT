@@ -13,18 +13,22 @@ services:
       MYSQL_PASSWORD: hThKPEq93f
       MYSQL_USERNAME: root
       MYSQL_DATABASE: sas
-      DB_HOST: ip22sj1.sit.kmutt.ac.th
+      DB_HOST: sas-database-1 
+      DB_PORT: 3306
     depends_on:
-      database:
-        condition: service_completed_successfully
+      - database
+#      condition: service_completed_successfully
     build:
       context: ./announcement-api
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-     
+    networks:
+      - sas_network
+
   database:
     image: mysql:8.0.32
+    # container_name: DB_HOST
     environment:
       MYSQL_ROOT_PASSWORD: hThKPEq93f
       MYSQL_DATABASE: sas
@@ -36,6 +40,9 @@ services:
       - ./database/src/my.cnf:/etc/my.cnf
     ports:
       - "3306:3306"
-
+    networks:
+      - sas_network
 volumes:
   dbdata:
+networks:
+  sas_network:
