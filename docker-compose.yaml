@@ -7,21 +7,22 @@ services:
     ports:
       - "80:80"
 
-        #  announcement-api:
-        #    image: announcement-api:1.00
-        #    environment:
-        #      MYSQL_SECRET: sj1sas
-        #      MYSQL_USERNAME: api_announcement
-        #      MYSQL_DATABASE: sas
-        #      DB_HOSTNAME: localhost
-        #    build:
-        #      context: ./announcement-api
-        #      dockerfile: Dockerfile
-        #    ports:
-        #      - "8080:8080"
-        #    depends_on:
-        #      - database
-        
+  announcement-api:
+    image: announcement-api:1.00
+    environment:
+      MYSQL_PASSWORD: hThKPEq93f
+      MYSQL_USERNAME: root
+      MYSQL_DATABASE: sas
+      DB_HOST: ip22sj1.sit.kmutt.ac.th
+    depends_on:
+      database:
+        condition: service_completed_successfully
+    build:
+      context: ./announcement-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+     
   database:
     image: mysql:8.0.32
     environment:
@@ -33,7 +34,8 @@ services:
       - dbdata:/var/lib/mysql/
       - ./database/src/init-scripts/:/docker-entrypoint-initdb.d/
       - ./database/src/my.cnf:/etc/my.cnf
-    expose:
-      - "3306"    
+    ports:
+      - "3306:3306"
+
 volumes:
   dbdata:
