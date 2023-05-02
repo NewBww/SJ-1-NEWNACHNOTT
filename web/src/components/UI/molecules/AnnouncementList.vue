@@ -1,10 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import AnnouncementService from '../../../services/announcementService.js'
+import { RouterLink } from 'vue-router'
+import { useFormatTime } from '@/composables/date.js'
+import AnnouncementService from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 const announcementService = new AnnouncementService()
-
 const announcementsData = ref([])
 
 onMounted(async () => {
@@ -12,43 +13,8 @@ onMounted(async () => {
   if (data !== undefined && data.length !== 0) {
     announcementsData.value = data
   }
+  // console.log(announcementsData.value)
 })
-const date = (dateTimeZone) => {
-  // console.log(dateTimeZone)
-  const optionsDate = {
-    dateStyle: 'medium',
-  }
-  const optionsTime = {
-    timeStyle: 'short',
-  }
-
-  const localeDate = new Date(dateTimeZone).toLocaleDateString(
-    'en-GB',
-    optionsDate
-  )
-  const localeTime = new Date(dateTimeZone).toLocaleTimeString(
-    'en-GB',
-    optionsTime
-  )
-  // console.log(localeDate)
-  // console.log(localeTime);
-  // console.log(changeFormat)
-  return `${localeDate}, ${localeTime}`
-
-  // another option
-  // console.log(dateTimeZone)
-  // const options = {
-  //     day: 'numeric',
-  //     month: 'short',
-  //     year: 'numeric',
-  //     hour: 'numeric',
-  //     minute: 'numeric',
-  // }
-
-  // let changeFormat = new Date(dateTimeZone).toLocaleDateString("en-GB", options)
-  // console.log(changeFormat)
-  // return changeFormat
-}
 </script>
 
 <template>
@@ -57,17 +23,17 @@ const date = (dateTimeZone) => {
       <thead class="text-center border-y-2">
         <tr>
           <th class="w-16">No.</th>
-          <th class="text-left pl-6">Title</th>
-          <th class="w-32">Category</th>
-          <th class="w-52">Publish Date</th>
-          <th class="w-52">Close Date</th>
-          <th class="w-16">Display</th>
+          <th class="ann-title text-left pl-6">Title</th>
+          <th class="ann-category w-32">Category</th>
+          <th class="ann-publish-date w-52">Publish Date</th>
+          <th class="ann-close-date w-52">Close Date</th>
+          <th class="ann-displayw-16">Display</th>
           <th class="w-32">Action</th>
         </tr>
       </thead>
       <tbody v-if="announcementsData.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
-          <td class="text-center" colspan="7">No Announcements found!</td>
+          <td class="text-center" colspan="7">No Announcement</td>
         </tr>
       </tbody>
       <tbody class="divide-y-2" v-else>
@@ -75,30 +41,31 @@ const date = (dateTimeZone) => {
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="text-center"
+          class="ann-item text-center"
         >
           <td>{{ index + 1 }}</td>
-          <td class="text-left">
+          <td class="ann-title text-left">
             {{ announcement.announcementTitle }}
           </td>
-          <td
-            v-for="category of announcement.announcementCategory"
-            :key="category.id"
-            :id="category.id"
-          >
-            {{ category }}
+          <td class="ann-category">
+            {{ announcement.announcementCategory }}
           </td>
-          <td v-if="announcement.publishDate !== null">
-            {{ date(announcement.publishDate) }}
+          <td class="ann-publish-date">
+            {{ useFormatTime(announcement.publishDate) }}
           </td>
-          <td v-else>-</td>
-          <td v-if="announcement.closeDate !== null">
-            {{ date(announcement.closeDate) }}
+          <td class="ann-close-date">
+            {{ useFormatTime(announcement.closeDate) }}
           </td>
-          <td v-else>-</td>
-          <td>{{ announcement.announcementDisplay }}</td>
+          <td class="ann-display">{{ announcement.announcementDisplay }}</td>
           <td>
-            <SingleButton text="View" />
+            <RouterLink
+              :to="{
+                name: 'admin-announcement-detail',
+                params: { id: announcement.id },
+              }"
+            >
+              <SingleButton text="view" class="ann-button view" />
+            </RouterLink>
           </td>
         </tr>
       </tbody>

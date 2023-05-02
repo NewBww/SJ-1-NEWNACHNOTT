@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --root src/",
+    "cypress:open": "cypress open",
     "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
@@ -37,12 +38,12 @@
   },
   "contributors": [
     "64130500019 Nach Phunsawat <nach.phun@kmutt.ac.th>",
-    "641305000XX Pongsapark Rattanajantranon <X@kmutt.ac.th>",
+    "64130500052 Pongsapark Rattanajantranon <X@kmutt.ac.th>",
     "64130500119 Bowonwit Anothaisintavee <Bowonwit.anot@kmutt.ac.th>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NewBww/SJ-1-NEWNACHNOTT-FRONTEND.git"
+    "url": "https://github.com/NewBww/SJ-1-NEWNACHNOTT.git"
   },
   "packageManager": "pnpm@8.3.0"
 }
