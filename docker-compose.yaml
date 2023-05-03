@@ -9,6 +9,7 @@ services:
 
   announcement-api:
     image: announcement-api:1.00
+    restart: always
     environment:
       MYSQL_PASSWORD: hThKPEq93f
       MYSQL_USERNAME: root
@@ -28,7 +29,6 @@ services:
 
   database:
     image: mysql:8.0.32
-    # container_name: DB_HOST
     environment:
       MYSQL_ROOT_PASSWORD: hThKPEq93f
       MYSQL_DATABASE: sas
@@ -38,11 +38,11 @@ services:
       - dbdata:/var/lib/mysql/
       - ./database/src/init-scripts/:/docker-entrypoint-initdb.d/
       - ./database/src/my.cnf:/etc/my.cnf
-    ports:
-      - "3306:3306"
     networks:
       - sas_network
+    hostname: mysql
 volumes:
   dbdata:
 networks:
   sas_network:
+
