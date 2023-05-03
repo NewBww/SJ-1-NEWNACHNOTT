@@ -3,15 +3,11 @@ package sit.int221.sas.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import sit.int221.sas.dtos.AnnouncementDTO;
+import sit.int221.sas.dtos.AnnouncementListItemDTO;
 import sit.int221.sas.dtos.DetailedAnnouncementDTO;
 import sit.int221.sas.entities.Announcement;
-import sit.int221.sas.exceptions.ErrorResponse;
 import sit.int221.sas.services.AnnouncementService;
 import sit.int221.sas.utils.ListMapper;
 
@@ -29,8 +25,8 @@ public class AnnouncementController {
     private ListMapper listMapper;
 
     @GetMapping
-    public ResponseEntity<List<AnnouncementDTO>> getAllAnnouncements() {
-        List<AnnouncementDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementDTO.class, modelMapper);
+    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements() {
+        List<AnnouncementListItemDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         if (announcementList.isEmpty()) {
