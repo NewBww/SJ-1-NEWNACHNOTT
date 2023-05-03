@@ -52,5 +52,15 @@ public class AnnouncementController {
         System.out.println(announcement);
         return service.createAnnouncement(announcement);
     }
+
+    @PutMapping("{id}")
+    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
+        return service.updateAnnouncement(announcement, id);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteAnnouncement(@PathVariable Integer id) {
+        service.removeAnnouncement(id);
+    }
 }
 

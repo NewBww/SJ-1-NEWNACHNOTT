@@ -1,11 +1,15 @@
 package sit.int221.sas.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.ZonedDateTime;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "announcements")
