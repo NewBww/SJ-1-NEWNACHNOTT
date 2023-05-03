@@ -47,10 +47,20 @@ public class AnnouncementController {
         return ResponseEntity.ok().headers(responseHeaders).body(announcement);
     }
 
-    @PostMapping
-    public Announcement postAnnouncement(@RequestBody Announcement announcement) {
-        System.out.println(announcement);
-        return service.createAnnouncement(announcement);
-    }
+//    @PostMapping
+//    public Announcement postAnnouncement(@RequestBody Announcement announcement) {
+//        System.out.println(announcement);
+//        return service.createAnnouncement(announcement);
+//    }
+//
+//    @PutMapping("{id}")
+//    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
+//        return service.updateAnnouncement(announcement, id);
+//    }
+//
+//    @DeleteMapping("{id}")
+//    public void deleteAnnouncement(@PathVariable Integer id) {
+//        service.removeAnnouncement(id);
+//    }
 }
 

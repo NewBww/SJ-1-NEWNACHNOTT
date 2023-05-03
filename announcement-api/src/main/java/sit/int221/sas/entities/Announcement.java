@@ -1,11 +1,12 @@
 package sit.int221.sas.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.ZonedDateTime;
 
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "announcements")
@@ -34,12 +35,12 @@ public class Announcement {
     @Enumerated(EnumType.STRING)
     private Display announcementDisplay = Display.N;
 
-    public void setAnnouncementDisplay(String displayName) {
-        if (displayName.equals("N") || displayName.equals("Y")) {
-            this.announcementDisplay = Display.valueOf(displayName);
-        } else {
-            this.announcementDisplay = Display.N;
-        }
-    }
+//    public void setAnnouncementDisplay(String displayName) {
+//        if (displayName.equals("N") || displayName.equals("Y")) {
+//            this.announcementDisplay = Display.valueOf(displayName);
+//        } else {
+//            this.announcementDisplay = Display.N;
+//        }
+//    }
 }
 
