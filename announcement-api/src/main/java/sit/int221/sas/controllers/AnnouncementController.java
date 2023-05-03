@@ -13,7 +13,7 @@ import sit.int221.sas.utils.ListMapper;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:5173/", "http://localhost:4173/", "http://ip22sj1.sit.kmutt.ac.th/"})
+@CrossOrigin(origins = {"http://localhost:5173/", "http://localhost:4173/", "http://ip22sj1.sit.kmutt.ac.th/sj1/"})
 @RestController
 @RequestMapping("/api/announcements")
 public class AnnouncementController {
