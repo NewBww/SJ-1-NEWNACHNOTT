@@ -6,12 +6,14 @@ const router = createRouter({
     {
       path: '/admin/announcement',
       name: 'admin-announcement-listing',
-      component: () => import('@/components/pages/AdminAnnouncementListingPage.vue'),
+      component: () =>
+        import('@/components/pages/AdminAnnouncementListingPage.vue'),
     },
     {
       path: '/admin/announcement/:id',
       name: 'admin-announcement-detail',
-      component: () => import('@/components/pages/AdminAnnouncementDetailPage.vue'),
+      component: () =>
+        import('@/components/pages/AdminAnnouncementDetailPage.vue'),
     },
   ],
 })

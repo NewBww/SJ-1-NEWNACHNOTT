@@ -16,9 +16,9 @@ onMounted(async () => {
     if (data !== undefined && data.length !== 0) {
       announcementsData.value = data
     }
-    if (data === 404) {
-      alert('The request page is not available')
-      router.push({ name: 'admin-announcement-listing' })
+    if (data === 404 || data === 400) {
+      window.alert('The request page is not available')
+      await router.push({ name: 'admin-announcement-listing' })
     }
     // console.log(announcementsData.value)
   } catch (error) {

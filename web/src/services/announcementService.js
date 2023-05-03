@@ -5,7 +5,6 @@ class AnnouncementService {
   async getAllAnnouncements() {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`)
-      // console.log(...response.clone().headers)
       if (response.ok) {
         const data = await response.json()
         return data
@@ -18,13 +17,10 @@ class AnnouncementService {
   async getAnnouncementById(id) {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`)
-      // console.log(...response.clone().headers)
       if (response.ok) {
         const data = await response.json()
-        // console.log(data)
         return data
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404 || response.status === 400) {
         return response.status
       }
     } catch (error) {

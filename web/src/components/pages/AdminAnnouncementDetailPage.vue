@@ -3,7 +3,8 @@ import DetailList from '@/components/UI/molecules/DetailList.vue'
 import PageTitle from '../UI/atoms/PageTitle.vue'
 import ContentSection from '../UI/organisms/ContentSection.vue'
 import { RouterLink } from 'vue-router'
-import TextButton from '@/components/UI/atoms/TextButton.vue'
+import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 </script>
 
 <template>
@@ -11,7 +12,11 @@ import TextButton from '@/components/UI/atoms/TextButton.vue'
     <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
       <div class="flex flex-row items-center justify-between">
         <RouterLink :to="{ name: 'admin-announcement-listing' }">
-          <TextButton class="ann-button" text="Back" />
+          <SingleButton class="ann-button" text="Back">
+            <template #before-text-icon>
+              <IconArrowBack />
+            </template>
+          </SingleButton>
         </RouterLink>
         <PageTitle title="Announcement Detail" />
         <div class="w-[83.73px]"></div>

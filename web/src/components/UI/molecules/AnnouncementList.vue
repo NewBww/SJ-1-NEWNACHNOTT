@@ -13,12 +13,11 @@ onMounted(async () => {
   if (data !== undefined && data.length !== 0) {
     announcementsData.value = data
   }
-  // console.log(announcementsData.value)
 })
 </script>
 
 <template>
-  <div class="w-full border-b-2 overflow-x-scroll">
+  <div class="w-full h-full border-b-2 overflow-x-scroll">
     <table class="w-full h-full table-fixed">
       <thead class="text-center border-y-2">
         <tr>
@@ -27,7 +26,7 @@ onMounted(async () => {
           <th class="ann-category w-32">Category</th>
           <th class="ann-publish-date w-52">Publish Date</th>
           <th class="ann-close-date w-52">Close Date</th>
-          <th class="ann-displayw-16">Display</th>
+          <th class="ann-display w-16">Display</th>
           <th class="w-32">Action</th>
         </tr>
       </thead>
@@ -57,14 +56,17 @@ onMounted(async () => {
             {{ useFormatTime(announcement.closeDate) }}
           </td>
           <td class="ann-display">{{ announcement.announcementDisplay }}</td>
-          <td>
+          <td class="flex justify-center h-full items-center">
             <RouterLink
               :to="{
                 name: 'admin-announcement-detail',
                 params: { id: announcement.id },
               }"
             >
-              <SingleButton text="view" class="ann-button view" />
+              <SingleButton
+                text="view"
+                class="ann-button view bg-gray-400 hover:bg-gray-300"
+              />
             </RouterLink>
           </td>
         </tr>
