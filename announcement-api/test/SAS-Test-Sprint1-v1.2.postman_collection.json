@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "eab77bc9-1742-4194-82dd-18a846ba1e5d",
+		"name": "SAS-Test-Sprint1-v1.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7314284"
+	},
+	"item": [
+		{
+			"name": "PBI1-ANNOUNCEMENT-EMPTY",
+			"item": [
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-EMPTY-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(200);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcements is empty\",()=>{",
+									"    pm.expect(jsonData).to.be.empty ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-EMPTY-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(200);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcements is not empty\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"array\") ;",
+									"})",
+									"var data = jsonData[0] ",
+									"pm.test(\"Announcements keys test\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('id','announcementTitle','publishDate','closeDate','announcementDisplay','announcementCategory')",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI2-VIEW-ANNOUNCEMENT-ALL",
+			"item": [
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-ALL-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(200);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcements length test\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"array\") ;",
+									"    pm.expect(jsonData.length).to.equal(4) ;",
+									"})",
+									"var data = jsonData[0] ",
+									"pm.test(\"Announcements keys test\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('id','announcementTitle','publishDate','closeDate','announcementDisplay','announcementCategory')",
+									"})",
+									"var data = jsonData[0] ;",
+									"pm.test(\"First Announcement test\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"กิจกรรมพี่อ้อย พี่ฉอด On Tour 2566\") ;",
+									"    pm.expect(data.publishDate).to.equal(\"2023-04-18T23:00:00Z\") ;",
+									"    pm.expect(data.closeDate).to.equal(\"2023-05-08T11:00:00Z\") ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									"var data = jsonData[1] ;",
+									"pm.test(\"Second Announcement test\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"แนวปฎิบัติการสอบออนไลน์ พ.ศ. 2565\") ;",
+									"    pm.expect(data.publishDate).to.equal(\"2023-01-26T23:00:00Z\") ;",
+									"    pm.expect(data.closeDate).to.be.null ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									"var data = jsonData[2] ;",
+									"pm.test(\"Third Announcement test\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"รายชื่อนักศึกษาที่ได้รับทุนการศึกษาประเภท \\\"ทุนจ้างงาน\\\" 2/2565\") ;",
+									"    pm.expect(data.publishDate).to.be.null ;",
+									"    pm.expect(data.closeDate).to.equal(\"2023-05-31T11:00:00Z\") ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"var data = jsonData[3] ;",
+									"pm.test(\"Four Announcement test\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"บริษัท เน็ตเซอร์พลัส จำกัด รับสมัครงาน 2 ตำแหน่ง\") ;",
+									"    pm.expect(data.publishDate).to.be.null ;",
+									"    pm.expect(data.closeDate).to.be.null ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"N\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"หางาน\") ;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI3-VIEW-ANNOUNCEMENT-DETAIL",
+			"item": [
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-DETAIL-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(200);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcements keys test\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"object\") ;",
+									"    pm.expect(jsonData).to.have.all.keys('id','announcementTitle','announcementDescription','publishDate','closeDate','announcementDisplay','announcementCategory')",
+									"})",
+									"var data = jsonData ;",
+									"pm.test(\"Announcement having both publish date and close date\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"กิจกรรมพี่อ้อย พี่ฉอด On Tour 2566\") ;",
+									"    pm.expect(data.announcementDescription).to.equal(\"ขอเชิญนักศึกษาทุกชั้นปี เข้าร่วมกิจกรรมพี่อ้อย พี่ฉอด On Tour\") ;",
+									"    pm.expect(data.publishDate).to.equal(\"2023-04-18T23:00:00Z\") ;",
+									"    pm.expect(data.closeDate).to.equal(\"2023-05-08T11:00:00Z\") ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-DETAIL-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(200);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcements keys test\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"object\") ;",
+									"    pm.expect(jsonData).to.have.all.keys('id','announcementTitle','announcementDescription','publishDate','closeDate','announcementDisplay','announcementCategory')",
+									"})",
+									"var data = jsonData ;",
+									"pm.test(\"Announcement without both publish date and close date\",()=>{",
+									"    pm.expect(data.announcementTitle).to.equal(\"บริษัท เน็ตเซอร์พลัส จำกัด รับสมัครงาน 2 ตำแหน่ง\") ;",
+									"    pm.expect(data.announcementDescription).to.equal(\"บริษัท เน็ตเซอร์พลัส จำกัด เปิดรับสมัครงาน 2 ตำแหน่ง Application Support และ Customer Support\") ;",
+									"    pm.expect(data.publishDate).to.be.null ;",
+									"    pm.expect(data.closeDate).to.be.null ;",
+									"    pm.expect(data.announcementDisplay).to.equal(\"N\") ;",
+									"    pm.expect(data.announcementCategory).to.equal(\"หางาน\") ;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-DETAIL-3-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(404);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcement id not exist\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"object\") ;",
+									"    pm.expect(jsonData).to.have.any.keys('message')",
+									"})",
+									"var data = jsonData",
+									"pm.test(\"Announcement message test\",()=>{",
+									"    pm.expect(data.message).include(\"Announcement id\") ;",
+									"    pm.expect(data.message).include(\"does not exist\") ;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/1111",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VIEW-ANNOUNCEMENT-DETAIL-3-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\",function(){",
+									"    pm.response.to.have.status(400);",
+									"})",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Announcement id incorrect type test\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"object\") ;",
+									"    pm.expect(jsonData).to.have.any.keys('message')",
+									"})",
+									"var data = jsonData",
+									"pm.test(\"Announcement error test\",()=>{",
+									"    pm.expect(data.error).include(\"Bad Request\") ;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/ten",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"ten"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
