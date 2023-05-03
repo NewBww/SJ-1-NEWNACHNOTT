@@ -29,39 +29,39 @@ public class AnnouncementService {
         return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
     }
 
-//    public Announcement createAnnouncement(Announcement announcement) {
-//        Category category = announcement.getAnnouncementCategory();
-//        if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
-//            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME));
-//            return announcementRepository.saveAndFlush(announcement);
-//        }
-//        String categoryName = category.getCategoryName();
-//        if (Boolean.TRUE.equals(categoryRepository.existsByCategoryName(categoryName))) {
-//            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(categoryName));
-//        } else {
-//            Category newCategory = new Category();
-//            newCategory.setCategoryName(categoryName);
-//            categoryRepository.saveAndFlush(newCategory);
-//            announcement.setAnnouncementCategory(newCategory);
-//        }
-//        return announcementRepository.saveAndFlush(announcement);
-//    }
-//
-//    public Announcement updateAnnouncement(Announcement announcement, Integer announcementId) {
-//        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-//                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
-//        );
-//        ex.setAnnouncementTitle(announcement.getAnnouncementTitle());
-//        ex.setAnnouncementCategory(announcement.getAnnouncementCategory());
-//        ex.setAnnouncementDescription(announcement.getAnnouncementDescription());
-//        ex.setAnnouncementDisplay(String.valueOf(announcement.getAnnouncementDisplay()));
-//        return announcementRepository.saveAndFlush(ex);
-//    }
-//
-//    public void removeAnnouncement(Integer announcementId) {
-//        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-//                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
-//        );
-//        announcementRepository.delete(ex);
-//    }
+    public Announcement createAnnouncement(Announcement announcement) {
+        Category category = announcement.getAnnouncementCategory();
+        if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
+            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME));
+            return announcementRepository.saveAndFlush(announcement);
+        }
+        String categoryName = category.getCategoryName();
+        if (Boolean.TRUE.equals(categoryRepository.existsByCategoryName(categoryName))) {
+            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(categoryName));
+        } else {
+            Category newCategory = new Category();
+            newCategory.setCategoryName(categoryName);
+            categoryRepository.saveAndFlush(newCategory);
+            announcement.setAnnouncementCategory(newCategory);
+        }
+        return announcementRepository.saveAndFlush(announcement);
+    }
+
+    public Announcement updateAnnouncement(Announcement announcement, Integer announcementId) {
+        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
+                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
+        );
+        ex.setAnnouncementTitle(announcement.getAnnouncementTitle());
+        ex.setAnnouncementCategory(announcement.getAnnouncementCategory());
+        ex.setAnnouncementDescription(announcement.getAnnouncementDescription());
+        ex.setAnnouncementDisplay(String.valueOf(announcement.getAnnouncementDisplay()));
+        return announcementRepository.saveAndFlush(ex);
+    }
+
+    public void removeAnnouncement(Integer announcementId) {
+        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
+                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
+        );
+        announcementRepository.delete(ex);
+    }
 }

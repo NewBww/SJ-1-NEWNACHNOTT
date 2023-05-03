@@ -28,7 +28,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatch(
             MethodArgumentTypeMismatchException exception, WebRequest request) {
         HttpHeaders headers = new HttpHeaders();
-        ErrorResponse errorResponse= new ErrorResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), request.getDescription(false));
+        ErrorResponse errorResponse= new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Invalid method argument type "  + exception.getCause().getMessage().toLowerCase(), request.getDescription(false));
         errorResponse.addValidationError(HttpStatus.BAD_REQUEST.getReasonPhrase());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body(errorResponse);
     }

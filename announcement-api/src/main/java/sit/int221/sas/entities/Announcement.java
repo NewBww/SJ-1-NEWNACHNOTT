@@ -35,12 +35,12 @@ public class Announcement {
     @Enumerated(EnumType.STRING)
     private Display announcementDisplay = Display.N;
 
-//    public void setAnnouncementDisplay(String displayName) {
-//        if (displayName.equals("N") || displayName.equals("Y")) {
-//            this.announcementDisplay = Display.valueOf(displayName);
-//        } else {
-//            this.announcementDisplay = Display.N;
-//        }
-//    }
+    public void setAnnouncementDisplay(String displayName) {
+        if (displayName.equals("N") || displayName.equals("Y")) {
+            this.announcementDisplay = Display.valueOf(displayName);
+        } else {
+            this.announcementDisplay = Display.N;
+        }
+    }
 }
 

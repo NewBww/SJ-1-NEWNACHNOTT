@@ -3,11 +3,15 @@ package sit.int221.sas.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import sit.int221.sas.dtos.AnnouncementDTO;
 import sit.int221.sas.dtos.DetailedAnnouncementDTO;
 import sit.int221.sas.entities.Announcement;
+import sit.int221.sas.exceptions.ErrorResponse;
 import sit.int221.sas.services.AnnouncementService;
 import sit.int221.sas.utils.ListMapper;
 
@@ -47,20 +51,20 @@ public class AnnouncementController {
         return ResponseEntity.ok().headers(responseHeaders).body(announcement);
     }
 
-//    @PostMapping
-//    public Announcement postAnnouncement(@RequestBody Announcement announcement) {
-//        System.out.println(announcement);
-//        return service.createAnnouncement(announcement);
-//    }
-//
-//    @PutMapping("{id}")
-//    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
-//        return service.updateAnnouncement(announcement, id);
-//    }
-//
-//    @DeleteMapping("{id}")
-//    public void deleteAnnouncement(@PathVariable Integer id) {
-//        service.removeAnnouncement(id);
-//    }
+    @PostMapping
+    public Announcement postAnnouncement(@RequestBody Announcement announcement) {
+        System.out.println(announcement);
+        return service.createAnnouncement(announcement);
+    }
+
+    @PutMapping("{id}")
+    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
+        return service.updateAnnouncement(announcement, id);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteAnnouncement(@PathVariable Integer id) {
+        service.removeAnnouncement(id);
+    }
 }
 

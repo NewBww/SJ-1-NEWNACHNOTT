@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @RequiredArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-class ErrorResponse {
+public class ErrorResponse {
     private final int status;
     private final String message;
     private final String instance;
