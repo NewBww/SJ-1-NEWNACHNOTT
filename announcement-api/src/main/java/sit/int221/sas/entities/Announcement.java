@@ -3,6 +3,7 @@ package sit.int221.sas.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.ZonedDateTime;
 
