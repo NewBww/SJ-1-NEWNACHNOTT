@@ -3,7 +3,11 @@ import AnnouncementService from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import DetailListStatic from '@/components/UI/molecules/DetailListStatic.vue'
-import { useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
+import ContentSection from '@/components/UI/organisms/ContentSection.vue'
+import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
+import DetailList from '@/components/UI/molecules/DetailList.vue'
+import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
@@ -20,48 +24,25 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-screen h-screen flex justify-center items-center">
-    <div class="flex flex-col gap-4 w-6/12 mb-36 p-8">
-      <div class="flex w-full justify-between items-center">
-        <h1 class="text-xl font-bold">Announcement Detail</h1>
+  <div class="h-screen bg-[#f2f2f2]">
+    <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
+      <div class="flex flex-row items-center justify-between">
+        <RouterLink :to="{ name: 'admin-announcement-listing' }">
+          <SingleButton class="ann-button" text="Back">
+            <template #before-text-icon>
+              <IconArrowBack />
+            </template>
+          </SingleButton>
+        </RouterLink>
+        <PageTitle title="Announcement Detail" />
+        <div class="w-[83.73px]"></div>
       </div>
 
-      <div class="py-4 px-12 border">
-        <div class="flex flex-col gap-4">
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
-          <DetailListStatic
-            attribute="Attribute Name"
-            :detail="Deatiail Data"
-          />
+      <ContentSection class="flex flex-col w-full px-16 items-center">
+        <div class="flex flex-col w-full gap-6">
+          <DetailList />
         </div>
-      </div>
-
-      <RouterLink :to="{ name: 'home' }">
-        <SingleButton text="Back" />
-      </RouterLink>
+      </ContentSection>
     </div>
   </div>
 </template>

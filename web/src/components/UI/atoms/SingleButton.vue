@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <button
-    class="text-center items-center w-fit flex flex-row py-2 px-4 text-base rounded"
+    class="text-center items-center justify-center w-fit flex flex-row py-2 px-4 text-base rounded"
   >
     <slot name="before-text-icon" />
     {{ text }}

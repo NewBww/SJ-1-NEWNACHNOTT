@@ -15,10 +15,12 @@ import SingleButton from '@/components/UI/atoms/SingleButton.vue'
           class="h-fit w-full pt-8 pb-4 pl-9 pr-9 justify-between items-center flex flex-row"
         >
           <TimeZone />
-          <SingleButton
-            text="Add Announcement"
-            class="bg-gray-400 hover:bg-gray-300"
-          />
+          <router-link :to="{ name: 'admin-announcement-add' }">
+            <SingleButton
+              text="Add Announcement"
+              class="bg-gray-400 hover:bg-gray-300"
+            />
+          </router-link>
         </div>
         <AnnouncementList />
       </ContentSection>
