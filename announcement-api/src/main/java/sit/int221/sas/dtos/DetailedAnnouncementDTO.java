@@ -7,7 +7,8 @@ import sit.int221.sas.entities.Display;
 import java.time.ZonedDateTime;
 
 @Data
-public class DetailedAnnouncementDTO {
+public class
+DetailedAnnouncementDTO {
     private Integer id;
     private String announcementTitle;
     private String announcementDescription;

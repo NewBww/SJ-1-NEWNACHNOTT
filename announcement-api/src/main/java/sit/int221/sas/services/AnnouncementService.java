@@ -60,7 +60,7 @@ public class AnnouncementService {
 
     public void removeAnnouncement(Integer announcementId) {
         Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
+                () -> new ItemNotFoundException("Announcement Id " + announcementId + " not found")
         );
         announcementRepository.delete(ex);
     }
