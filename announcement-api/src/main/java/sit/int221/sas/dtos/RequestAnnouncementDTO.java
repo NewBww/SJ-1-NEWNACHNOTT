@@ -1,9 +1,7 @@
 package sit.int221.sas.dtos;
 
-import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import sit.int221.sas.entities.Category;
 import sit.int221.sas.entities.Display;
 
@@ -17,7 +15,6 @@ public class RequestAnnouncementDTO {
     private Category announcementCategory;
     private ZonedDateTime publishDate;
     private ZonedDateTime closeDate;
-    @NonNull
     private Display announcementDisplay = Display.N;
 
     public void setCategoryId(Integer id) {
