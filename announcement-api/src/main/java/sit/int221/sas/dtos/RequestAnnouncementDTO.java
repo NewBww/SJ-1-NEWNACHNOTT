@@ -11,11 +11,12 @@ public class RequestAnnouncementDTO {
     private String announcementTitle;
     private String announcementDescription;
     private Category categoryId;
-    private ZonedDateTime publishedDate;
-    private ZonedDateTime closedDate;
+    private ZonedDateTime publishDate;
+    private ZonedDateTime closeDate;
     private Display announcementDisplay = Display.N;
 
-    public Integer getCategoryId() {
-        return this.categoryId.getId();
+    public void setCategoryId(Integer id) {
+        this.categoryId = new Category();
+        this.categoryId.setId(id);
     }
 }

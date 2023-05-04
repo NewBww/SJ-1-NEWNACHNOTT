@@ -47,20 +47,24 @@ public class AnnouncementService {
         return announcementRepository.saveAndFlush(announcement);
     }
 
-    public Announcement updateAnnouncement(Integer announcementId, Announcement announcement) {
-        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
+    public Announcement updateAnnouncement(Integer announcementId, Announcement newAnn) {
+        Announcement existedAnn = announcementRepository.findById(announcementId).orElseThrow(
+                () -> new ItemNotFoundException("Announcement id " + announcementId + " does not exist")
         );
-        ex.setAnnouncementTitle(announcement.getAnnouncementTitle());
-        ex.setAnnouncementCategory(announcement.getAnnouncementCategory());
-        ex.setAnnouncementDescription(announcement.getAnnouncementDescription());
-        ex.setAnnouncementDisplay(String.valueOf(announcement.getAnnouncementDisplay()));
-        return announcementRepository.saveAndFlush(ex);
+        existedAnn.setAnnouncementTitle(newAnn.getAnnouncementTitle());
+        Integer newAnnCategoryId = newAnn.getAnnouncementCategory().getId();
+        existedAnn.setAnnouncementCategory(categoryRepository.findById(newAnnCategoryId)
+                .orElseThrow(() -> new ItemNotFoundException("Category id " + newAnnCategoryId + " does not exist")));
+        existedAnn.setAnnouncementDescription(newAnn.getAnnouncementDescription());
+        existedAnn.setPublishDate(newAnn.getPublishDate());
+        existedAnn.setCloseDate(newAnn.getCloseDate());
+        existedAnn.setAnnouncementDisplay(newAnn.getAnnouncementDisplay());
+        return announcementRepository.saveAndFlush(existedAnn);
     }
 
     public void removeAnnouncement(Integer announcementId) {
         Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
+                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement id " + announcementId + " does not exist")
         );
         announcementRepository.delete(ex);
     }
