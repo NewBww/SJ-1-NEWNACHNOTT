@@ -56,7 +56,8 @@ public class AnnouncementController {
 
     @PutMapping("{id}")
     public ResponseEntity<RequestAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
-        RequestAnnouncementDTO announcementDTO = modelMapper.map(service.findById(id), RequestAnnouncementDTO.class);
+        service.updateAnnouncement(id, announcement);
+        RequestAnnouncementDTO announcementDTO = modelMapper.map(announcement, RequestAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
         response.set("Content-Type", "application/json");
         return ResponseEntity.ok().headers(response).body(announcementDTO);

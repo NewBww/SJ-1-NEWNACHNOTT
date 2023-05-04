@@ -47,7 +47,7 @@ public class AnnouncementService {
         return announcementRepository.saveAndFlush(announcement);
     }
 
-    public Announcement updateAnnouncement(Announcement announcement, Integer announcementId) {
+    public Announcement updateAnnouncement(Integer announcementId, Announcement announcement) {
         Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
                 () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
         );
