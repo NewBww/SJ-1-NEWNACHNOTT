@@ -19,4 +19,12 @@ public class RequestAnnouncementDTO {
         this.categoryId = new Category();
         this.categoryId.setId(id);
     }
+
+    public void setAnnouncementDisplay(String displayName) {
+        if (displayName.equals("N") || displayName.equals("Y")) {
+            this.announcementDisplay = Display.valueOf(displayName);
+        } else {
+            this.announcementDisplay = Display.N;
+        }
+    }
 }

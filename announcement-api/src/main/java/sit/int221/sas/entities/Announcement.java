@@ -28,16 +28,5 @@ public class Announcement {
     @Column(columnDefinition = "ENUM('N','Y')")
     @Enumerated(EnumType.STRING)
     private Display announcementDisplay = Display.N;
-    public void setAnnouncementDisplay(String displayName) {
-        if (displayName.equals("N") || displayName.equals("Y")) {
-            this.announcementDisplay = Display.valueOf(displayName);
-        } else {
-            this.announcementDisplay = Display.N;
-        }
-    }
-
-    public String getAnnouncementDisplay() {
-        return this.announcementDisplay.toString();
-    }
 }
 

@@ -5,25 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.sql.Timestamp;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ErrorResponse {
-    private final int status;
-    private final String message;
-    private final String instance;
-    private String stackTrace;
-    private List<String> error;
-
-    public void addValidationError(String validationError){
-        if(Objects.isNull(error)){
-            error = new ArrayList<>();
-        }
-        error.add(validationError);
-    }
+public record ErrorResponse(Timestamp timestamp, int status, String error, String message) {
 }

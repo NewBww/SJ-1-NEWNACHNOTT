@@ -1,8 +1,11 @@
 package sit.int221.sas.exceptions;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -43,18 +46,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         );
     }
 
-    private ResponseEntity<ErrorResponse> buildErrorResponse(
-            Exception exception, WebRequest request, HttpStatus status, HttpHeaders headers) {
-
-        return buildErrorResponse(exception.getMessage(), request, status, headers);
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> handleDataIntegrityViolationException() {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, new HttpHeaders(), "invalid input, object invalid");
     }
 
-    private ResponseEntity<ErrorResponse> buildErrorResponse(
-            String message, WebRequest request, HttpStatus status, HttpHeaders headers) {
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, new HttpHeaders(), "invalid input, object invalid");
+    }
 
-        ErrorResponse errorResponse = new ErrorResponse(status.value(), message,
-                request.getDescription(false)
-        );
+    private ResponseEntity<Object> buildErrorResponse(HttpStatus status, HttpHeaders headers, String message) {
+        ErrorResponse errorResponse = new ErrorResponse(new Timestamp(System.currentTimeMillis()), status.value(), status.getReasonPhrase(), message);
         return ResponseEntity.status(status).headers(headers).body(errorResponse);
     }
 }
