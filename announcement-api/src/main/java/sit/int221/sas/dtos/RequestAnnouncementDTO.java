@@ -14,15 +14,15 @@ import java.time.ZonedDateTime;
 public class RequestAnnouncementDTO {
     private String announcementTitle;
     private String announcementDescription;
-    private Category categoryId;
+    private Category announcementCategory;
     private ZonedDateTime publishDate;
     private ZonedDateTime closeDate;
     @NonNull
     private Display announcementDisplay = Display.N;
 
     public void setCategoryId(Integer id) {
-        this.categoryId = new Category();
-        this.categoryId.setId(id);
+        this.announcementCategory = new Category();
+        this.announcementCategory.setId(id);
     }
 
     public void setAnnouncementDisplay(String displayName) {
