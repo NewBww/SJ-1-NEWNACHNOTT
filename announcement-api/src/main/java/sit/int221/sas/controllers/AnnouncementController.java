@@ -65,13 +65,14 @@ public class AnnouncementController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<RequestAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody RequestAnnouncementDTO requestedAnnouncement) {
-//        Announcement announcement = modelMapper.map(requestedAnnouncement, Announcement.class);
-//        announcement = service.updateAnnouncement(id, announcement);
-//        ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
+    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody RequestAnnouncementDTO requestedAnnouncement) {
+        Announcement announcement = modelMapper.map(requestedAnnouncement, Announcement.class);
+        announcement = service.updateAnnouncement(id, announcement);
+        ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
         response.set("Content-Type", "application/json");
-        return ResponseEntity.ok().headers(response).body(requestedAnnouncement);
+        response.set("Description", "Update the announcement successfully");
+        return ResponseEntity.ok().headers(response).body(responseAnnouncementDTO);
     }
 
     @DeleteMapping("{id}")
