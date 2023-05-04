@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sit.int221.sas.dtos.AnnouncementListItemDTO;
 import sit.int221.sas.dtos.DetailedAnnouncementDTO;
+import sit.int221.sas.dtos.RequestAnnouncementDTO;
 import sit.int221.sas.entities.Announcement;
 import sit.int221.sas.services.AnnouncementService;
 import sit.int221.sas.utils.ListMapper;
@@ -54,8 +55,11 @@ public class AnnouncementController {
     }
 
     @PutMapping("{id}")
-    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
-        return service.updateAnnouncement(announcement, id);
+    public ResponseEntity<RequestAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
+        RequestAnnouncementDTO announcementDTO = modelMapper.map(service.findById(id), RequestAnnouncementDTO.class);
+        HttpHeaders response = new HttpHeaders();
+        response.set("Content-Type", "application/json");
+        return ResponseEntity.ok().headers(response).body(announcementDTO);
     }
 
     @DeleteMapping("{id}")
