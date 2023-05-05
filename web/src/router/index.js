@@ -22,6 +22,12 @@ const router = createRouter({
         import('@/components/pages/AdminAnnouncementAddPage.vue'),
     },
     {
+      path: '/admin/announcement/:id/edit',
+      name: 'admin-announcement-edit',
+      component: () =>
+        import('@/components/pages/AdminAnnouncementEditPage.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/components/pages/NotFoundPage.vue'),

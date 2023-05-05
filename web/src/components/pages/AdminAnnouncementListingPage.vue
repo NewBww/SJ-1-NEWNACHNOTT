@@ -8,7 +8,7 @@ import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 <template>
   <div class="h-screen bg-[#f2f2f2]">
-    <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
+    <div class="h-full max-w-[80rem] w-full m-auto bg-white flex flex-col">
       <PageTitle title="SIT Announcement System (SAS)" />
       <ContentSection>
         <div

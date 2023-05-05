@@ -15,11 +15,15 @@ onMounted(async () => {
   }
 })
 
-
-const deleteId = async(id) => {
+const deleteId = async (id) => {
   if (confirm('Are you sure to delete?')) {
     if ((await announcementService.deleteAnnouncement(id)) === 200) {
-      announcementsData.value.splice(announcementsData.value.findIndex((announcement) => announcement.id === id), 1) 
+      announcementsData.value.splice(
+        announcementsData.value.findIndex(
+          (announcement) => announcement.id === id
+        ),
+        1
+      )
     }
   }
 }
@@ -36,7 +40,7 @@ const deleteId = async(id) => {
           <th class="ann-publish-date w-52">Publish Date</th>
           <th class="ann-close-date w-52">Close Date</th>
           <th class="ann-display w-16">Display</th>
-          <th class="w-32">Action</th>
+          <th class="w-64">Action</th>
         </tr>
       </thead>
       <tbody v-if="announcementsData.length === 0">
@@ -65,7 +69,7 @@ const deleteId = async(id) => {
             {{ useFormatTime(announcement.closeDate) }}
           </td>
           <td class="ann-display">{{ announcement.announcementDisplay }}</td>
-          <td class="flex justify-center h-full items-center">
+          <td class="flex gap-2 justify-center h-full items-center">
             <RouterLink
               :to="{
                 name: 'admin-announcement-detail',
@@ -77,10 +81,23 @@ const deleteId = async(id) => {
                 class="ann-button view bg-gray-400 hover:bg-gray-300"
               />
             </RouterLink>
+            <RouterLink
+              :to="{
+                name: 'admin-announcement-edit',
+                params: { id: announcement.id },
+              }"
+            >
+              <SingleButton
+                text="edit"
+                class="ann-button view bg-gray-400 hover:bg-gray-300"
+              />
+            </RouterLink>
 
-            <SingleButton @click="deleteId(announcement.id)" 
-            text="Delete" 
-            class="ann-button view bg-gray-400 hover:bg-gray-300" />
+            <SingleButton
+              @click="deleteId(announcement.id)"
+              text="Delete"
+              class="ann-button view bg-gray-400 hover:bg-gray-300"
+            />
           </td>
         </tr>
       </tbody>
