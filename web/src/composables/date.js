@@ -7,4 +7,11 @@ const useFormatTime = (dateTimeZone) => {
     ? new Intl.DateTimeFormat('en-GB', options).format(new Date(dateTimeZone))
     : '-'
 }
-export { useFormatTime }
+
+const mergeDateTime = (date, time) => {
+  const newDate = new Date()
+  newDate.setDate(date)
+  newDate.setTime(time)
+  return newDate.toJSON()
+}
+export { useFormatTime, mergeDateTime }

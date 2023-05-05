@@ -29,16 +29,19 @@ class AnnouncementService {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
   }
-  async postAnnouncement() {
+  async postAnnouncement(announcement) {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(announcement),
       })
-      const data = await response.json()
+      if (response.ok) {
+        const data = await response.json()
+        return data
+      }
     } catch (error) {
       console.error('ERROR cannot add announcement' + error)
     }
