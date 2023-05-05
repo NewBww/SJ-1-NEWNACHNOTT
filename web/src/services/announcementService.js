@@ -31,6 +31,8 @@ class AnnouncementService {
   }
 
   async postAnnouncement(announcement) {
+    // console.log(announcement.categoryId)
+    // console.log(JSON.stringify(announcement))
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
         method: 'POST',
@@ -70,8 +72,8 @@ class Announcement {
     description,
     publishDate,
     closeDate,
-    display = 'N',
-    categoryId
+    categoryId,
+    display = 'N'
   ) {
     this.announcementTitle = title
     this.announcementDescription = description
@@ -81,20 +83,7 @@ class Announcement {
       display === 'N' || display === 'Y'
         ? display
         : Announcement.DEFAULT_DISPLAY
-    if (categoryId) {
-      this.categoryId = categoryId
-    } else {
-      new CategoryService()
-        .getDefaultCategory()
-        .then((res) => {
-          this.categoryId = res.id
-          console.log(res.id)
-          console.log(this)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    }
+    this.categoryId = categoryId
   }
 }
 export { Announcement, AnnouncementService }

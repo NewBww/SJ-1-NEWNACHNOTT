@@ -11,13 +11,6 @@ import { RouterLink } from 'vue-router'
 import { mergeDateTime } from '@/composables/date'
 
 const categoryData = ref([])
-const categoryService = new CategoryService()
-onMounted(async () => {
-  const data = await categoryService.getAllCategories()
-  if (data !== undefined && data.length !== 0) {
-    categoryData.value = data
-  }
-})
 
 const title = ref('')
 const categoryId = ref(null)
@@ -29,31 +22,31 @@ const closeTime = ref('')
 const display = ref(false)
 
 const announcementService = new AnnouncementService()
+const categoryService = new CategoryService()
 
-const addAnnouncementHandler = () => {
-  announcementService.postAnnouncement(
+const addAnnouncementHandler = async () => {
+  await announcementService.postAnnouncement(
     new Announcement(
       title.value,
       description.value,
       mergeDateTime(publishDate.value, publishTime.value),
       mergeDateTime(closeDate.value, closeTime.value),
-      display.value ? 'Y' : 'N',
-      categoryId.value
-    )
-  )
-  console.log(
-    JSON.stringify(
-      new Announcement(
-        title.value,
-        description.value,
-        mergeDateTime(publishDate.value, publishTime.value),
-        mergeDateTime(closeDate.value, closeTime.value),
-        display.value ? 'Y' : 'N',
-        categoryId.value
-      )
+      categoryId.value ?? (await categoryService.getDefaultCategory()).id,
+      display.value ? 'Y' : 'N'
     )
   )
 }
+
+onMounted(async () => {
+  const data = await categoryService.getAllCategories()
+  if (data !== undefined && data.length !== 0) {
+    categoryData.value = data
+  }
+  const defaultCategoryId = (await categoryService.getDefaultCategory()).id
+  if (defaultCategoryId !== null && defaultCategoryId !== undefined) {
+    categoryId.value = defaultCategoryId
+  }
+})
 </script>
 
 <template>
