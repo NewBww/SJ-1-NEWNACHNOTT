@@ -20,4 +20,7 @@ public class CategoryService {
         return repository.findByCategoryName(DEFAULT_CATEGORY_NAME);
     }
 
+    public Category findCategoryByName(String categoryName) {
+        return repository.findByCategoryName(categoryName);
+    }
 }

@@ -1,10 +1,7 @@
 package sit.int221.sas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sit.int221.sas.entities.Category;
 import sit.int221.sas.services.CategoryService;
 
@@ -24,4 +21,7 @@ public class CategoryController {
 
     @GetMapping("/default")
     public Category getDefaultCategory() {return service.findDefaultCategory();}
+
+    @GetMapping("/{categoryName}")
+    public Category getCategoryByName(@PathVariable String categoryName) {return service.findCategoryByName(categoryName);}
 }
