@@ -19,7 +19,7 @@ public class AnnouncementService {
     private AnnouncementRepository announcementRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    private static final String DEFAULT_CATEGORY_NAME = "General";
+    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
 
     public List<Announcement> findAll() {
         return announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -30,20 +30,8 @@ public class AnnouncementService {
     }
 
     public Announcement createAnnouncement(Announcement announcement) {
-        Category category = announcement.getAnnouncementCategory();
-        if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
-            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME));
-            return announcementRepository.saveAndFlush(announcement);
-        }
-        String categoryName = category.getCategoryName();
-        if (Boolean.TRUE.equals(categoryRepository.existsByCategoryName(categoryName))) {
-            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(categoryName));
-        } else {
-            Category newCategory = new Category();
-            newCategory.setCategoryName(categoryName);
-            categoryRepository.saveAndFlush(newCategory);
-            announcement.setAnnouncementCategory(newCategory);
-        }
+        announcement.setAnnouncementCategory(categoryRepository.findById(announcement.getAnnouncementCategory().getId())
+                .orElse(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME)));
         return announcementRepository.saveAndFlush(announcement);
     }
 
@@ -64,7 +52,7 @@ public class AnnouncementService {
 
     public void removeAnnouncement(Integer announcementId) {
         Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement id " + announcementId + " does not exist")
+                () -> new ItemNotFoundException("Announcement id " + announcementId + " does not exist")
         );
         announcementRepository.delete(ex);
     }

@@ -15,13 +15,13 @@ public class ResponseAnnouncementDTO {
     private ZonedDateTime publishDate;
     private ZonedDateTime closeDate;
     private Display announcementDisplay = Display.N;
-    private Category categoryId;
+    private Integer categoryId;
 
     public String getAnnouncementCategory() {
         return this.announcementCategory.getCategoryName();
     }
 
     public Integer getCategoryId() {
-        return this.categoryId.getId();
+        return this.announcementCategory.getId();
     }
 }
