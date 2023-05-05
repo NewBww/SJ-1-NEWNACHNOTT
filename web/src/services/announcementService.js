@@ -1,3 +1,5 @@
+import CategoryService from '@/services/categoryService'
+
 const VITE_ROOT_API = import.meta.env.VITE_ROOT_API
 const ENDPOINT_PATH = 'api/announcements'
 
@@ -28,7 +30,7 @@ class AnnouncementService {
     }
   }
 
-  async postAnnouncement() {
+  async postAnnouncement(announcement) {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
         method: 'POST',
@@ -38,6 +40,7 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
+      return data
     } catch (error) {
       console.error('ERROR cannot add announcement' + error)
     }
@@ -78,7 +81,20 @@ class Announcement {
       display === 'N' || display === 'Y'
         ? display
         : Announcement.DEFAULT_DISPLAY
-    this.categoryId = categoryId
+    if (categoryId) {
+      this.categoryId = categoryId
+    } else {
+      new CategoryService()
+        .getDefaultCategory()
+        .then((res) => {
+          this.categoryId = res.id
+          console.log(res.id)
+          console.log(this)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
   }
 }
 export { Announcement, AnnouncementService }

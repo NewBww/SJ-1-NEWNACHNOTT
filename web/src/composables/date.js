@@ -8,10 +8,8 @@ const useFormatTime = (dateTimeZone) => {
     : '-'
 }
 
-const mergeDateTime = (date, time) => {
-  const newDate = new Date()
-  newDate.setDate(date)
-  newDate.setTime(time)
+const mergeDateTime = (dateString, timeString) => {
+  const newDate = new Date(dateString + ',' + timeString)
   return newDate.toJSON()
 }
 export { useFormatTime, mergeDateTime }

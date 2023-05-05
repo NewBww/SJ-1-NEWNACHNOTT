@@ -20,7 +20,7 @@ onMounted(async () => {
 })
 
 const title = ref('')
-const categoryId = ref(1)
+const categoryId = ref(null)
 const description = ref('')
 const publishDate = ref('')
 const publishTime = ref('')
@@ -31,17 +31,7 @@ const display = ref(false)
 const announcementService = new AnnouncementService()
 
 const addAnnouncementHandler = () => {
-  // announcementService.postAnnouncement(
-  //   new Announcement(
-  //     title.value,
-  //     description.value,
-  //     publishDate.value,
-  //     closeDate.value,
-  //     display.value ? 'Y' : 'N',
-  //     categoryId.value
-  //   )
-  // )
-  console.log(
+  announcementService.postAnnouncement(
     new Announcement(
       title.value,
       description.value,
@@ -49,6 +39,18 @@ const addAnnouncementHandler = () => {
       mergeDateTime(closeDate.value, closeTime.value),
       display.value ? 'Y' : 'N',
       categoryId.value
+    )
+  )
+  console.log(
+    JSON.stringify(
+      new Announcement(
+        title.value,
+        description.value,
+        mergeDateTime(publishDate.value, publishTime.value),
+        mergeDateTime(closeDate.value, closeTime.value),
+        display.value ? 'Y' : 'N',
+        categoryId.value
+      )
     )
   )
 }
@@ -84,6 +86,7 @@ const addAnnouncementHandler = () => {
       v-model="description"
     ></textarea>
   </InputFill>
+
   <InputFill header="Publish Date"
     ><div class="flex flex-row items-center gap-4">
       <input
@@ -139,7 +142,7 @@ const addAnnouncementHandler = () => {
     <SingleButton
       class="ann-button bg-violet-500 text-white rounded-lg w-[83px]"
       text="Add"
-      @click="addAnnouncementHandler()"
+      @click="addAnnouncementHandler"
     />
   </div>
 </template>
