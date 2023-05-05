@@ -70,6 +70,7 @@ const deleteId = async (id) => {
           </td>
           <td class="ann-display">{{ announcement.announcementDisplay }}</td>
           <td class="flex gap-2 justify-center h-full items-center">
+            <!-- view button -->
             <RouterLink
               :to="{
                 name: 'admin-announcement-detail',
@@ -81,6 +82,8 @@ const deleteId = async (id) => {
                 class="ann-button view bg-gray-400 hover:bg-gray-300"
               />
             </RouterLink>
+
+            <!-- edit button -->
             <RouterLink
               :to="{
                 name: 'admin-announcement-edit',
@@ -93,9 +96,10 @@ const deleteId = async (id) => {
               />
             </RouterLink>
 
+            <!-- delete button -->
             <SingleButton
               @click="deleteId(announcement.id)"
-              text="Delete"
+              text="delete"
               class="ann-button view bg-gray-400 hover:bg-gray-300"
             />
           </td>

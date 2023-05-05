@@ -1,8 +1,37 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { AnnouncementService } from '@/services/announcementService.js'
+import { useRoute, useRouter } from 'vue-router';
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
+
+const route = useRoute()
+const router = useRouter()
+const announcementService = new AnnouncementService()
+const announcementsData = ref([])
+
+onMounted(async () => {
+  try {
+    const data = await announcementService.getAnnouncementById(
+      `${route.params.id}`
+    )
+    if (data !== undefined && data.length !== 0) {
+      announcementsData.value = data
+      console.log(announcementsData.value)
+    }
+    if (data === 404 || data === 400) {
+      alert('The request page is not available')
+      await router.push({ name: 'admin-announcement-listing' })
+    }
+    // console.log(announcementsData.value)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
 </script>
 
 <template>
@@ -14,7 +43,7 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <InputForm />
+          <InputForm :announcement="announcementsData"/>
         </div>
       </ContentSection>
     </div>
