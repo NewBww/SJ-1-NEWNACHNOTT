@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
-import AnnouncementService from '@/services/announcementService'
+import { AnnouncementService } from '@/services/announcementService'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
 const route = useRoute()
 const router = useRouter()
@@ -25,6 +25,8 @@ onMounted(async () => {
     console.log(error)
   }
 })
+
+defineEmits({})
 </script>
 
 <template>

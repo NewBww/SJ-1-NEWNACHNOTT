@@ -1,3 +1,5 @@
+import { ref } from 'vue'
+
 const VITE_ROOT_API = import.meta.env.VITE_ROOT_API
 const ENDPOINT_PATH = 'api/announcements'
 
@@ -59,4 +61,25 @@ class AnnouncementService {
   }
 }
 
-export default AnnouncementService
+class Announcement {
+  static DEFAULT_DISPLAY = 'N'
+  constructor(
+    title,
+    description,
+    publishDate,
+    closeDate,
+    display = 'N',
+    categoryId
+  ) {
+    this.announcementTitle = title
+    this.announcementDescription = description
+    this.publishDate = publishDate
+    this.closeDate = closeDate
+    this.announcementDisplay =
+      display === 'N' || display === 'Y'
+        ? display
+        : Announcement.DEFAULT_DISPLAY
+    this.categoryId = categoryId
+  }
+}
+export { Announcement, AnnouncementService }

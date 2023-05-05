@@ -5,6 +5,7 @@ import ContentSection from '../UI/organisms/ContentSection.vue'
 import { RouterLink } from 'vue-router'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
+import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 </script>
 
 <template>
@@ -19,7 +20,13 @@ import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
           </SingleButton>
         </RouterLink>
         <PageTitle title="Announcement Detail" />
-        <div class="w-[83.73px]"></div>
+        <RouterLink :to="{ name: 'admin-announcement-add' }">
+          <SingleButton class="ann-button gap-1" text="Edit">
+            <template #before-text-icon>
+              <IconPencilEdit />
+            </template>
+          </SingleButton>
+        </RouterLink>
       </div>
 
       <ContentSection class="flex flex-col w-full px-16 items-center">
@@ -29,20 +36,4 @@ import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
       </ContentSection>
     </div>
   </div>
-
-  <!-- <div class="w-screen h-screen flex justify-center items-center"> -->
-  <!-- <div class="flex flex-col gap-4 w-6/12 mb-36 p-8"> -->
-  <!-- <div class="flex w-full justify-between items-center"> -->
-  <!--                <div class="flex w-5 justify-center"><img class="h-4" src="src/assets/backIcon.svg"></div>-->
-  <!-- <h1 class="text-xl font-bold">Announcement Detail</h1> -->
-  <!--                <div class="flex w-5 justify-center"><img class="h-4" src="src/assets/editIcon.svg"></div>-->
-  <!-- </div> -->
-  <!-- Content -->
-  <!-- <div class="py-4 px-12 border"> -->
-  <!-- <div class="flex flex-col gap-6 py-6"> -->
-
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </div>
-  </div> -->
 </template>
