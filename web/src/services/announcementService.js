@@ -35,7 +35,7 @@ class AnnouncementService {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(announcement),
       })
       const data = await response.json()
     } catch (error) {
