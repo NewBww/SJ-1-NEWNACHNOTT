@@ -15,5 +15,3 @@ import CloseDate from '@/components/UI/molecules/CloseDate.vue'
   <CloseDate />
   <DisplayCheckBox />
 </template>
-
-<style scoped></style>

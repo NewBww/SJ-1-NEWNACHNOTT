@@ -27,6 +27,7 @@ class AnnouncementService {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
   }
+  
   async postAnnouncement() {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
@@ -41,6 +42,7 @@ class AnnouncementService {
       console.error('ERROR cannot add announcement' + error)
     }
   }
+  
   async deleteAnnouncement(id) {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
@@ -48,8 +50,7 @@ class AnnouncementService {
         headers: { 'Content-Type': 'application/json' },
       })
       if (response.ok) {
-        const data = await response.json()
-        return data
+        return response.status
       } else if (response.status === 404) {
         response.status
       }

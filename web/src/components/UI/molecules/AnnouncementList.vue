@@ -1,14 +1,12 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
-import { RouterLink, useRoute, useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
-const route = useRoute()
-const router = useRouter()
 
 onMounted(async () => {
   const data = await announcementService.getAllAnnouncements()
@@ -17,16 +15,14 @@ onMounted(async () => {
   }
 })
 
-const deleteAnnouncement = ref()
 
-watch(deleteAnnouncement, async () => {
-  if (confirm('ลบจริงป่าว')) {
-    await announcementService.deleteAnnouncement(`${route.params.id}`)
-    await router.push({ name: 'admin-announcement-listing' })
+const deleteId = async(id) => {
+  if (confirm('Are you sure to delete?')) {
+    if ((await announcementService.deleteAnnouncement(id)) === 200) {
+      announcementsData.value.splice(announcementsData.value.findIndex((announcement) => announcement.id === id), 1) 
+    }
   }
-  await router.push({ name: 'admin-announcement-listing' })
-  // console.log(id)
-})
+}
 </script>
 
 <template>
@@ -82,17 +78,9 @@ watch(deleteAnnouncement, async () => {
               />
             </RouterLink>
 
-            <!--            <RouterLink-->
-            <!--              :to="{-->
-            <!--                name: 'admin-announcement-listing',-->
-            <!--                params: { id: announcement.id },-->
-            <!--              }"-->
-            <!--            >-->
-            <SingleButton
-              text="Delete"
-              @click="deleteAnnouncement = announcement.id"
-            />
-            <!--            </RouterLink>-->
+            <SingleButton @click="deleteId(announcement.id)" 
+            text="Delete" 
+            class="ann-button view bg-gray-400 hover:bg-gray-300" />
           </td>
         </tr>
       </tbody>
