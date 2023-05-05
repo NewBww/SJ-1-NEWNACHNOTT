@@ -21,6 +21,12 @@ const router = createRouter({
       component: () =>
         import('@/components/pages/AdminAnnouncementAddPage.vue'),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => 
+        import('@/components/pages/NotFoundPage.vue'),
+    },
   ],
 })
 
