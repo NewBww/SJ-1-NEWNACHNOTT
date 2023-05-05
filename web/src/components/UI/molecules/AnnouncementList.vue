@@ -68,6 +68,7 @@ onMounted(async () => {
                 class="ann-button view bg-gray-400 hover:bg-gray-300"
               />
             </RouterLink>
+            <SingleButton text="Delete" />
           </td>
         </tr>
       </tbody>

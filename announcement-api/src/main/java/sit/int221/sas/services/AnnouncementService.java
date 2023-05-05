@@ -51,9 +51,9 @@ public class AnnouncementService {
     }
 
     public void removeAnnouncement(Integer announcementId) {
-        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
+        Announcement deleteId = announcementRepository.findById(announcementId).orElseThrow(
                 () -> new ItemNotFoundException("Announcement id " + announcementId + " does not exist")
         );
-        announcementRepository.delete(ex);
+        announcementRepository.delete(deleteId);
     }
 }

@@ -27,6 +27,35 @@ class AnnouncementService {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
   }
+  async postAnnouncement() {
+    try {
+      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      const data = await response.json()
+    } catch (error) {
+      console.error('ERROR cannot add announcement' + error)
+    }
+  }
+  async deleteAnnouncement(id) {
+    try {
+      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
+        method: 'DELETE',
+      })
+      if (response.ok) {
+        const data = await response.json()
+        return data
+      } else if (response.status === 404) {
+        response.status
+      }
+    } catch (error) {
+      console.error(`ERROR cannot find announcement id ${id}:` + error)
+    }
+  }
 }
 
 export default AnnouncementService
