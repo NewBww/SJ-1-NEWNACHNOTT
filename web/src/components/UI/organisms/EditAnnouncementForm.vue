@@ -8,7 +8,7 @@ import {
 } from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import { RouterLink } from 'vue-router'
-import { mergeDateTime } from '@/composables/date'
+import { useMergeDateTime, useSplitTime, useSplitDate } from '@/composables/date'
 import { Display } from '@/composables/display'
 
 const categoryData = ref([])
@@ -17,10 +17,6 @@ const props = defineProps({
   announcement: {
     type: Object,
     required: false,
-  },
-  submitText: {
-    type: String,
-    required: true,
   },
 })
 
@@ -41,8 +37,8 @@ const addAnnouncementHandler = async () => {
     new Announcement(
       title.value,
       description.value,
-      mergeDateTime(publishDate.value, publishTime.value),
-      mergeDateTime(closeDate.value, closeTime.value),
+      useMergeDateTime(publishDate.value, publishTime.value),
+      useMergeDateTime(closeDate.value, closeTime.value),
       categoryId.value ?? (await categoryService.getDefaultCategory()).id,
       display.value ? 'Y' : 'N'
     )
@@ -61,6 +57,10 @@ watchEffect(async () => {
     display.value = new Display(
       props.announcement.announcementDisplay
     ).toBoolean()
+    // publishDate.value = useSplitDate(props.announcement.publishDate)
+    // publishTime.value = useSplitTime(props.announcement.publishDate)
+    // closeDate.value = useSplitDate(props.announcement.closeDate)
+    // closeTime.value = useSplitTime(props.announcement.closeDate)
   }
 })
 
@@ -79,6 +79,8 @@ onMounted(async () => {
 </script>
 
 <template>
+  {{  publishDate }}
+  {{ closeTime }}
   <InputFill header="Title">
     <input
       class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
@@ -112,40 +114,30 @@ onMounted(async () => {
   <InputFill header="Publish Date"
     ><div class="flex flex-row items-center gap-4">
       <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-28 text-center"
-        type="text"
-        placeholder="select date"
-        onblur="type='text'"
-        onfocus="type='date'"
+        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        type="date"
         v-model="publishDate"
       />
       <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-28 text-center"
-        type="text"
-        placeholder="select time"
-        onblur="type='text'"
-        onfocus="type='time'"
+        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        type="time"
         v-model="publishTime"
       /></div
   ></InputFill>
   <InputFill header="Close Date"
     ><div class="flex flex-row items-center gap-4">
       <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-28 text-center"
-        type="text"
-        placeholder="select date"
-        onblur="type='text'"
-        onfocus="type='date'"
+        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        type="date"    
         v-model="closeDate"
       />
       <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-28 text-center"
-        type="text"
-        placeholder="select time"
-        onblur="type='text'"
-        onfocus="type='time'"
+        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        type="time"
         v-model="closeTime"
-      /></div
+        />
+        
+        </div
   ></InputFill>
   <InputFill header="Display">
     <div class="flex flex-row items-center gap-2">
@@ -158,12 +150,12 @@ onMounted(async () => {
     <RouterLink :to="{ name: 'admin-announcement-listing' }">
       <SingleButton
         class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg"
-        text="Cancel"
+        text="Back"
       />
     </RouterLink>
     <SingleButton
       class="ann-button bg-violet-500 text-white rounded-lg w-[83px]"
-      :text="submitText"
+      text="Edit"
       @click="addAnnouncementHandler"
     />
   </div>

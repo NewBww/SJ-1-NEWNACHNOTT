@@ -2,7 +2,7 @@
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
-import InputForm from '@/components/UI/organisms/InputForm.vue'
+import AddAnnouncementForm from '@/components/UI/organisms/AddAnnouncementForm.vue'
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <InputForm submit-text="Add" />
+          <AddAnnouncementForm />
         </div>
       </ContentSection>
     </div>

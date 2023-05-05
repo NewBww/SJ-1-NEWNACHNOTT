@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
-import InputForm from '@/components/UI/organisms/InputForm.vue'
+import EditAnnouncementForm from '@/components/UI/organisms/EditAnnouncementForm.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -19,13 +19,12 @@ onMounted(async () => {
     )
     if (data !== undefined && data.length !== 0) {
       announcementsData.value = data
-      console.log(announcementsData.value)
+      // console.log(announcementsData.value)
     }
     if (data === 404 || data === 400) {
       alert('The request page is not available')
       await router.push({ name: 'admin-announcement-listing' })
     }
-    // console.log(announcementsData.value)
   } catch (error) {
     console.log(error)
   }
@@ -41,7 +40,7 @@ onMounted(async () => {
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <InputForm :announcement="announcementsData" submit-text="Save" />
+          <EditAnnouncementForm :announcement="announcementsData" submit-text="Save" />
         </div>
       </ContentSection>
     </div>
