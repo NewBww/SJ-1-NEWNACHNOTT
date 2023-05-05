@@ -9,7 +9,10 @@ const useFormatTime = (dateTimeZone) => {
 }
 
 const mergeDateTime = (dateString, timeString) => {
-  const newDate = new Date(dateString + ',' + timeString)
-  return newDate.toJSON()
+  if (dateString !== null && timeString !== null) {
+    const newDate = new Date(dateString + ',' + timeString)
+    return newDate.toJSON()
+  }
+  return null
 }
 export { useFormatTime, mergeDateTime }

@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
@@ -30,8 +30,6 @@ onMounted(async () => {
     console.log(error)
   }
 })
-
-
 </script>
 
 <template>
@@ -43,7 +41,7 @@ onMounted(async () => {
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <InputForm :announcement="announcementsData"/>
+          <InputForm :announcement="announcementsData" submit-text="Save" />
         </div>
       </ContentSection>
     </div>

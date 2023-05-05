@@ -6,7 +6,7 @@ defineProps({
   },
   detail: {
     type: String,
-    default: 'detail',
+    default: '-',
   },
 })
 </script>

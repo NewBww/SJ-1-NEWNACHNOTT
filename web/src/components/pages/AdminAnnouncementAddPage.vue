@@ -14,7 +14,7 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <InputForm />
+          <InputForm submit-text="Add" />
         </div>
       </ContentSection>
     </div>

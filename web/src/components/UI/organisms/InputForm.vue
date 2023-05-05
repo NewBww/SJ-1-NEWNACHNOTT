@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import InputFill from '@/components/UI/molecules/InputFill.vue'
+import { onMounted, ref, watchEffect } from 'vue'
+import InputFill from '@/components/UI/molecules/InputField.vue'
 import CategoryService from '@/services/categoryService'
 import {
   Announcement,
@@ -9,16 +9,28 @@ import {
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import { RouterLink } from 'vue-router'
 import { mergeDateTime } from '@/composables/date'
+import { Display } from '@/composables/display'
 
 const categoryData = ref([])
 
-const title = ref('')
+const props = defineProps({
+  announcement: {
+    type: Object,
+    required: false,
+  },
+  submitText: {
+    type: String,
+    required: true,
+  },
+})
+
+const title = ref(null)
 const categoryId = ref(null)
-const description = ref('')
-const publishDate = ref('')
-const publishTime = ref('')
-const closeDate = ref('')
-const closeTime = ref('')
+const description = ref(null)
+const publishDate = ref(null)
+const publishTime = ref(null)
+const closeDate = ref(null)
+const closeTime = ref(null)
 const display = ref(false)
 
 const announcementService = new AnnouncementService()
@@ -37,14 +49,31 @@ const addAnnouncementHandler = async () => {
   )
 }
 
+watchEffect(async () => {
+  if (props.announcement.id) {
+    title.value = props.announcement.announcementTitle
+    categoryId.value = (
+      await categoryService.getCategoryByName(
+        props.announcement.announcementCategory
+      )
+    ).id
+    description.value = props.announcement.announcementDescription
+    display.value = new Display(
+      props.announcement.announcementDisplay
+    ).toBoolean()
+  }
+})
+
 onMounted(async () => {
   const data = await categoryService.getAllCategories()
   if (data !== undefined && data.length !== 0) {
     categoryData.value = data
   }
-  const defaultCategoryId = (await categoryService.getDefaultCategory()).id
-  if (defaultCategoryId !== null && defaultCategoryId !== undefined) {
-    categoryId.value = defaultCategoryId
+  if (categoryId.value === null) {
+    const defaultCategoryId = (await categoryService.getDefaultCategory()).id
+    if (defaultCategoryId !== null && defaultCategoryId !== undefined) {
+      categoryId.value = defaultCategoryId
+    }
   }
 })
 </script>
@@ -134,10 +163,8 @@ onMounted(async () => {
     </RouterLink>
     <SingleButton
       class="ann-button bg-violet-500 text-white rounded-lg w-[83px]"
-      text="Add"
+      :text="submitText"
       @click="addAnnouncementHandler"
     />
   </div>
 </template>
-
-<style scoped></style>

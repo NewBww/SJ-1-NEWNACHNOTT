@@ -33,31 +33,31 @@ defineEmits({})
   <DetailText
     heading="Title"
     class="ann-title"
-    :detail="`${announcementsData.announcementTitle}`"
+    :detail="announcementsData.announcementTitle"
   />
   <DetailText
     heading="Category"
     class="ann-category"
-    :detail="`${announcementsData.announcementCategory}`"
+    :detail="announcementsData.announcementCategory"
   />
   <DetailText
     heading="Description"
     class="ann-description"
-    :detail="`${announcementsData.announcementDescription}`"
+    :detail="announcementsData.announcementDescription"
   />
   <DetailText
     heading="Publish Date"
     class="ann-publish-date"
-    :detail="`${useFormatTime(announcementsData.publishDate)}`"
+    :detail="useFormatTime(announcementsData.publishDate)"
   />
   <DetailText
     heading="Close Date"
     class="ann-close-date"
-    :detail="`${useFormatTime(announcementsData.closeDate)}`"
+    :detail="useFormatTime(announcementsData.closeDate)"
   />
   <DetailText
     heading="Display"
     class="ann-display"
-    :detail="`${announcementsData.announcementDisplay}`"
+    :detail="announcementsData.announcementDisplay"
   />
 </template>

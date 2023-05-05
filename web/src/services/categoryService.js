@@ -26,18 +26,19 @@ class CategoryService {
     }
   }
 
-  async getCategoryByName() {
+  async getCategoryByName(categoryName) {
     try {
-      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${categoryName}`)
+      const response = await fetch(
+        `${VITE_ROOT_API}/${ENDPOINT_PATH}/${categoryName}`
+      )
       if (response.ok) {
         const data = await response.json()
         return data
       }
     } catch (error) {
-      console.error(`ERROR cannot find category: ${categoryName}` + error)
+      console.error(`ERROR cannot find category ${categoryName}: ` + error)
     }
   }
-
 }
 
 export default CategoryService
