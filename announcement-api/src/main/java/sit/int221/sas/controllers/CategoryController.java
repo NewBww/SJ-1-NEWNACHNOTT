@@ -21,4 +21,7 @@ public class CategoryController {
     public List<Category> getAllCategories() {
         return service.findAll();
     }
+
+    @GetMapping("/default")
+    public Category getDefaultCategory() {return service.findDefaultCategory();}
 }

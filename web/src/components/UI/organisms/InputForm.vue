@@ -123,8 +123,8 @@ const addAnnouncementHandler = () => {
       /></div
   ></InputFill>
   <InputFill header="Display">
-    <div class="flex flex-row items-center gap-4">
-      <input type="checkbox" v-model="display" />
+    <div class="flex flex-row items-center gap-2">
+      <input type="checkbox" class="w-4 h-4" v-model="display" />
       <label>Show announcement</label>
     </div>
   </InputFill>
