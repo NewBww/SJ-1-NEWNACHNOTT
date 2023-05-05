@@ -1,18 +1,31 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { onMounted, ref, watch } from 'vue'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useFormatTime } from '@/composables/date.js'
 import AnnouncementService from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
+const route = useRoute()
+const router = useRouter()
 
 onMounted(async () => {
   const data = await announcementService.getAllAnnouncements()
   if (data !== undefined && data.length !== 0) {
     announcementsData.value = data
   }
+})
+
+const deleteAnnouncement = ref()
+
+watch(deleteAnnouncement, async () => {
+  if (confirm('ลบจริงป่าว')) {
+    await announcementService.deleteAnnouncement(`${route.params.id}`)
+    await router.push({ name: 'admin-announcement-listing' })
+  }
+  await router.push({ name: 'admin-announcement-listing' })
+  // console.log(id)
 })
 </script>
 
@@ -68,7 +81,18 @@ onMounted(async () => {
                 class="ann-button view bg-gray-400 hover:bg-gray-300"
               />
             </RouterLink>
-            <SingleButton text="Delete" />
+
+            <!--            <RouterLink-->
+            <!--              :to="{-->
+            <!--                name: 'admin-announcement-listing',-->
+            <!--                params: { id: announcement.id },-->
+            <!--              }"-->
+            <!--            >-->
+            <SingleButton
+              text="Delete"
+              @click="deleteAnnouncement = announcement.id"
+            />
+            <!--            </RouterLink>-->
           </td>
         </tr>
       </tbody>

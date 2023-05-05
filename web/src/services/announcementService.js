@@ -45,6 +45,7 @@ class AnnouncementService {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
       })
       if (response.ok) {
         const data = await response.json()

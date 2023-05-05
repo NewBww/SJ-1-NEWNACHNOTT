@@ -6,11 +6,11 @@ import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import { RouterLink } from 'vue-router'
 import TitleInput from '@/components/UI/molecules/TitleInput.vue'
 import DescriptionInput from '@/components/UI/molecules/DescriptionInput.vue'
-import DateInput from '@/components/UI/molecules/PublishDate.vue'
 import PublishDate from '@/components/UI/molecules/PublishDate.vue'
 import CloseDate from '@/components/UI/molecules/CloseDate.vue'
 import DisplayCheckBox from '@/components/UI/molecules/DisplayCheckBox.vue'
 import CategoryInput from '@/components/UI/molecules/CategoryInput.vue'
+import InputForm from '@/components/UI/organisms/InputForm.vue'
 </script>
 
 <template>
@@ -22,12 +22,7 @@ import CategoryInput from '@/components/UI/molecules/CategoryInput.vue'
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <TitleInput />
-          <CategoryInput />
-          <DescriptionInput />
-          <PublishDate />
-          <CloseDate />
-          <DisplayCheckBox />
+          <InputForm />
         </div>
       </ContentSection>
 

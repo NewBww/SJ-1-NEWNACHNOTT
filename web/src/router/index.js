@@ -22,10 +22,15 @@ const router = createRouter({
         import('@/components/pages/AdminAnnouncementAddPage.vue'),
     },
     {
-      path: "/:pathMatch(.*)*",
-      name: "not-found",
-      component: () => 
-        import('@/components/pages/NotFoundPage.vue'),
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/components/pages/NotFoundPage.vue'),
+    },
+    {
+      path: '/admin/announcement/:id/delete',
+      name: 'admin-announcement-delete',
+      component: () =>
+        import('@/components/pages/AdminAnnouncementListingPage.vue'),
     },
   ],
 })

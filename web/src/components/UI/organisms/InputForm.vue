@@ -5,12 +5,10 @@ import DescriptionInput from '@/components/UI/molecules/DescriptionInput.vue'
 import DisplayCheckBox from '@/components/UI/molecules/DisplayCheckBox.vue'
 import CategoryInput from '@/components/UI/molecules/CategoryInput.vue'
 import CloseDate from '@/components/UI/molecules/CloseDate.vue'
-
-// const newAnnouncement = {}
 </script>
 
 <template>
-  <TitleInput />
+  <TitleInput v-model="announcementTitle" />
   <CategoryInput />
   <DescriptionInput />
   <PublishDate />
