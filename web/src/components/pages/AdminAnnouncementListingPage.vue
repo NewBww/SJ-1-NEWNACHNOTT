@@ -18,7 +18,7 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
           <router-link :to="{ name: 'admin-announcement-add' }">
             <SingleButton
               text="Add Announcement"
-              class="bg-gray-400 hover:bg-gray-300"
+              class="ann-button bg-gray-400 hover:bg-gray-300"
             />
           </router-link>
         </div>

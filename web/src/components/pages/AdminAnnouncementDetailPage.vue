@@ -20,7 +20,7 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
           </SingleButton>
         </RouterLink>
 
-        <PageTitle title="Announcement Detail" />
+        <PageTitle class="ann-title" title="Announcement Detail" />
 
         <RouterLink :to="{ name: 'admin-announcement-edit' }">
           <SingleButton class="ann-button gap-1" text="Edit">

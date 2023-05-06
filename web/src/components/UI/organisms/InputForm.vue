@@ -130,7 +130,7 @@ onMounted(async () => {
   <!-- title -->
   <InputField header="Title">
     <input
-      class="ann-category px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
+      class="ann-title px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
       type="text"
       placeholder="something"
       v-model="title"

@@ -16,7 +16,7 @@ onMounted(async () => {
 })
 
 const deleteId = async (id) => {
-  if (confirm('Are you sure to delete?')) {
+  if (confirm('Do you want to delete')) {
     if ((await announcementService.deleteAnnouncement(id)) === 200) {
       announcementsData.value.splice(
         announcementsData.value.findIndex(

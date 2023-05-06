@@ -29,7 +29,7 @@ onMounted(async () => {
   <div class="h-screen bg-[#f2f2f2]">
     <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
       <div class="flex flex-row items-center justify-center">
-        <PageTitle title="Announcement Edit" />
+        <PageTitle class="ann-title" title="Announcement Edit" />
       </div>
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
