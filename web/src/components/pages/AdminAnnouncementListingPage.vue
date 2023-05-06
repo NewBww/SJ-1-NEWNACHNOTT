@@ -1,9 +1,9 @@
 <script setup>
-import AnnouncementList from '@/components/UI/molecules/AnnouncementList.vue'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import TimeZone from '@/components/UI/atoms/TimeZone.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 </script>
 
 <template>

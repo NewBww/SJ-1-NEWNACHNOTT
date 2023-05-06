@@ -1,5 +1,3 @@
-import CategoryService from '@/services/categoryService'
-
 const VITE_ROOT_API = import.meta.env.VITE_ROOT_API
 const ENDPOINT_PATH = 'api/announcements'
 
@@ -41,8 +39,7 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error('ERROR cannot add announcement' + error)
     }
@@ -54,11 +51,7 @@ class AnnouncementService {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
-      if (response.ok) {
-        return response.status
-      } else if (response.status === 404) {
-        response.status
-      }
+      return response.status
     } catch (error) {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
@@ -73,8 +66,7 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error('ERROR cannot edit announcement' + error)
     }

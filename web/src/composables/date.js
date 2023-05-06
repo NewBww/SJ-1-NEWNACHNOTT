@@ -9,30 +9,35 @@ const useFormatTime = (dateTimeZone) => {
 }
 
 const useMergeDateTime = (dateString, timeString) => {
-  if (dateString !== null && timeString !== null) {
-    const newDate =  new Date(dateString + ',' + timeString)
-    return newDate.toJSON()
+  // console.log(dateString ?? 'date missing' + timeString ?? 'time missing')
+  if (
+    dateString === null ||
+    timeString === null ||
+    dateString.length === 0 ||
+    timeString.length === 0
+  ) {
+    return null
   }
-  return null
+  return new Date(`${dateString} ${timeString}`).toISOString()
 }
 
 const useSplitDate = (dateTimeUTC) => {
   const options = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
   }
   return dateTimeUTC
-    ? new Intl.DateTimeFormat("en-CA", options).format(new Date(dateTimeUTC))
+    ? new Intl.DateTimeFormat('en-CA', options).format(new Date(dateTimeUTC))
     : null
 }
 
 const useSplitTime = (dateTimeUTC) => {
   const options = {
-    timeStyle: "short",
+    timeStyle: 'short',
   }
   return dateTimeUTC
-    ? new Intl.DateTimeFormat("en-GB", options).format(new Date(dateTimeUTC))
+    ? new Intl.DateTimeFormat('en-GB', options).format(new Date(dateTimeUTC))
     : null
 }
 export { useFormatTime, useMergeDateTime, useSplitTime, useSplitDate }
