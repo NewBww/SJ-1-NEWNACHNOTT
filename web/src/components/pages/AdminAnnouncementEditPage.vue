@@ -17,7 +17,7 @@ onMounted(async () => {
     `${route.params.id}`
   )
   if (data === 404 || data === 400) {
-    alert('The request page is not available')
+    alert('There is an error: The request page is not available')
     await router.push({ name: 'admin-announcement-listing' })
   } else {
     announcementsData.value = data

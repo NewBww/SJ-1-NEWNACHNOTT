@@ -63,10 +63,10 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      if (data?.status !== 400 && data?.status !== 500) {
+      if (data?.status !== 400 && data?.status !== 500 && data?.status !== 404) {
         await router.push({ name: 'admin-announcement-listing' })
       } else {
-        alert(data.message)
+        alert('There is an error: ' + data.message)
       }
       break
     }
@@ -82,7 +82,7 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      if (data?.status !== 400 && data?.status !== 500) {
+      if (data?.status !== 400 && data?.status !== 500 && data?.status !== 404) {
         await router.push({ name: 'admin-announcement-listing' })
       } else {
         alert('There is an error: ' + data.message)

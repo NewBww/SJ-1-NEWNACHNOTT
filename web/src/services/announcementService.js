@@ -4,7 +4,9 @@ const ENDPOINT_PATH = 'api/announcements'
 class AnnouncementService {
   async getAllAnnouncements() {
     try {
-      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`)
+      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
+        method: 'GET'
+      })
       if (response.ok) {
         return await response.json()
       }
@@ -15,13 +17,15 @@ class AnnouncementService {
 
   async getAnnouncementById(id) {
     try {
-      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`)
+      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
+        method: 'GET'
+      })
       if (response.ok) {
         const data = await response.json()
+        // console.log(data)
         return data
       } else {
-        console.log(response)
-        console.log('HELLO SERVICE TID HAI NOI')
+        // console.log(response)
         return response.status
       }
     } catch (error) {
@@ -30,8 +34,6 @@ class AnnouncementService {
   }
 
   async postAnnouncement(announcement) {
-    // console.log(announcement.categoryId)
-    // console.log(JSON.stringify(announcement))
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
         method: 'POST',
