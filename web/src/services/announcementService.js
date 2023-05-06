@@ -1,5 +1,3 @@
-import CategoryService from '@/services/categoryService'
-
 const VITE_ROOT_API = import.meta.env.VITE_ROOT_API
 const ENDPOINT_PATH = 'api/announcements'
 

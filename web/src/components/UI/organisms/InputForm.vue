@@ -7,7 +7,7 @@ import {
   AnnouncementService,
 } from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import {
   useMergeDateTime,
   useSplitTime,
@@ -15,6 +15,7 @@ import {
 } from '@/composables/date'
 import { Display } from '@/composables/display'
 
+const router = useRouter()
 const categoryData = ref([])
 
 const props = defineProps({
@@ -214,12 +215,15 @@ onMounted(async () => {
   </InputField>
 
   <div class="flex flex-row w-fit gap-4">
+    <!-- cancel button -->
     <RouterLink :to="{ name: 'admin-announcement-listing' }">
       <SingleButton
         class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition ease-in-out hover:scale-110"
         :text="cancelText"
       />
     </RouterLink>
+
+    <!-- submit button -->
     <SingleButton
       class="ann-button text-white rounded-lg w-[83px] transition ease-in-out"
       :class="

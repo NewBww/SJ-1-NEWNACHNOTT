@@ -9,21 +9,17 @@ const router = useRouter()
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 onMounted(async () => {
-  try {
-    const data = await announcementService.getAnnouncementById(
-      `${route.params.id}`
-    )
-    if (data !== undefined && data.length !== 0) {
-      announcementsData.value = data
-    }
-    if (data === 404 || data === 400) {
-      alert('The request page is not available')
-      await router.push({ name: 'admin-announcement-listing' })
-    }
-    // console.log(announcementsData.value)
-  } catch (error) {
-    console.log(error)
+  const data = await announcementService.getAnnouncementById(
+    `${route.params.id}`
+  )
+  if (data !== undefined && data.length !== 0) {
+    announcementsData.value = data
   }
+  if (data === 404 || data === 400) {
+    alert('The request page is not available')
+    await router.push({ name: 'admin-announcement-listing' })
+  }
+  // console.log(announcementsData.value)
 })
 
 defineEmits({})
