@@ -6,8 +6,7 @@ class AnnouncementService {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`)
       if (response.ok) {
-        const data = await response.json()
-        return data
+        return await response.json()
       }
     } catch (error) {
       console.error('ERROR cannot find announcement: ' + error)
