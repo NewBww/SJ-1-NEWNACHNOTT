@@ -40,7 +40,10 @@ onMounted(async () => {
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
         <div class="flex flex-col w-full gap-6 h-full">
-          <EditAnnouncementForm :announcement="announcementsData" />
+          <EditAnnouncementForm
+            :announcement="announcementsData"
+            summit-text="save"
+          />
         </div>
       </ContentSection>
     </div>

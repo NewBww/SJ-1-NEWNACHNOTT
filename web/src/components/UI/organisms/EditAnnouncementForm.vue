@@ -8,7 +8,11 @@ import {
 } from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import { RouterLink } from 'vue-router'
-import { useMergeDateTime, useSplitTime, useSplitDate } from '@/composables/date'
+import {
+  useMergeDateTime,
+  useSplitTime,
+  useSplitDate,
+} from '@/composables/date'
 import { Display } from '@/composables/display'
 
 const categoryData = ref([])
@@ -17,6 +21,9 @@ const props = defineProps({
   announcement: {
     type: Object,
     required: false,
+  },
+  summitText: {
+    type: String,
   },
 })
 
@@ -33,7 +40,8 @@ const announcementService = new AnnouncementService()
 const categoryService = new CategoryService()
 
 const editAnnouncementHandler = async () => {
-  await announcementService.updateAnnouncement(props.announcement.id,
+  await announcementService.updateAnnouncement(
+    props.announcement.id,
     new Announcement(
       title.value,
       description.value,
@@ -126,16 +134,14 @@ onMounted(async () => {
     ><div class="flex flex-row items-center gap-4">
       <input
         class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
-        type="date"    
+        type="date"
         v-model="closeDate"
       />
       <input
         class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
         type="time"
         v-model="closeTime"
-        />
-        
-        </div
+      /></div
   ></InputFill>
   <InputFill header="Display">
     <div class="flex flex-row items-center gap-2">
