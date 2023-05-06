@@ -63,6 +63,22 @@ class AnnouncementService {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
   }
+
+  async updateAnnouncement(id, announcement) {
+    try {
+      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(announcement),
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error('ERROR cannot edit announcement' + error)
+    }
+  }
 }
 
 class Announcement {

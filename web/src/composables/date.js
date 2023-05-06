@@ -29,13 +29,10 @@ const useSplitDate = (dateTimeUTC) => {
 
 const useSplitTime = (dateTimeUTC) => {
   const options = {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: "h24"
-    // timeStyle: "short",
+    timeStyle: "short",
   }
   return dateTimeUTC
-    ? new Intl.DateTimeFormat("en-CA", options).format(new Date(dateTimeUTC))
+    ? new Intl.DateTimeFormat("en-GB", options).format(new Date(dateTimeUTC))
     : null
 }
 export { useFormatTime, useMergeDateTime, useSplitTime, useSplitDate }

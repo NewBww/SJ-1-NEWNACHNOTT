@@ -32,8 +32,8 @@ const display = ref(false)
 const announcementService = new AnnouncementService()
 const categoryService = new CategoryService()
 
-const addAnnouncementHandler = async () => {
-  await announcementService.postAnnouncement(
+const editAnnouncementHandler = async () => {
+  await announcementService.updateAnnouncement(props.announcement.id,
     new Announcement(
       title.value,
       description.value,
@@ -57,10 +57,10 @@ watchEffect(async () => {
     display.value = new Display(
       props.announcement.announcementDisplay
     ).toBoolean()
-    // publishDate.value = useSplitDate(props.announcement.publishDate)
-    // publishTime.value = useSplitTime(props.announcement.publishDate)
-    // closeDate.value = useSplitDate(props.announcement.closeDate)
-    // closeTime.value = useSplitTime(props.announcement.closeDate)
+    publishDate.value = useSplitDate(props.announcement.publishDate)
+    publishTime.value = useSplitTime(props.announcement.publishDate)
+    closeDate.value = useSplitDate(props.announcement.closeDate)
+    closeTime.value = useSplitTime(props.announcement.closeDate)
   }
 })
 
@@ -79,8 +79,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  {{  publishDate }}
-  {{ closeTime }}
   <InputFill header="Title">
     <input
       class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
@@ -156,7 +154,7 @@ onMounted(async () => {
     <SingleButton
       class="ann-button bg-violet-500 text-white rounded-lg w-[83px]"
       text="Edit"
-      @click="addAnnouncementHandler"
+      @click="editAnnouncementHandler"
     />
   </div>
 </template>
