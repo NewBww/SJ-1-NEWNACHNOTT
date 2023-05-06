@@ -23,18 +23,18 @@ describe('TC-CREATE-ANNOUNCEMENT-2: nomal - at boundary data', () => {
         cy.url().should('contain','/admin/announcement/add')
     })
 
-    // it('should open add form and add a new announcment',()=>{
+    it('should open add form and add a new announcment',()=>{
         
-    //     cy.visit('/admin/announcement/add')
+        cy.visit('/admin/announcement/add')
 
-    //     cy.get('.ann-title').type("AAAAAAAA-BBBBBBBB-CCCCCCCC-DDDDDDDD-EEEEEEEE-FFFFFFFF-GGGGGGGG-HHHHHHHH-IIIIIIII-JJJJJJJJ-KKKKKKKK-LLLLLLLL-MMMMMMMM-NNNNNNNN-OOOOOOOO-PPPPPPPP-QQQQQQQQ-RRRRRRRR-SSSSSSSS-TTTTTTTT-UUUUUUUU-VVVVVVVV---")
-    //     cy.get('.ann-category').select('ฝึกงาน')
-    //     const text = Cypress._.repeat('กขฃคฅฆงจฉชซณญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษ-', 250)
-    //     cy.get('.ann-description').type(text).blur()
-    //     cy.get('.ann-publish-date').type('2023-05-08')
-    //     cy.get('.ann-publish-time').type('06:00')
-    //     cy.get('.ann-button').contains('submit',{matchCase: false}).click()
-    // })
+        cy.get('.ann-title').type("AAAAAAAA-BBBBBBBB-CCCCCCCC-DDDDDDDD-EEEEEEEE-FFFFFFFF-GGGGGGGG-HHHHHHHH-IIIIIIII-JJJJJJJJ-KKKKKKKK-LLLLLLLL-MMMMMMMM-NNNNNNNN-OOOOOOOO-PPPPPPPP-QQQQQQQQ-RRRRRRRR-SSSSSSSS-TTTTTTTT-UUUUUUUU-VVVVVVVV---")
+        cy.get('.ann-category').select('ฝึกงาน')
+        const text = Cypress._.repeat('กขฃคฅฆงจฉชซณญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษ-', 250)
+        cy.get('.ann-description').type(text).blur()
+        cy.get('.ann-publish-date').type('2023-05-08')
+        cy.get('.ann-publish-time').type('06:00')
+        cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+    })
 
     it('should show the new announcement "AAAAAAAA-BBBBBBBB-CCCCCCCC-....."',()=>{
         cy.visit('/admin/announcement')

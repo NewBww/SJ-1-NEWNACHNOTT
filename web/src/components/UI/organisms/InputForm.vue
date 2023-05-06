@@ -63,7 +63,11 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      if (data?.status !== 400 && data?.status !== 500 && data?.status !== 404) {
+      if (
+        data?.status !== 400 &&
+        data?.status !== 500 &&
+        data?.status !== 404
+      ) {
         await router.push({ name: 'admin-announcement-listing' })
       } else {
         alert('There is an error: ' + data.message)
@@ -82,7 +86,11 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      if (data?.status !== 400 && data?.status !== 500 && data?.status !== 404) {
+      if (
+        data?.status !== 400 &&
+        data?.status !== 500 &&
+        data?.status !== 404
+      ) {
         await router.push({ name: 'admin-announcement-listing' })
       } else {
         alert('There is an error: ' + data.message)
@@ -98,8 +106,10 @@ const onChangeHandler = () => {
 watchEffect(async () => {
   if (props.announcement?.id) {
     title.value = props.announcement.announcementTitle
-    categoryId.value = await categoryService.getCategoryByName(
-      props.announcement.announcementCategory
+    categoryId.value = (
+      await categoryService.getCategoryByName(
+        props.announcement.announcementCategory
+      )
     ).id
     description.value = props.announcement.announcementDescription
     display.value = new Display(
@@ -201,11 +211,11 @@ onMounted(async () => {
 
   <!-- display -->
   <InputField header="Display">
-    <div class="ann-display flex flex-row items-center gap-2">
+    <div class="flex flex-row items-center gap-2">
       <label
         ><input
           type="checkbox"
-          class="w-4 h-4"
+          class="ann-display w-4 h-4"
           v-model="display"
           @input="onChangeHandler"
         />
