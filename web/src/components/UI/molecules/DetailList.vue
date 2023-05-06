@@ -12,12 +12,12 @@ onMounted(async () => {
   const data = await announcementService.getAnnouncementById(
     `${route.params.id}`
   )
-  if (data !== undefined && data.length !== 0) {
+  console.log(data)
+  if (data !== undefined && data.length !== 0 && data !== 404 && data !== 400) {
     announcementsData.value = data
   }
-  if (data === 404 || data === 400) {
-    console.log('before alert')
-    alert('There is an error: The request page is not available')
+  else {
+    alert('The request page is not available')
     await router.push({ name: 'admin-announcement-listing' })
   }
   // console.log(announcementsData.value)
