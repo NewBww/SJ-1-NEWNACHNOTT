@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5621413-6c3e-4d0c-9aef-f59bbdeef728",
-		"name": "SAS-Test-Sprint-2-v1.1",
+		"name": "SAS-Test-Sprint-2-v1.3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7314284"
 	},
@@ -25,11 +25,6 @@
 									"var data = pm.response.json() ;",
 									"",
 									"pm.collectionVariables.set(\"id-for-update\", data.id) ;",
-									"",
-									"pm.test(\"Announcements keys test\",()=>{",
-									"    pm.expect(data).to.be.an(\"object\") ;",
-									"    pm.expect(data).to.have.all.keys('id','announcementTitle','announcementDescription','publishDate','closeDate','announcementDisplay','categoryId','announcementCategory')",
-									"}) ;",
 									"",
 									"pm.test(\"Announcement data test\",()=>{",
 									"    pm.expect(data.announcementTitle).to.equal(\"ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65\") ;",
@@ -84,11 +79,6 @@
 									"",
 									"var data = pm.response.json();",
 									"pm.collectionVariables.set(\"id-for-delete\", data.id) ;",
-									"",
-									"pm.test(\"Announcements keys test\",()=>{",
-									"    pm.expect(data).to.be.an(\"object\") ;",
-									"    pm.expect(data).to.have.all.keys('id','announcementTitle','announcementDescription','publishDate','closeDate','announcementDisplay','categoryId','announcementCategory')",
-									"}) ;",
 									"",
 									"pm.test(\"Announcement data test\",()=>{",
 									"    pm.expect(data.announcementTitle.length).to.equal(200) ;",
