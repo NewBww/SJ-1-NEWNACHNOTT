@@ -16,11 +16,11 @@ onMounted(async () => {
   const data = await announcementService.getAnnouncementById(
     `${route.params.id}`
   )
-  if (data === 404 || data === 400) {
+  if (data !== undefined && data !== 404 && data !== 400) {
+    announcementsData.value = data
+  } else {
     alert('There is an error: The request page is not available')
     await router.push({ name: 'admin-announcement-listing' })
-  } else {
-    announcementsData.value = data
   }
 })
 </script>
