@@ -51,11 +51,7 @@ class AnnouncementService {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
-      if (response.ok) {
-        return response.status
-      } else if (response.status === 404) {
-        response.status
-      }
+      return response.status
     } catch (error) {
       console.error(`ERROR cannot find announcement id ${id}:` + error)
     }
