@@ -21,6 +21,7 @@ class AnnouncementService {
         return data
       } else {
         console.log(response)
+        console.log('HELLO SERVICE TID HAI NOI')
         return response.status
       }
     } catch (error) {
