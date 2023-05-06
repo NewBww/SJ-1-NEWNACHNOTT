@@ -85,7 +85,7 @@ const submitHandler = async () => {
       if (data?.status !== 400 && data?.status !== 500) {
         await router.push({ name: 'admin-announcement-listing' })
       } else {
-        alert(data.message)
+        alert('There is an error: ' + data.message)
       }
       break
     }

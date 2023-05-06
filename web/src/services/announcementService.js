@@ -21,6 +21,7 @@ class AnnouncementService {
         const data = await response.json()
         return data
       } else if (response.status === 404 || response.status === 400) {
+        console.log('error from service')
         return response.status
       }
     } catch (error) {

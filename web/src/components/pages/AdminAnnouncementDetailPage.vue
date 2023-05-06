@@ -1,8 +1,8 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import DetailList from '@/components/UI/molecules/DetailList.vue'
 import PageTitle from '../UI/atoms/PageTitle.vue'
 import ContentSection from '../UI/organisms/ContentSection.vue'
-import { RouterLink } from 'vue-router'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
@@ -19,8 +19,10 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
             </template>
           </SingleButton>
         </RouterLink>
+
         <PageTitle title="Announcement Detail" />
-        <RouterLink :to="{ name: 'admin-announcement-add' }">
+
+        <RouterLink :to="{ name: 'admin-announcement-edit' }">
           <SingleButton class="ann-button gap-1" text="Edit">
             <template #before-text-icon>
               <IconPencilEdit />

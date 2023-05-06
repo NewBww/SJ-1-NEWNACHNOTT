@@ -16,13 +16,12 @@ onMounted(async () => {
     announcementsData.value = data
   }
   if (data === 404 || data === 400) {
-    alert('The request page is not available')
+    console.log('before alert')
+    alert('There is an error: The request page is not available')
     await router.push({ name: 'admin-announcement-listing' })
   }
   // console.log(announcementsData.value)
 })
-
-defineEmits({})
 </script>
 
 <template>
