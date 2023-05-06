@@ -41,8 +41,7 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error('ERROR cannot add announcement' + error)
     }
@@ -73,8 +72,7 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error('ERROR cannot edit announcement' + error)
     }

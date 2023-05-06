@@ -79,7 +79,5 @@ public class AnnouncementController {
     public void deleteAnnouncement(@PathVariable Integer id) {
         service.removeAnnouncement(id);
     }
-
-
 }
 

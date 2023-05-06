@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
-import EditAnnouncementForm from '@/components/UI/organisms/EditAnnouncementForm.vue'
+import InputForm from '@/components/UI/organisms/InputForm.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -13,20 +13,14 @@ const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 
 onMounted(async () => {
-  try {
-    const data = await announcementService.getAnnouncementById(
-      `${route.params.id}`
-    )
-    if (data !== undefined && data.length !== 0) {
-      announcementsData.value = data
-      // console.log(announcementsData.value)
-    }
-    if (data === 404 || data === 400) {
-      alert('The request page is not available')
-      await router.push({ name: 'admin-announcement-listing' })
-    }
-  } catch (error) {
-    console.log(error)
+  const data = await announcementService.getAnnouncementById(
+    `${route.params.id}`
+  )
+  if (data === 404 || data === 400) {
+    alert('The request page is not available')
+    await router.push({ name: 'admin-announcement-listing' })
+  } else {
+    announcementsData.value = data
   }
 })
 </script>
@@ -39,10 +33,12 @@ onMounted(async () => {
       </div>
 
       <ContentSection class="flex flex-col w-full h-full px-16 items-center">
-        <div class="flex flex-col w-full gap-6 h-full">
-          <EditAnnouncementForm
+        <div class="ann-* flex flex-col w-full gap-6 h-full">
+          <InputForm
             :announcement="announcementsData"
-            summit-text="save"
+            submit-text="Edit"
+            cancel-text="Back"
+            action="edit"
           />
         </div>
       </ContentSection>
