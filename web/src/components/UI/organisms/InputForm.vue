@@ -53,20 +53,21 @@ const categoryService = new CategoryService()
 const submitHandler = async () => {
   switch (props.action) {
     case 'add': {
-      const data = await announcementService.postAnnouncement(
-        new Announcement(
-          title.value,
-          description.value,
-          useMergeDateTime(publishDate.value, publishTime.value),
-          useMergeDateTime(closeDate.value, closeTime.value),
-          categoryId.value ?? (await categoryService.getDefaultCategory()).id,
-          display.value ? 'Y' : 'N'
+      try {
+        await announcementService.postAnnouncement(
+          new Announcement(
+            title.value,
+            description.value,
+            useMergeDateTime(publishDate.value, publishTime.value),
+            useMergeDateTime(closeDate.value, closeTime.value),
+            categoryId.value ?? (await categoryService.getDefaultCategory()).id,
+            display.value ? 'Y' : 'N'
+          )
         )
-      )
-      if (data !== undefined && data?.status !== 404 && data?.status !== 400) {
-        alert('There is an error: ' + data.message)
-      } else {
         await router.push({ name: 'admin-announcement-listing' })
+      } catch (error) {
+        // console.log(error.message)
+        alert('There is an error: ' + error.message)
       }
       break
     }
