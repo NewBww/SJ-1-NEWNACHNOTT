@@ -34,6 +34,7 @@ describe('TC-CREATE-ANNOUNCEMENT-4: failed - description field is over boundary 
         cy.get('.ann-publish-date').type('2023-05-08')
         cy.get('.ann-publish-time').type('06:00')
         cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.wait(200)
 
         cy.on('window:alert',(str)=>{
             expect(str).to.contain('There is an error')
