@@ -63,15 +63,10 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      console.log(data.status)
-      if (
-        data?.status !== 400 &&
-        data?.status !== 500 &&
-        data?.status !== 404
-      ) {
-        await router.push({ name: 'admin-announcement-listing' })
-      } else {
+      if (title.value === null || description.value === null) {
         alert('There is an error: ' + data.message)
+      } else {
+        await router.push({ name: 'admin-announcement-listing' })
       }
       break
     }
