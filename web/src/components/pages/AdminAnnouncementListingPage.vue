@@ -7,23 +7,31 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 </script>
 
 <template>
-  <div class="h-screen bg-[#f2f2f2]">
-    <div class="h-full max-w-[80rem] w-full m-auto bg-white flex flex-col">
-      <PageTitle title="SIT Announcement System (SAS)" />
+  <div class="h-screen bg-[#F4F4F4]">
+    <div class="h-full max-w-[80rem] w-full m-auto flex flex-col">
+      <!--      <PageTitle class="py-8" title="SIT Announcement System" />-->
+      <div class="text-4xl font-semibold py-8 tracking-wider">
+        SIT<br />Announcement<br />System
+      </div>
       <ContentSection>
-        <div
-          class="h-fit w-full pt-8 pb-4 pl-9 pr-9 justify-between items-center flex flex-row"
-        >
+        <div class="h-fit w-full justify-between items-center flex flex-row">
           <TimeZone />
           <router-link :to="{ name: 'admin-announcement-add' }">
             <SingleButton
               text="Add Announcement"
-              class="ann-button bg-gray-400 hover:bg-gray-300"
+              class="ann-button solidBoxShadown bg-white border-black border rounded-lg hover:bg-gray-300"
             />
           </router-link>
         </div>
-        <AnnouncementList />
+
+        <AnnouncementList class="" />
       </ContentSection>
     </div>
   </div>
 </template>
+
+<style scoped>
+.solidBoxShadown {
+  box-shadow: 5px 5px 0px 0px;
+}
+</style>

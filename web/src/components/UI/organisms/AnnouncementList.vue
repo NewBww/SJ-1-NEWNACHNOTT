@@ -30,12 +30,12 @@ const deleteId = async (id) => {
 </script>
 
 <template>
-  <div class="w-full h-full border-b-2 overflow-x-scroll">
-    <table class="w-full h-full table-fixed">
-      <thead class="text-center border-y-2">
+  <div class="w-full h-full">
+    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
+      <thead class="text-center">
         <tr>
           <th class="w-16">No.</th>
-          <th class="ann-title text-left pl-6">Title</th>
+          <th class="ann-title text-center">Title</th>
           <th class="ann-category w-32">Category</th>
           <th class="ann-publish-date w-52">Publish Date</th>
           <th class="ann-close-date w-52">Close Date</th>
@@ -48,28 +48,35 @@ const deleteId = async (id) => {
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
       </tbody>
-      <tbody class="divide-y-2" v-else>
+      <tbody class="" v-else>
+        <!--        <div class="border">-->
         <tr
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center"
+          class="ann-item text-center h-full"
         >
-          <td>{{ index + 1 }}</td>
-          <td class="ann-title text-left">
+          <td class="border-y border-black border-l rounded-l-2xl">
+            {{ index + 1 }}
+          </td>
+          <td class="ann-title text-left border-y border-black">
             {{ announcement.announcementTitle }}
           </td>
-          <td class="ann-category">
+          <td class="ann-category border-y border-black">
             {{ announcement.announcementCategory }}
           </td>
-          <td class="ann-publish-date">
+          <td class="ann-publish-date border-y border-black">
             {{ useFormatTime(announcement.publishDate) }}
           </td>
-          <td class="ann-close-date">
+          <td class="ann-close-date border-y border-black">
             {{ useFormatTime(announcement.closeDate) }}
           </td>
-          <td class="ann-display">{{ announcement.announcementDisplay }}</td>
-          <td class="flex gap-2 justify-center h-full items-center">
+          <td class="ann-display border-y border-black">
+            {{ announcement.announcementDisplay }}
+          </td>
+          <td
+            class="w-64 gap-2.5 h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+          >
             <!-- view button -->
             <RouterLink
               :to="{
@@ -79,7 +86,7 @@ const deleteId = async (id) => {
             >
               <SingleButton
                 text="view"
-                class="ann-button view bg-gray-400 hover:bg-gray-300"
+                class="ann-button view bg-[#CBF3E9] hover:bg-gray-300 rounded-xl border border-black"
               />
             </RouterLink>
 
@@ -92,7 +99,7 @@ const deleteId = async (id) => {
             >
               <SingleButton
                 text="edit"
-                class="ann-button view bg-gray-400 hover:bg-gray-300"
+                class="ann-button view bg-[#C0E7FF] hover:bg-gray-300 rounded-xl border border-black"
               />
             </RouterLink>
 
@@ -100,10 +107,11 @@ const deleteId = async (id) => {
             <SingleButton
               @click="deleteId(announcement.id)"
               text="delete"
-              class="ann-button view bg-gray-400 hover:bg-gray-300"
+              class="ann-button view bg-[#F0E7FE] hover:bg-gray-300 rounded-xl border border-black"
             />
           </td>
         </tr>
+        <!--        </div>-->
       </tbody>
     </table>
   </div>

@@ -7,8 +7,8 @@ timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone
 
 <template>
   <div>
-      <div class="flex items-center">
-        <h3 class="text-base">Date/Time shown in Timezone : {{ timeZone }}</h3>
-      </div>
+    <div class="flex items-center">
+      <h3 class="text-lg">Date/Time : {{ timeZone }}</h3>
+    </div>
   </div>
 </template>
