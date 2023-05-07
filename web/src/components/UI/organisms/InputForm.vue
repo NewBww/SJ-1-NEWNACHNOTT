@@ -63,7 +63,7 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
-      if (title.value === null || description.value === null) {
+      if (data !== undefined && data?.status !== 404 && data?.status !== 400) {
         alert('There is an error: ' + data.message)
       } else {
         await router.push({ name: 'admin-announcement-listing' })
