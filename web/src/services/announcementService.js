@@ -43,14 +43,15 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
+      // console.log(response)
       if (response.ok) {
         return data
       } else {
         return Promise.reject(data)
       }
-      // console.log(response)
     } catch (error) {
       console.error('There is an error: ' + error)
+      throw error
     }
   }
 
