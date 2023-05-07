@@ -13,7 +13,7 @@ timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone
           >Date/Time</span
         >:
         <span
-          class="px-3 py-1 border border-black bg-white rounded-2xl tracking-wider font-mono"
+          class="px-3 py-1 border border-black bg-gradient-to-r from-[#FFE28A] to-[#F0E7FE] rounded-2xl tracking-wider font-mono"
           >{{ timeZone }}</span
         >
       </h3>

@@ -10,16 +10,25 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
   <div class="h-screen bg-[#F4F4F4]">
     <div class="h-full max-w-[80rem] w-full m-auto flex flex-col">
       <!--      <PageTitle class="py-8" title="SIT Announcement System" />-->
+      <!--      <div class="pt-4 text-xl">SAS</div>-->
       <div class="text-4xl font-semibold py-8 tracking-wider">
-        SIT<br />Announcement<br />System
+        SIT<br />Announcement<br />
+        <div class="flex flex-row items-center gap-3">
+          System<span
+            class="text-base px-4 mt-2 border border-black rounded-full"
+            >SAS</span
+          >
+        </div>
       </div>
       <ContentSection>
-        <div class="h-fit w-full justify-between items-center flex flex-row">
+        <div
+          class="h-full w-full h-[50px] justify-between items-center flex flex-row"
+        >
           <TimeZone />
           <router-link :to="{ name: 'admin-announcement-add' }">
             <SingleButton
               text="Add Announcement"
-              class="ann-button solidBoxShadown bg-white border-black border rounded-lg hover:bg-gray-300"
+              class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 ease-in-out active:bg-[#F4F4F4]"
             />
           </router-link>
         </div>
@@ -31,7 +40,7 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 </template>
 
 <style scoped>
-.solidBoxShadown {
-  box-shadow: 5px 5px 0px 0px;
+.solidBoxShadowBtnHover:hover {
+  box-shadow: 0.25rem 0.25rem 0rem 0rem;
 }
 </style>

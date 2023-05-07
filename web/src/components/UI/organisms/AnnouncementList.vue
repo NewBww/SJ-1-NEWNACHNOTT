@@ -54,7 +54,7 @@ const deleteId = async (id) => {
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center h-full"
+          class="ann-item text-center h-full solidBoxShadow"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
             {{ index + 1 }}
@@ -86,7 +86,7 @@ const deleteId = async (id) => {
             >
               <SingleButton
                 text="view"
-                class="ann-button view bg-[#CBF3E9] hover:bg-gray-300 rounded-xl border border-black"
+                class="ann-button view bg-[#CBF3E9] hover:bg-[#A5F3E0] rounded-xl border border-black"
               />
             </RouterLink>
 
@@ -99,7 +99,7 @@ const deleteId = async (id) => {
             >
               <SingleButton
                 text="edit"
-                class="ann-button view bg-[#C0E7FF] hover:bg-gray-300 rounded-xl border border-black"
+                class="ann-button view bg-[#C0E7FF] hover:bg-[#ADE0FF] rounded-xl border border-black"
               />
             </RouterLink>
 
@@ -107,7 +107,7 @@ const deleteId = async (id) => {
             <SingleButton
               @click="deleteId(announcement.id)"
               text="delete"
-              class="ann-button view bg-[#F0E7FE] hover:bg-gray-300 rounded-xl border border-black"
+              class="ann-button view bg-[#F0E7FE] hover:bg-[#E2D0FE] rounded-xl border border-black"
             />
           </td>
         </tr>
@@ -118,8 +118,13 @@ const deleteId = async (id) => {
 </template>
 
 <style scoped>
-td,
-th {
+td {
   padding: 0.7rem 0;
 }
+th {
+  padding: 0px 0;
+}
+/*.solidBoxShadow {*/
+/*  box-shadow: 5px 5px 0px 0px;*/
+/*}*/
 </style>
