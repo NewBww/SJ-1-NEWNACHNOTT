@@ -72,25 +72,22 @@ const submitHandler = async () => {
       break
     }
     case 'edit': {
-      const data = await announcementService.updateAnnouncement(
-        props.announcement?.id,
-        new Announcement(
-          title.value,
-          description.value,
-          useMergeDateTime(publishDate.value, publishTime.value),
-          useMergeDateTime(closeDate.value, closeTime.value),
-          categoryId.value ?? (await categoryService.getDefaultCategory()).id,
-          display.value ? 'Y' : 'N'
+      try {
+        await announcementService.updateAnnouncement(
+          props.announcement?.id,
+          new Announcement(
+            title.value,
+            description.value,
+            useMergeDateTime(publishDate.value, publishTime.value),
+            useMergeDateTime(closeDate.value, closeTime.value),
+            categoryId.value ?? (await categoryService.getDefaultCategory()).id,
+            display.value ? 'Y' : 'N'
+          )
         )
-      )
-      if (
-        data?.status !== 400 &&
-        data?.status !== 500 &&
-        data?.status !== 404
-      ) {
         await router.push({ name: 'admin-announcement-listing' })
-      } else {
-        alert('There is an error: ' + data.message)
+      }
+      catch (error) {
+        alert('There is an error: ' + error.message)
       }
       break
     }

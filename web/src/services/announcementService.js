@@ -76,9 +76,16 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      return await response.json()
+      const data = await response.json()
+      // console.log(response)
+      if (response.ok) {
+        return data
+      } else {
+        return Promise.reject(data)
+      }
     } catch (error) {
-      console.error('ERROR cannot edit announcement' + error)
+      console.error('There is an error: ' + error)
+      throw error
     }
   }
 }
