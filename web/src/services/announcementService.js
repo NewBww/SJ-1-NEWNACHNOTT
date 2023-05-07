@@ -42,6 +42,7 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
+      console.log(response)
       return await response.json()
     } catch (error) {
       console.error('ERROR cannot add announcement' + error)

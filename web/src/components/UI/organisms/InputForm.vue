@@ -63,6 +63,7 @@ const submitHandler = async () => {
           display.value ? 'Y' : 'N'
         )
       )
+      console.log(data.status)
       if (
         data?.status !== 400 &&
         data?.status !== 500 &&
