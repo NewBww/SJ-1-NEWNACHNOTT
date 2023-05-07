@@ -9,6 +9,7 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
         cy.get('.ann-publish-date').type('2023-05-03')
         cy.get('.ann-publish-time').type('06:00')
         cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.wait(200)
     }) ;
 
     it('should contain SAS and Timezone',()=>{
@@ -122,6 +123,7 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
         cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).as('ann-submit')
         cy.get('@ann-submit').should('be.enabled')
         cy.get('@ann-submit').click()
+        cy.wait(200)
     })
 
     it('should show the updated data in both listing and detail page .',()=>{

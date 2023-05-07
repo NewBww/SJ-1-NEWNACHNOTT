@@ -33,6 +33,7 @@ describe('TC-CREATE-ANNOUNCEMENT-3: failed - title field is over boundary data',
         cy.get('.ann-publish-date').type('2023-05-08')
         cy.get('.ann-publish-time').type('06:00')
         cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.wait(200)
 
         cy.on('window:alert',(str)=>{
             expect(str).to.contain('There is an error')

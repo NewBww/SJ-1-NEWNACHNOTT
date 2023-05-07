@@ -9,6 +9,7 @@ describe('TC-DELETE-ANNOUNCEMENT-1: normal - cancel delete operation', () => {
         cy.get('.ann-publish-date').type('2023-05-03')
         cy.get('.ann-publish-time').type('06:00')
         cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.wait(200)
     }) ;
 
     it('should contain SAS and Timezone',()=>{

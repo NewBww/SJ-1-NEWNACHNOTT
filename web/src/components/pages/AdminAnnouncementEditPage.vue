@@ -36,7 +36,7 @@ onMounted(async () => {
         <div class="ann-* flex flex-col w-full gap-6 h-full">
           <InputForm
             :announcement="announcementsData"
-            submit-text="Edit"
+            submit-text="Submit"
             cancel-text="Back"
             action="edit"
           />

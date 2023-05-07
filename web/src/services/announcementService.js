@@ -5,7 +5,7 @@ class AnnouncementService {
   async getAllAnnouncements() {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}`, {
-        method: 'GET'
+        method: 'GET',
       })
       if (response.ok) {
         return await response.json()
@@ -18,7 +18,7 @@ class AnnouncementService {
   async getAnnouncementById(id) {
     try {
       const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
-        method: 'GET'
+        method: 'GET',
       })
       if (response.ok) {
         const data = await response.json()
@@ -42,9 +42,16 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      return await response.json()
+      const data = await response.json()
+      // console.log(response)
+      if (response.ok) {
+        return data
+      } else {
+        return Promise.reject(data)
+      }
     } catch (error) {
-      console.error('ERROR cannot add announcement' + error)
+      console.error('There is an error: ' + error)
+      throw error
     }
   }
 
@@ -69,9 +76,16 @@ class AnnouncementService {
         },
         body: JSON.stringify(announcement),
       })
-      return await response.json()
+      const data = await response.json()
+      // console.log(response)
+      if (response.ok) {
+        return data
+      } else {
+        return Promise.reject(data)
+      }
     } catch (error) {
-      console.error('ERROR cannot edit announcement' + error)
+      console.error('There is an error: ' + error)
+      throw error
     }
   }
 }
