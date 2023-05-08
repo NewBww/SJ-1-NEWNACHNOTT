@@ -8,33 +8,35 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 
 <template>
   <div class="h-screen bg-[#F4F4F4]">
-    <div class="h-full max-w-[80rem] w-full m-auto flex flex-col">
-      <!--      <PageTitle class="py-8" title="SIT Announcement System" />-->
-      <!--      <div class="pt-4 text-xl">SAS</div>-->
-      <div class="text-4xl font-semibold py-8 tracking-wider">
-        SIT<br />Announcement<br />
-        <div class="flex flex-row items-center gap-3">
-          System<span
-            class="text-base px-4 mt-2 border border-black rounded-full"
-            >SAS</span
+    <div class="h-fit bg-[#F4F4F4]">
+      <div class="max-w-[80rem] w-full m-auto flex flex-col">
+        <!--      <PageTitle class="py-8" title="SIT Announcement System" />-->
+        <!--      <div class="pt-4 text-xl">SAS</div>-->
+        <div class="text-4xl font-semibold py-8 tracking-wider">
+          SIT<br />Announcement<br />
+          <div class="flex flex-row items-center gap-3">
+            System<span
+              class="text-base px-4 mt-2 border border-black rounded-full"
+              >SAS</span
+            >
+          </div>
+        </div>
+        <ContentSection>
+          <div
+            class="w-full h-[50px] justify-between items-center flex flex-row"
           >
-        </div>
-      </div>
-      <ContentSection>
-        <div
-          class="h-full w-full h-[50px] justify-between items-center flex flex-row"
-        >
-          <TimeZone />
-          <router-link :to="{ name: 'admin-announcement-add' }">
-            <SingleButton
-              text="Add Announcement"
-              class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 ease-in-out active:bg-[#F4F4F4]"
-            />
-          </router-link>
-        </div>
+            <TimeZone />
+            <router-link :to="{ name: 'admin-announcement-add' }">
+              <SingleButton
+                text="Add Announcement"
+                class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 ease-in-out active:bg-[#F4F4F4]"
+              />
+            </router-link>
+          </div>
 
-        <AnnouncementList class="" />
-      </ContentSection>
+          <AnnouncementList class="" />
+        </ContentSection>
+      </div>
     </div>
   </div>
 </template>
@@ -42,5 +44,30 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 <style scoped>
 .solidBoxShadowBtnHover:hover {
   box-shadow: 0.25rem 0.25rem 0rem 0rem;
+}
+.box {
+  width: 300px;
+  margin: 50px auto;
+  height: 100px;
+  background: red;
+  box-shadow: -1px 0px 0px #000, -0px 1px 0px #000, -2px 1px 0px #000,
+    -1px 2px 0px #000, -3px 2px 0px #000, -2px 3px 0px #000, -4px 3px 0px #000,
+    -3px 4px 0px #000, -5px 4px 0px #000, -4px 5px 0px #000, -6px 5px 0px #000,
+    -5px 6px 0px #000, -7px 6px 0px #000, -6px 7px 0px #000, -8px 7px 0px #000,
+    -7px 8px 0px #000, -9px 8px 0px #000, -8px 9px 0px #000, -10px 9px 0px #000,
+    -9px 10px 0px #000, -11px 10px 0px #000, -10px 11px 0px #000,
+    -12px 11px 0px #000, -11px 12px 0px #000, -13px 12px 0px #000,
+    -12px 13px 0px #000, -14px 13px 0px #000, -13px 14px 0px #000,
+    -15px 14px 0px #000, -14px 15px 0px #000, -16px 15px 0px #000,
+    -15px 16px 0px #000, -17px 16px 0px #000, -16px 17px 0px #000,
+    -18px 17px 0px #000, -17px 18px 0px #000, -19px 18px 0px #000,
+    -18px 19px 0px #000, -20px 19px 0px #000, -19px 20px 0px #000,
+    -21px 20px 0px #000, -20px 21px 0px #000, -22px 21px 0px #000,
+    -21px 22px 0px #000, -23px 22px 0px #000, -22px 23px 0px #000,
+    -24px 23px 0px #000, -23px 24px 0px #000, -25px 24px 0px #000,
+    -24px 25px 0px #000, -26px 25px 0px #000, -25px 26px 0px #000,
+    -27px 26px 0px #000, -26px 27px 0px #000, -28px 27px 0px #000,
+    -27px 28px 0px #000, -29px 28px 0px #000, -28px 29px 0px #000,
+    -30px 29px 0px #000, -29px 30px 0px #000;
 }
 </style>

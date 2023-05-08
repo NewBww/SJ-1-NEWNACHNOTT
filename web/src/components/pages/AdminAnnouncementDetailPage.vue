@@ -9,33 +9,56 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 </script>
 
 <template>
-  <div class="h-screen bg-[#f2f2f2]">
-    <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
-      <div class="flex flex-row items-center justify-between">
+  <div class="h-full bg-[#F4F4F4]">
+    <div class="bg-[#F4F4F4] max-w-[72rem] w-full m-auto">
+      <!--      header-->
+      <div class="flex flex-row items-center pt-12 gap-7">
         <RouterLink :to="{ name: 'admin-announcement-listing' }">
-          <SingleButton class="ann-button" text="Back">
+          <SingleButton
+            class="ann-button border border-black rounded-full gap-1 hover:bg-gray-200 active:bg-black active:text-white"
+            text="Back"
+          >
             <template #before-text-icon>
               <IconArrowBack />
             </template>
           </SingleButton>
         </RouterLink>
 
-        <PageTitle title="Announcement Detail" />
-
-        <RouterLink :to="{ name: 'admin-announcement-edit' }">
-          <SingleButton class="ann-button gap-1" text="Edit">
-            <template #before-text-icon>
-              <IconPencilEdit />
-            </template>
-          </SingleButton>
-        </RouterLink>
+        <!--        <PageTitle title="Announcement Detail" />-->
+        <div class="text-4xl font-semibold tracking-wider">
+          Announcement<br />Detail
+        </div>
       </div>
 
-      <ContentSection class="flex flex-col w-full px-16 items-center">
-        <div class="flex flex-col w-full gap-6">
-          <DetailList />
+      <ContentSection class="flex flex-row items-center w-full pt-10">
+        <div
+          class="bg-[#F9EBFF] border border-black w-4/5 pb-5 pt-0 pl-16 pr-12 rounded-3xl"
+        >
+          <RouterLink
+            class="flex flex-row justify-end h-11"
+            :to="{ name: 'admin-announcement-edit' }"
+          >
+            <SingleButton
+              class="ann-button transition ease-in-out gap-2 bg-white rounded-b-xl border-b border-r border-l border-black solidBoxShadowBtnHover hover:border-b-2 hover:border-r-2 hover:border-l-2 hover:-translate-x-2"
+              text="Edit"
+            >
+              <template #before-text-icon>
+                <IconPencilEdit />
+              </template>
+            </SingleButton>
+          </RouterLink>
+          <!--        detail-->
+          <div class="flex flex-col w-full gap-6">
+            <DetailList />
+          </div>
         </div>
       </ContentSection>
     </div>
   </div>
 </template>
+
+<style scoped>
+.solidBoxShadowBtnHover:hover {
+  box-shadow: 0.5rem 0rem 0rem 0rem;
+}
+</style>

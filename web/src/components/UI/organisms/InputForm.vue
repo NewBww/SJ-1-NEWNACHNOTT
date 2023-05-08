@@ -85,8 +85,7 @@ const submitHandler = async () => {
           )
         )
         await router.push({ name: 'admin-announcement-listing' })
-      }
-      catch (error) {
+      } catch (error) {
         alert('There is an error: ' + error.message)
       }
       break
@@ -134,7 +133,7 @@ onMounted(async () => {
   <!-- title -->
   <InputField header="Title">
     <input
-      class="ann-title px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
+      class="ann-title px-2 py-3 border-t border-black text-base w-full"
       type="text"
       placeholder="something"
       v-model="title"
@@ -145,7 +144,7 @@ onMounted(async () => {
   <!-- category -->
   <InputField header="Category">
     <select
-      class="ann-category px-2 py-1 rounded text-base w-48 bg-purple-100 text-purple-300"
+      class="ann-category px-2 h-12 border-t border-black rounded text-base w-48"
       v-model="categoryId"
       @input="onChangeHandler"
     >
@@ -160,9 +159,9 @@ onMounted(async () => {
   >
 
   <!-- description -->
-  <InputField header="Description" class="h-2/5">
+  <InputField header="Description" class="h-56">
     <textarea
-      class="ann-description h-full px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base"
+      class="ann-description h-full px-2 py-1 border-t border-black text-base"
       placeholder="something"
       v-model="description"
       @input="onChangeHandler"
@@ -171,15 +170,15 @@ onMounted(async () => {
 
   <!-- publish date -->
   <InputField header="Publish Date"
-    ><div class="flex flex-row items-center gap-4">
+    ><div class="flex flex-row items-center border-t border-black gap-4">
       <input
-        class="ann-publish-date px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        class="ann-publish-date px-2 py-1 rounded text-base w-36 text-center"
         type="date"
         v-model="publishDate"
         @input="onChangeHandler"
       />
       <input
-        class="ann-publish-time px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        class="ann-publish-time px-2 py-1 rounded text-base w-36 text-center"
         type="time"
         v-model="publishTime"
         @input="onChangeHandler"
@@ -188,15 +187,15 @@ onMounted(async () => {
 
   <!-- close date -->
   <InputField header="Close Date"
-    ><div class="flex flex-row items-center gap-4">
+    ><div class="flex flex-row items-center gap-4 border-t border-black">
       <input
-        class="ann-close-date px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        class="ann-close-date px-2 py-1 rounded text-base w-36 text-center"
         type="date"
         v-model="closeDate"
         @input="onChangeHandler"
       />
       <input
-        class="ann-close-time px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
+        class="ann-close-time px-2 py-1 rounded text-base w-36 text-center"
         type="time"
         v-model="closeTime"
         @input="onChangeHandler"
@@ -205,7 +204,7 @@ onMounted(async () => {
 
   <!-- display -->
   <InputField header="Display">
-    <div class="flex flex-row items-center gap-2">
+    <div class="flex flex-row items-center gap-2 border-t border-black">
       <label
         ><input
           type="checkbox"
