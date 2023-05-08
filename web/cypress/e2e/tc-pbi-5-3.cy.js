@@ -19,7 +19,7 @@ describe('TC-CREATE-ANNOUNCEMENT-3: failed - title field is over boundary data',
         cy.visit('/admin/announcement')
         
         cy.wait(200)
-        cy.get('.ann-button').contains('add',{matchCase: false}).click()
+        cy.get('.ann-button').contains('add',{matchCase: false}).should('exist').click()
         cy.url().should('contain','/admin/announcement/add')
     })
 
@@ -32,7 +32,7 @@ describe('TC-CREATE-ANNOUNCEMENT-3: failed - title field is over boundary data',
         cy.get('.ann-description').type('กขฃคฅฆงจฉชซณญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษ-').blur()
         cy.get('.ann-publish-date').type('2023-05-08')
         cy.get('.ann-publish-time').type('06:00')
-        cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).should('exist').click()
         cy.wait(200)
 
         cy.on('window:alert',(str)=>{
