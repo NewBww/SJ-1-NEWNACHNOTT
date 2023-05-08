@@ -1,6 +1,17 @@
 use sas;
 select * from categories;
 select * from announcements;
+
+-- delete record
+truncate announcements;
+
+-- insert data
+INSERT INTO `sas`.`announcements` (`announcementId`, `announcementTitle`, `announcementDescription`, `publishDate`, `closeDate`, `announcementDisplay`, `categoryId`) VALUES (1, 'บริษัท เน็ตเซอร์พลัส จำกัด รับสมัครงาน 2 ตำแหน่ง', 'บริษัท เน็ตเซอร์พลัส จำกัด เปิดรับสมัครงาน 2 ตำแหน่ง Application Support และ Customer Support', NULL, NULL, 'N', 3);
+INSERT INTO `sas`.`announcements` (`announcementId`, `announcementTitle`, `announcementDescription`, `publishDate`, `closeDate`, `announcementDisplay`, `categoryId`) VALUES (2, 'รายชื่อนักศึกษาที่ได้รับทุนการศึกษาประเภท \"ทุนจ้างงาน\" 2/2565', 'คณะ ฯ ประกาศรายชื่อนักศึกษาที่ได้รับทุนการศึกษาประเภท \"ทุนจ้างงาน\" ประจำภาคการศึกษา 2/2565', NULL, '2023-05-31 11:00:00', 'Y', 2);
+INSERT INTO `sas`.`announcements` (`announcementId`, `announcementTitle`, `announcementDescription`, `publishDate`, `closeDate`, `announcementDisplay`, `categoryId`) VALUES (3, 'แนวปฎิบัติการสอบออนไลน์ พ.ศ. 2565', 'ประกาศมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี เรื่องแนวทางปฎิบัติการสอบออนไลน์พ.ศ. 2565', '2023-01-26 23:00:00', NULL, 'Y', 1);
+INSERT INTO `sas`.`announcements` (`announcementId`, `announcementTitle`, `announcementDescription`, `publishDate`, `closeDate`, `announcementDisplay`, `categoryId`) VALUES (4, 'กิจกรรมพี่อ้อย พี่ฉอด On Tour 2566', 'ขอเชิญนักศึกษาทุกชั้นปี เข้าร่วมกิจกรรมพี่อ้อย พี่ฉอด On Tour', '2023-04-18 23:00:00', '2023-05-08 11:00:00', 'Y', 1);
+
+
 show tables;
 
 -- Check number of columns in a table
@@ -52,9 +63,5 @@ Ut eu lectus interdum, vestibulum tortor eu, rutrum sapien. Nullam sodales, lacu
 Donec eu dapibus nulla. Aliquam erat volutpat. Aenean varius, lacus non tempor volutpat, urna enim faucibus nunc, quis aliquam velit justo sit amet ipsum. Praesent lobortis tellus in urna mollis lacinia. Sed interdum malesuada viverra. Ut laoreet accumsan dui. Vestibulum viverra porta nulla id laoreet. Sed tempus consequat lorem vestibulum facilisis. Mauris commodo mi arcu. Sed et risus feugiat, vulputate nibh et, porta mi. Maecenas fringilla blandit eros et consectetur. Etiam eget mi dignissim, interdum arcu eu, lacinia purus. Ut tempor nec.", 
 DEFAULT, '2023-04-19 10:10:00', '2023-04-30 23:30:02', DEFAULT);
 
-
-
-
 -- Check input not duplicate in Categories.
 insert into `categories` (`categoryId`,`categoryName`) value (default , "ทั่วไป");
-

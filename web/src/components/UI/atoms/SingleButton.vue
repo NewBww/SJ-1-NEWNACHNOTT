@@ -4,13 +4,21 @@ defineProps({
     type: String,
     required: true,
   },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 </script>
 
 <template>
   <button
-    class="text-center w-fit py-1 px-2 border rounded bg-gray-400 text-base hover:bg-gray-300"
+    class="text-center items-center justify-center w-fit flex flex-row py-2 px-3 text-base tracking-wider"
+    :disabled="disabled"
   >
+    <slot name="before-text-icon" />
     {{ text }}
+    <slot name="after-text-icon" />
   </button>
 </template>

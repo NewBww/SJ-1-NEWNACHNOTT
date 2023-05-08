@@ -26,6 +26,8 @@ services:
       - "8080:8080"
     networks:
       - sas_network
+    links:
+      - database
 
   database:
     image: mysql:8.0.32

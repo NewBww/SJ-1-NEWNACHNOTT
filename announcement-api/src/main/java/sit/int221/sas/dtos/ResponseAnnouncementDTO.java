@@ -7,17 +7,21 @@ import sit.int221.sas.entities.Display;
 import java.time.ZonedDateTime;
 
 @Data
-public class
-DetailedAnnouncementDTO {
+public class ResponseAnnouncementDTO {
     private Integer id;
     private String announcementTitle;
-    private String announcementDescription;
     private Category announcementCategory;
+    private String announcementDescription;
     private ZonedDateTime publishDate;
     private ZonedDateTime closeDate;
     private Display announcementDisplay = Display.N;
+    private Integer categoryId;
 
     public String getAnnouncementCategory() {
         return this.announcementCategory.getCategoryName();
+    }
+
+    public Integer getCategoryId() {
+        return this.announcementCategory.getId();
     }
 }

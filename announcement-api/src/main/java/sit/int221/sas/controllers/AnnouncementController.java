@@ -2,18 +2,24 @@ package sit.int221.sas.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sit.int221.sas.dtos.AnnouncementDTO;
+import sit.int221.sas.dtos.AnnouncementListItemDTO;
 import sit.int221.sas.dtos.DetailedAnnouncementDTO;
+import sit.int221.sas.dtos.RequestAnnouncementDTO;
+import sit.int221.sas.dtos.ResponseAnnouncementDTO;
 import sit.int221.sas.entities.Announcement;
+import sit.int221.sas.exceptions.ErrorResponse;
 import sit.int221.sas.services.AnnouncementService;
 import sit.int221.sas.utils.ListMapper;
 
+import java.sql.Timestamp;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:5173/", "http://localhost:4173/", "http://ip22sj1.sit.kmutt.ac.th/"})
+@CrossOrigin(origins = {"http://localhost:5173/", "http://localhost:4173/", "http://ip22sj1.sit.kmutt.ac.th/", "http://intproj22.sit.kmutt.ac.th/sj1/"})
 @RestController
 @RequestMapping("/api/announcements")
 public class AnnouncementController {
@@ -25,8 +31,8 @@ public class AnnouncementController {
     private ListMapper listMapper;
 
     @GetMapping
-    public ResponseEntity<List<AnnouncementDTO>> getAllAnnouncements() {
-        List<AnnouncementDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementDTO.class, modelMapper);
+    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements() {
+        List<AnnouncementListItemDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         if (announcementList.isEmpty()) {
@@ -47,20 +53,31 @@ public class AnnouncementController {
         return ResponseEntity.ok().headers(responseHeaders).body(announcement);
     }
 
-//    @PostMapping
-//    public Announcement postAnnouncement(@RequestBody Announcement announcement) {
-//        System.out.println(announcement);
-//        return service.createAnnouncement(announcement);
-//    }
-//
-//    @PutMapping("{id}")
-//    public Announcement updateAnnouncement(@PathVariable Integer id, @RequestBody Announcement announcement) {
-//        return service.updateAnnouncement(announcement, id);
-//    }
-//
-//    @DeleteMapping("{id}")
-//    public void deleteAnnouncement(@PathVariable Integer id) {
-//        service.removeAnnouncement(id);
-//    }
+    @PostMapping
+    public ResponseEntity<ResponseAnnouncementDTO> postAnnouncement(@RequestBody RequestAnnouncementDTO requestAnnouncementDTO) {
+        Announcement announcement = modelMapper.map(requestAnnouncementDTO, Announcement.class);
+        announcement = service.createAnnouncement(announcement);
+        ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
+        HttpHeaders response = new HttpHeaders();
+        response.set("Content-Type", "application/json");
+        response.set("Description", "an announcement item created");
+        return ResponseEntity.ok().headers(response).body(responseAnnouncementDTO);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody RequestAnnouncementDTO requestedAnnouncement) {
+        Announcement announcement = modelMapper.map(requestedAnnouncement, Announcement.class);
+        announcement = service.updateAnnouncement(id, announcement);
+        ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
+        HttpHeaders response = new HttpHeaders();
+        response.set("Content-Type", "application/json");
+        response.set("Description", "Update the announcement successfully");
+        return ResponseEntity.ok().headers(response).body(responseAnnouncementDTO);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteAnnouncement(@PathVariable Integer id) {
+        service.removeAnnouncement(id);
+    }
 }
 

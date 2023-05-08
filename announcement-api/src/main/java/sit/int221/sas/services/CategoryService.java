@@ -10,9 +10,17 @@ import java.util.List;
 
 @Service
 public class CategoryService {
+
+    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
     @Autowired
     private CategoryRepository repository;
 
     public List<Category> findAll() { return repository.findAll(); }
+    public Category findDefaultCategory() {
+        return repository.findByCategoryName(DEFAULT_CATEGORY_NAME);
+    }
 
+    public Category findCategoryByName(String categoryName) {
+        return repository.findByCategoryName(categoryName);
+    }
 }

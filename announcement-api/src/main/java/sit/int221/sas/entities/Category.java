@@ -12,7 +12,6 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @JsonIgnore
     @Column(name = "categoryId")
     private Integer id;
     @Column(nullable = false, length = 50)

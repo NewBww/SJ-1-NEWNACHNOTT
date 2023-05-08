@@ -19,7 +19,7 @@ public class AnnouncementService {
     private AnnouncementRepository announcementRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    private static final String DEFAULT_CATEGORY_NAME = "General";
+    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
 
     public List<Announcement> findAll() {
         return announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -29,39 +29,31 @@ public class AnnouncementService {
         return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
     }
 
-//    public Announcement createAnnouncement(Announcement announcement) {
-//        Category category = announcement.getAnnouncementCategory();
-//        if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
-//            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME));
-//            return announcementRepository.saveAndFlush(announcement);
-//        }
-//        String categoryName = category.getCategoryName();
-//        if (Boolean.TRUE.equals(categoryRepository.existsByCategoryName(categoryName))) {
-//            announcement.setAnnouncementCategory(categoryRepository.findByCategoryName(categoryName));
-//        } else {
-//            Category newCategory = new Category();
-//            newCategory.setCategoryName(categoryName);
-//            categoryRepository.saveAndFlush(newCategory);
-//            announcement.setAnnouncementCategory(newCategory);
-//        }
-//        return announcementRepository.saveAndFlush(announcement);
-//    }
-//
-//    public Announcement updateAnnouncement(Announcement announcement, Integer announcementId) {
-//        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-//                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
-//        );
-//        ex.setAnnouncementTitle(announcement.getAnnouncementTitle());
-//        ex.setAnnouncementCategory(announcement.getAnnouncementCategory());
-//        ex.setAnnouncementDescription(announcement.getAnnouncementDescription());
-//        ex.setAnnouncementDisplay(String.valueOf(announcement.getAnnouncementDisplay()));
-//        return announcementRepository.saveAndFlush(ex);
-//    }
-//
-//    public void removeAnnouncement(Integer announcementId) {
-//        Announcement ex = announcementRepository.findById(announcementId).orElseThrow(
-//                () -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "Announcement Id " + announcementId + " not found")
-//        );
-//        announcementRepository.delete(ex);
-//    }
+    public Announcement createAnnouncement(Announcement announcement) {
+        announcement.setAnnouncementCategory(categoryRepository.findById(announcement.getAnnouncementCategory().getId())
+                .orElse(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME)));
+        return announcementRepository.saveAndFlush(announcement);
+    }
+
+    public Announcement updateAnnouncement(Integer announcementId, Announcement newAnn) {
+        Announcement existedAnn = announcementRepository.findById(announcementId).orElseThrow(
+                () -> new ItemNotFoundException("Announcement id " + announcementId + " does not exist")
+        );
+        existedAnn.setAnnouncementTitle(newAnn.getAnnouncementTitle());
+        Integer newAnnCategoryId = newAnn.getAnnouncementCategory().getId();
+        existedAnn.setAnnouncementCategory(categoryRepository.findById(newAnnCategoryId)
+                .orElseThrow(() -> new ItemNotFoundException("Category id " + newAnnCategoryId + " does not exist")));
+        existedAnn.setAnnouncementDescription(newAnn.getAnnouncementDescription());
+        existedAnn.setPublishDate(newAnn.getPublishDate());
+        existedAnn.setCloseDate(newAnn.getCloseDate());
+        existedAnn.setAnnouncementDisplay(newAnn.getAnnouncementDisplay());
+        return announcementRepository.saveAndFlush(existedAnn);
+    }
+
+    public void removeAnnouncement(Integer announcementId) {
+        Announcement deleteId = announcementRepository.findById(announcementId).orElseThrow(
+                () -> new ItemNotFoundException("Announcement id " + announcementId + " does not exist")
+        );
+        announcementRepository.delete(deleteId);
+    }
 }
