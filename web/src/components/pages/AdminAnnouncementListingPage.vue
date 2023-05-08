@@ -34,7 +34,7 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
             </router-link>
           </div>
 
-          <AnnouncementList class="" />
+          <AnnouncementList />
         </ContentSection>
       </div>
     </div>
@@ -43,7 +43,10 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
 
 <style scoped>
 .solidBoxShadowBtnHover:hover {
-  box-shadow: 0.25rem 0.25rem 0rem 0rem;
+  box-shadow: 0.1rem 0.1rem, 0.2rem 0.2rem, 0.25rem 0.25rem;
+}
+.solidBoxShadowBtnHover:active {
+  box-shadow: inset 0.1rem 0.1rem, inset 0.2rem 0.2rem, inset 0.25rem 0.25rem;
 }
 .box {
   width: 300px;

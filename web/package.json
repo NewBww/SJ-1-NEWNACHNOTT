@@ -6,7 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "vite build --base=/sj1/",
-    "preview": "vite preview",
+    "preview": "vite preview --base=/sj1/",
     "test:unit": "vitest --environment jsdom --root src/",
     "cypress:open": "cypress open",
     "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
