@@ -23,8 +23,6 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
             </template>
           </SingleButton>
         </RouterLink>
-
-        <!--        <PageTitle title="Announcement Detail" />-->
         <div class="text-4xl font-semibold tracking-wider">
           Announcement<br />Detail
         </div>
@@ -39,7 +37,7 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
             :to="{ name: 'admin-announcement-edit' }"
           >
             <SingleButton
-              class="ann-button transition ease-in-out gap-2 bg-white rounded-b-xl border-b border-r border-l border-black solidBoxShadowBtnHover hover:border-b-2 hover:border-r-2 hover:border-l-2 hover:-translate-x-2"
+              class="ann-button transition ease-in-out gap-2 bg-white rounded-b-xl border-b border-r border-l border-black solidBoxShadowBtnHover hover:border-b-2 hover:border-r-2 hover:border-l-2 active:border-b-2 active:border-r-2 active:border-l-2 hover:-translate-x-2 hover:active:translate-x-0"
               text="Edit"
             >
               <template #before-text-icon>
@@ -59,6 +57,9 @@ import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 
 <style scoped>
 .solidBoxShadowBtnHover:hover {
-  box-shadow: 0.5rem 0rem 0rem 0rem;
+  box-shadow: 0.5rem 0 0 0;
+}
+.solidBoxShadowBtnHover:active {
+  box-shadow: inset 0.5rem 0 0 0;
 }
 </style>
