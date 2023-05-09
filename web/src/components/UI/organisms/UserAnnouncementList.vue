@@ -17,7 +17,7 @@ onMounted(async () => {
     <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
       <thead class="text-center">
         <tr>
-          <th class="w-20">No.</th>
+          <th class="w-24">No.</th>
           <th class="ann-title text-left">Title</th>
           <th class="ann-category">Category</th>
         </tr>
