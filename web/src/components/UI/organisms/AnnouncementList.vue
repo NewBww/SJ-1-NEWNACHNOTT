@@ -8,13 +8,6 @@ import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 
-onMounted(async () => {
-  const data = await announcementService.getAllAnnouncements()
-  if (data !== undefined && data.length !== 0) {
-    announcementsData.value = data
-  }
-})
-
 const deleteId = async (id) => {
   if (confirm('Do you want to delete')) {
     if ((await announcementService.deleteAnnouncement(id)) === 200) {
@@ -27,6 +20,13 @@ const deleteId = async (id) => {
     }
   }
 }
+
+onMounted(async () => {
+  const data = await announcementService.getAllAnnouncements()
+  if (data !== undefined && data.length !== 0) {
+    announcementsData.value = data
+  }
+})
 </script>
 
 <template>
@@ -48,7 +48,7 @@ const deleteId = async (id) => {
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
       </tbody>
-      <tbody class="" v-else>
+      <tbody v-else>
         <!--        <div class="border">-->
         <tr
           v-for="(announcement, index) of announcementsData"
@@ -74,7 +74,7 @@ const deleteId = async (id) => {
           <td class="ann-display border-y border-black">
             {{ announcement.announcementDisplay }}
           </td>
-          <td
+          <td 
             class="w-64 gap-2.5 h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             <!-- view button -->

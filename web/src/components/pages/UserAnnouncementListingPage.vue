@@ -1,9 +1,8 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import TimeZone from '@/components/UI/atoms/TimeZone.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
+import UserAnnouncementList from '../UI/organisms/UserAnnouncementList.vue';
 </script>
 
 <template>
@@ -24,15 +23,16 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
             class="w-full h-[50px] justify-between items-center flex flex-row"
           >
             <TimeZone />
-            <RouterLink :to="{ name: 'admin-announcement-add' }">
+            <!-- <router-link :to="{ name: 'admin-announcement-add' }"> -->
               <SingleButton
-                text="Add Announcement"
+              @click="showAnnouncement"
+                text="Closed Announcement"
                 class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 hover:-translate-y-1 hover:active:translate-x-0 hover:active:translate-y-0 ease-in-out active:bg-[#F4F4F4]"
               />
-            </RouterLink>
+            <!-- </router-link> -->
           </div>
 
-          <AnnouncementList />
+          <UserAnnouncementList />
         </ContentSection>
       </div>
     </div>
