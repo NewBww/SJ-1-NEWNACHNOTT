@@ -18,7 +18,7 @@ defineProps({
     :disabled="disabled"
   >
     <slot name="before-text-icon" />
-    {{ text }}
+    <span>{{ text }}</span>
     <slot name="after-text-icon" />
   </button>
 </template>

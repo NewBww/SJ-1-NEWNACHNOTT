@@ -26,19 +26,20 @@ onMounted(async () => {
 
 <template>
   <div class="h-full bg-[#F4F4F4]">
-    <div class="bg-[#F4F4F4] max-w-[72rem] w-full m-auto">
+    <div class="bg-[#F4F4F4] max-w-[72rem] m-auto">
       <!--      header-->
-      <div class="flex flex-row items-center pt-12 gap-7">
+      <div class="flex items-center pt-12 gap-7 w-fit">
         <RouterLink :to="{ name: 'user-announcement-listing' }">
           <SingleButton
-            class="ann-button border border-black rounded-full gap-1 hover:bg-gray-200 active:bg-black active:text-white"
+            class="ann-button border border-black w-fit rounded-full hover:bg-gray-200 active:bg-black active:text-white"
             text="Back"
           >
             <template #before-text-icon>
-              <IconArrowBack />
+              <IconArrowBack class="w-5" />
             </template>
           </SingleButton>
         </RouterLink>
+
         <div class="text-4xl font-semibold tracking-wider">
           Announcement<br />Detail
         </div>
