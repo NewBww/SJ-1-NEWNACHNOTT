@@ -1,14 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
+
 const announcementService = new AnnouncementService()
-const announcementsData = ref([])
+const pageData = ref([])
 
 onMounted(async () => {
-  const data = await announcementService.getAllAnnouncements()
-  if (data !== undefined && data.length !== 0) {
-    announcementsData.value = data
-  }
+    const data = await announcementService.getAnnouncementPage()
+    pageData.value = data.content
+    console.log(pageData.value)
 })
 </script>
 
@@ -22,7 +22,7 @@ onMounted(async () => {
           <th class="ann-category">Category</th>
         </tr>
       </thead>
-      <tbody v-if="announcementsData.length === 0">
+      <tbody v-if="pageData.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
@@ -30,7 +30,7 @@ onMounted(async () => {
       <tbody v-else>
         <!--        <div class="border">-->
             <tr
-            v-for="(announcement, index) of announcementsData"
+            v-for="(announcement, index) of pageData"
             :key="announcement.id"
             :id="index"
             class="ann-item text-center h-full solidBoxShadow"

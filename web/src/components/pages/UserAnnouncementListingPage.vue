@@ -1,8 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import TimeZone from '@/components/UI/atoms/TimeZone.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import UserAnnouncementList from '../UI/organisms/UserAnnouncementList.vue';
+
+const isActive = ref(false)
 </script>
 
 <template>
@@ -23,16 +26,14 @@ import UserAnnouncementList from '../UI/organisms/UserAnnouncementList.vue';
             class="w-full h-[50px] justify-between items-center flex flex-row"
           >
             <TimeZone />
-            <!-- <router-link :to="{ name: 'admin-announcement-add' }"> -->
               <SingleButton
-              @click="showAnnouncement"
-                text="Closed Announcement"
+              @click="isActive = !isActive"
+                :text="isActive ? 'Active Announcements' : 'Closed Announcements'"
                 class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 hover:-translate-y-1 hover:active:translate-x-0 hover:active:translate-y-0 ease-in-out active:bg-[#F4F4F4]"
               />
-            <!-- </router-link> -->
-          </div>
-
-          <UserAnnouncementList />
+            </div>
+            
+            <UserAnnouncementList />
         </ContentSection>
       </div>
     </div>

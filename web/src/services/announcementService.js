@@ -88,8 +88,52 @@ class AnnouncementService {
       throw error
     }
   }
-}
 
+  getAnnouncementPage() {
+    return Promise.resolve({
+      "content": [
+          {
+              "id": 4,
+              "announcementTitle": "กิจกรรมพี่อ้อย พี่ฉอด On Tour 2566",
+              "announcementCategory": "ทั่วไป",
+              "publishDate": "2023-04-18T23:00:00Z",
+              "closeDate": "2023-05-08T11:00:00Z",
+              "announcementDisplay": "Y"
+          }, 
+          {
+              "id": 3,
+              "announcementTitle": "แนวปฎิบัติการสอบออนไลน์ พ.ศ. 2565",
+              "announcementCategory": "ทั่วไป",
+              "publishDate": "2023-01-26T23:00:00Z",
+              "closeDate": null,
+              "announcementDisplay": "Y"
+          }, 
+          {
+              "id": 2,
+              "announcementTitle": "รายชื่อนักศึกษาที่ได้รับทุนการศึกษาประเภท \"ทุนจ้างงาน\" 2/2565",
+              "announcementCategory": "ทุนการศึกษา",
+              "publishDate": null,
+              "closeDate": "2023-05-31T11:00:00Z",
+              "announcementDisplay": "Y"
+          }, 
+          {
+              "id": 1,
+              "announcementTitle": "บริษัท เน็ตเซอร์พลัส จำกัด รับสมัครงาน 2 ตำแหน่ง",
+              "announcementCategory": "หางาน",
+              "publishDate": null,
+              "closeDate": null,
+              "announcementDisplay": "N"
+          }
+      ],
+      "last": true,
+      "first": true,
+      "totalPages": 1,
+      "totalElements": 4,
+      "size": 5,
+      "page": 0
+  } )
+  }
+}
 class Announcement {
   static DEFAULT_DISPLAY = 'N'
   constructor(
