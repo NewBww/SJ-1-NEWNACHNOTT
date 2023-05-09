@@ -74,10 +74,11 @@ onMounted(async () => {
             {{ announcement.announcementDisplay }}
           </td>
           <td 
-            class="h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+            class="h-full flex flex-row gap-2 justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             <!-- view button -->
             <RouterLink
+            class="w-fit h-fit"
               :to="{
                 name: 'admin-announcement-detail',
                 params: { id: announcement.id },
@@ -91,6 +92,7 @@ onMounted(async () => {
 
             <!-- edit button -->
             <RouterLink
+            class="w-fit h-fit"
               :to="{
                 name: 'admin-announcement-edit',
                 params: { id: announcement.id },
