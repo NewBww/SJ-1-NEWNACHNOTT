@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <button
-    class="flex flex-row text-center items-center justify-center w-fit py-2 px-3 text-base tracking-wider"
+    class="flex flex-row items-center justify-center py-2 px-3 text-base tracking-wider"
     :disabled="disabled"
   >
     <slot name="before-text-icon" />
