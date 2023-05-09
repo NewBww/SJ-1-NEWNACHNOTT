@@ -6,7 +6,7 @@ import { AnnouncementService } from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 const announcementService = new AnnouncementService()
-const announcementsData = ref([])
+const announcementsData = ref({})
 
 const deleteId = async (id) => {
   if (confirm('Do you want to delete?')) {

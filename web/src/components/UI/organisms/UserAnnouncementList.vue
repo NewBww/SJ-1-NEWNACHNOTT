@@ -1,15 +1,48 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
+import { useRouter } from 'vue-router'
 
 const announcementService = new AnnouncementService()
-const pageData = ref([])
+const pageData = ref({})
+const newData = ref({})
+
+const router = useRouter()
+const link = (announcementId) => {
+  router.push({
+    name: 'user-announcement-detail',
+    params: { id: announcementId },
+  })
+}
+
+const props = defineProps({
+  showAnnouncement: {
+    type: Boolean,
+    default: true,
+  },
+})
 
 onMounted(async () => {
-    const data = await announcementService.getAnnouncementPage()
-    pageData.value = data.content
-    console.log(pageData.value)
+  const data = await announcementService.getAnnouncementPage()
+  pageData.value = data.content
+  newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
+  // console.log(pageData.value)
+  // const data = await announcementService.getAllAnnouncements()
+  // if (data !== undefined && data.length !== 0) {
+  //   pageData.value = data
+  // }
 })
+
+watch(
+  () => props.showAnnouncement,
+  (newU) => {
+    if (newU) {
+      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
+    } else {
+      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'N')
+    }
+  }
+)
 </script>
 
 <template>
@@ -22,31 +55,31 @@ onMounted(async () => {
           <th class="ann-category">Category</th>
         </tr>
       </thead>
-      <tbody v-if="pageData.length === 0">
+      <tbody v-if="newData.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
       </tbody>
       <tbody v-else>
-        <!--        <div class="border">-->
-            <tr
-            v-for="(announcement, index) of pageData"
-            :key="announcement.id"
-            :id="index"
-            class="ann-item text-center h-full solidBoxShadow"
-            >
-            <td class="border-y border-black border-l rounded-l-2xl">
-              {{ index + 1 }}
-            </td>
-            <td class="ann-title text-left border-y border-black">
-              {{ announcement.announcementTitle }}
-            </td>
-            <td
-              class="h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
-            >
-              {{ announcement.announcementCategory }}
-            </td>
-          </tr>
+        <tr
+          @click="link(announcement.id)"
+          v-for="(announcement, index) of newData"
+          :key="announcement.id"
+          :id="index"
+          class="ann-item text-center h-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
+        >
+          <td class="border-y border-black border-l rounded-l-2xl">
+            {{ index + 1 }}
+          </td>
+          <td class="ann-title text-left border-y border-black">
+            {{ announcement.announcementTitle }}
+          </td>
+          <td
+            class="h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+          >
+            {{ announcement.announcementCategory }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

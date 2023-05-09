@@ -33,7 +33,7 @@ const isActive = ref(false)
               />
             </div>
             
-            <UserAnnouncementList />
+            <UserAnnouncementList :showAnnouncement="!isActive" />
         </ContentSection>
       </div>
     </div>
