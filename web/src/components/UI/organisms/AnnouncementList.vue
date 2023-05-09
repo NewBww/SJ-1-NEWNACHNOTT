@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <div class="w-full h-full">
-    <table class="w-fit h-full table-fixed border-separate border-spacing-y-6">
+    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
       <thead class="text-center">
         <tr>
           <th class="w-14">No.</th>
@@ -73,12 +73,12 @@ onMounted(async () => {
           <td class="ann-display border-y border-black">
             {{ announcement.announcementDisplay }}
           </td>
-          <td 
+          <td
             class="h-full flex flex-row gap-2 justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             <!-- view button -->
             <RouterLink
-            class="w-fit h-fit"
+              class="w-fit h-fit"
               :to="{
                 name: 'admin-announcement-detail',
                 params: { id: announcement.id },
@@ -92,7 +92,7 @@ onMounted(async () => {
 
             <!-- edit button -->
             <RouterLink
-            class="w-fit h-fit"
+              class="w-fit h-fit"
               :to="{
                 name: 'admin-announcement-edit',
                 params: { id: announcement.id },
