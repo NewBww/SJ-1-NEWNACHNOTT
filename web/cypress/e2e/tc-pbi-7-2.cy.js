@@ -8,7 +8,7 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
         cy.get('.ann-description').type('หลักสูตรขอแจ้งตารางสอบปลายภาค (ร่าง) 2/65 โดยนักศึกษาที่สอบซ้อนในวันเดียวกัน ขอให้แจ้งกลับมาที่พี่ตุ๊ก ภายในวันที่ 8 พ.ค. 66')
         cy.get('.ann-publish-date').type('2023-05-03')
         cy.get('.ann-publish-time').type('06:00')
-        cy.get('.ann-button').contains('submit',{matchCase: false}).click()
+        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).should('exist').click()
         cy.wait(200)
     }) ;
 
@@ -39,11 +39,11 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
 
         cy.wait(200)
         cy.get('.ann-item').should('contain.text','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65').first().as('ann-1')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
-        cy.get('.ann-button').contains('edit',{matchCase: false})
+        cy.get('.ann-button').contains('edit',{matchCase: false}).should('exist')
     })
 
     it('should click edit and have a form to edit data and the submit button is disable"',()=>{
@@ -51,14 +51,14 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
 
         cy.wait(200)
         cy.get('.ann-item').should('contain.text','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65').first().as('ann-1')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
-        cy.get('.ann-button').contains('edit',{matchCase: false}).click()
+        cy.get('.ann-button').contains('edit',{matchCase: false}).should('exist').click()
 
         cy.wait(200)
-        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).as('ann-submit')
+        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).should('exist').as('ann-submit')
         cy.get('@ann-submit').should('be.disabled')
     })
 
@@ -67,11 +67,11 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
 
         cy.wait(200)
         cy.get('.ann-item').should('contain.text','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65').first().as('ann-1')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
-        cy.get('.ann-button').contains('edit',{matchCase: false}).click()
+        cy.get('.ann-button').contains('edit',{matchCase: false}).should('exist').click()
 
         cy.wait(200)
         cy.get('.ann-title').should('have.value','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
@@ -89,18 +89,18 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
 
         cy.wait(200)
         cy.get('.ann-item').should('contain.text','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65').first().as('ann-1')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
-        cy.get('.ann-button').contains('edit',{matchCase: false}).click()
+        cy.get('.ann-button').contains('edit',{matchCase: false}).should('exist').click()
 
         cy.wait(200)
         cy.get('.ann-publish-date').clear()
         cy.get('.ann-publish-time').clear()
         cy.get('.ann-close-date').clear().type('2023-12-31')
         cy.get('.ann-close-time').clear().type('18:00')
-        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).as('ann-submit')
+        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).should('exist').as('ann-submit')
         cy.get('@ann-submit').should('be.enabled')
     })
 
@@ -109,20 +109,20 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
 
         cy.wait(200)
         cy.get('.ann-item').should('contain.text','(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65').first().as('ann-1')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
-        cy.get('.ann-button').contains('edit',{matchCase: false}).click()
+        cy.get('.ann-button').contains('edit',{matchCase: false}).should('exist').click()
 
         cy.wait(200)
         cy.get('.ann-publish-date').clear()
         cy.get('.ann-publish-time').clear()
         cy.get('.ann-close-date').clear().type('2023-12-31')
         cy.get('.ann-close-time').clear().type('18:00')
-        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).as('ann-submit')
+        cy.get('.ann-button').contains(/submit|save|update|add|edit/g,{matchCase: false}).should('exist').as('ann-submit')
         cy.get('@ann-submit').should('be.enabled')
-        cy.get('@ann-submit').click()
+        cy.get('@ann-submit').should('exist').click()
         cy.wait(200)
     })
 
@@ -134,7 +134,7 @@ describe('TC-UPDATE-ANNOUNCEMENT-2: normal - update publish date and close date'
         cy.get('@ann-1').get('.ann-publish-date').contains('-')
         cy.get('@ann-1').get('.ann-close-date').contains('31 Dec 2023',{matchCase: false})
         cy.get('@ann-1').get('.ann-close-date').contains('18:00')
-        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).click()
+        cy.get('@ann-1').get('.ann-button').contains('view',{matchCase: false}).should('exist').click()
 
         cy.wait(200) ;
         cy.get('.ann-title').contains('(PBI7-2)ประกาศ (ร่าง) ตารางสอบปลายภาค 2/65')
