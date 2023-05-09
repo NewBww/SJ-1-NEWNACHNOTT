@@ -9,7 +9,7 @@ const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 
 const deleteId = async (id) => {
-  if (confirm('Do you want to delete')) {
+  if (confirm('Do you want to delete?')) {
     if ((await announcementService.deleteAnnouncement(id)) === 200) {
       announcementsData.value.splice(
         announcementsData.value.findIndex(
@@ -31,16 +31,16 @@ onMounted(async () => {
 
 <template>
   <div class="w-full h-full">
-    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
+    <table class="w-fit h-full table-fixed border-separate border-spacing-y-6">
       <thead class="text-center">
         <tr>
-          <th class="w-16">No.</th>
-          <th class="ann-title text-center">Title</th>
+          <th class="w-14">No.</th>
+          <th class="ann-title text-left">Title</th>
           <th class="ann-category w-32">Category</th>
           <th class="ann-publish-date w-52">Publish Date</th>
           <th class="ann-close-date w-52">Close Date</th>
           <th class="ann-display w-16">Display</th>
-          <th class="w-64">Action</th>
+          <th class="w-60">Action</th>
         </tr>
       </thead>
       <tbody v-if="announcementsData.length === 0">
@@ -49,7 +49,6 @@ onMounted(async () => {
         </tr>
       </tbody>
       <tbody v-else>
-        <!--        <div class="border">-->
         <tr
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
@@ -75,7 +74,7 @@ onMounted(async () => {
             {{ announcement.announcementDisplay }}
           </td>
           <td 
-            class="w-64 gap-2.5 h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+            class="h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             <!-- view button -->
             <RouterLink
@@ -111,7 +110,6 @@ onMounted(async () => {
             />
           </td>
         </tr>
-        <!--        </div>-->
       </tbody>
     </table>
   </div>
