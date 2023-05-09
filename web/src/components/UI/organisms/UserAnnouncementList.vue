@@ -1,10 +1,12 @@
 <script setup>
-import { computed, onMounted, ref, watch, watchEffect } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
 import { useRouter } from 'vue-router'
 
 const announcementService = new AnnouncementService()
 const pageData = ref({})
+const newData = ref({})
+
 const router = useRouter()
 const link = (announcementId) => {
   router.push({
@@ -21,40 +23,29 @@ const props = defineProps({
 })
 
 onMounted(async () => {
-  const data = await announcementService.getAnnouncementPage();
+  const data = await announcementService.getAnnouncementPage()
   pageData.value = data.content
-  pageData.value = pageData.value.filter(
-      (display) => display.announcementDisplay === 'Y')
+  newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
   // console.log(pageData.value)
   // const data = await announcementService.getAllAnnouncements()
   // if (data !== undefined && data.length !== 0) {
   //   pageData.value = data
   // }
+})
 
-  // console.log(props.showAnnouncement)
- 
-})
-watch(()=>props.showAnnouncement, (newU)=>
-{
-  if (newU) {
-    pageData.value = pageData.value.filter(
-      (display) => {
-        console.log(display.announcementDisplay)
-        return display.announcementDisplay === 'Y'}
-    )
-    console.log(pageData.value);
-  } else {
-    pageData.value = pageData.value.filter(
-      (display) => display.announcementDisplay == 'N'
-    )
-    console.log(pageData.value);
+watch(
+  () => props.showAnnouncement,
+  (newU) => {
+    if (newU) {
+      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
+    } else {
+      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'N')
+    }
   }
-})
+)
 </script>
 
 <template>
-  {{ showAnnouncement }}
-  {{ pageData }}
   <div class="w-full h-full">
     <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
       <thead class="text-center">
@@ -64,7 +55,7 @@ watch(()=>props.showAnnouncement, (newU)=>
           <th class="ann-category">Category</th>
         </tr>
       </thead>
-      <tbody v-if="pageData.length === 0">
+      <tbody v-if="newData.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
@@ -72,7 +63,7 @@ watch(()=>props.showAnnouncement, (newU)=>
       <tbody v-else>
         <tr
           @click="link(announcement.id)"
-          v-for="(announcement, index) of pageData"
+          v-for="(announcement, index) of newData"
           :key="announcement.id"
           :id="index"
           class="ann-item text-center h-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
