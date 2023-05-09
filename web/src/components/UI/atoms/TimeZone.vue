@@ -6,8 +6,7 @@ timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone
 </script>
 
 <template>
-  <div>
-    <div class="flex items-center">
+    <div class="flex items-center w-fit ">
       <h3 class="flex flex-row items-center text-lg gap-2">
         <span class="underline underline-offset-4 tracking-wider"
           >Timezone</span
@@ -18,5 +17,4 @@ timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone
         >
       </h3>
     </div>
-  </div>
 </template>
