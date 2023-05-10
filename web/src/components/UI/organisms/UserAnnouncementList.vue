@@ -35,8 +35,8 @@ onMounted(async () => {
 
 watch(
   () => props.showAnnouncement,
-  (newU) => {
-    if (newU) {
+  (isActive) => {
+    if (isActive) {
       newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
     } else {
       newData.value = pageData.value.filter((display) => display.announcementDisplay === 'N')
