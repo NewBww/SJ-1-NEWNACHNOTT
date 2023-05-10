@@ -1,6 +1,8 @@
 package sit.int221.sas.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sit.int221.sas.entities.Announcement;
@@ -30,6 +32,16 @@ public class AnnouncementService {
 
     public Announcement findById(Integer id) {
         return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
+    }
+
+    public Page<Announcement> findPage(String mode, int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return switch (mode) {
+            case "active" -> announcementRepository.findAllByActiveMode(pageRequest);
+            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now(), pageRequest);
+            default -> announcementRepository.findAll(pageRequest);
+        };
     }
 
     public Announcement createAnnouncement(Announcement announcement) {
