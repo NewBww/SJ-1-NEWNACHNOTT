@@ -10,10 +10,7 @@ import sit.int221.sas.repositories.AnnouncementRepository;
 import sit.int221.sas.repositories.CategoryRepository;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.logging.Filter;
 
 @Service
 public class AnnouncementService {
@@ -25,10 +22,7 @@ public class AnnouncementService {
 
     public List<Announcement> findAll(String mode) {
         return switch (mode) {
-            case "active" -> {
-                ZonedDateTime now = ZonedDateTime.now();
-                yield announcementRepository.findAllByAnnouncementDisplayAndPublishDateIsLessThanEqualAndCloseDateIsGreaterThan(Display.Y, now, now);
-            }
+            case "active" -> announcementRepository.findAllByActiveMode();
             case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now());
             default -> announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         };
