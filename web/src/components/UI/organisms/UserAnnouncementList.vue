@@ -52,7 +52,7 @@ watch(
         <tr>
           <th class="w-24">No.</th>
           <th class="ann-title text-left">Title</th>
-          <th class="ann-category">Category</th>
+          <th class="ann-category w-52">Category</th>
         </tr>
       </thead>
       <tbody v-if="newData.length === 0">
@@ -66,7 +66,7 @@ watch(
           v-for="(announcement, index) of newData"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center h-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
+          class="ann-item text-center h-fit w-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
             {{ index + 1 }}
@@ -75,7 +75,7 @@ watch(
             {{ announcement.announcementTitle }}
           </td>
           <td
-            class="h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+            class="ann-category flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             {{ announcement.announcementCategory }}
           </td>

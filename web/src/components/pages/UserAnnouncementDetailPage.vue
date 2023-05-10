@@ -19,7 +19,7 @@ onMounted(async () => {
     announcementsData.value = data
   } else {
     alert('There is an error: The request page is not available')
-    await router.push({ name: 'admin-announcement-listing' })
+    await router.push({ name: 'user-announcement-listing' })
   }
 })
 </script>
