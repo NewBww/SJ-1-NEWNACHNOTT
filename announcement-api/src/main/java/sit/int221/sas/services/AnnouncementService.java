@@ -2,16 +2,18 @@ package sit.int221.sas.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 import sit.int221.sas.entities.Announcement;
-import sit.int221.sas.entities.Category;
+import sit.int221.sas.entities.Display;
 import sit.int221.sas.exceptions.ItemNotFoundException;
 import sit.int221.sas.repositories.AnnouncementRepository;
 import sit.int221.sas.repositories.CategoryRepository;
 
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Filter;
 
 @Service
 public class AnnouncementService {
@@ -21,8 +23,15 @@ public class AnnouncementService {
     private CategoryRepository categoryRepository;
     private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
 
-    public List<Announcement> findAll() {
-        return announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    public List<Announcement> findAll(String mode) {
+        return switch (mode) {
+            case "active" -> {
+                ZonedDateTime now = ZonedDateTime.now();
+                yield announcementRepository.findAllByAnnouncementDisplayAndPublishDateIsLessThanEqualAndCloseDateIsGreaterThan(Display.Y, now, now);
+            }
+            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now());
+            default -> announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        };
     }
 
     public Announcement findById(Integer id) {
