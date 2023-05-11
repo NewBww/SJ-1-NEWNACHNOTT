@@ -1,10 +1,8 @@
 <script setup>
 import { RouterLink, useRoute, useRouter } from 'vue-router'
-import DetailList from '@/components/UI/molecules/DetailList.vue'
 import ContentSection from '../UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
-import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 import { AnnouncementService } from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import { useFormatTime } from '@/composables/date'

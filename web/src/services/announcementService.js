@@ -89,49 +89,37 @@ class AnnouncementService {
     }
   }
 
-  getAnnouncementPage() {
-    return Promise.resolve({
-      "content": [
-          {
-              "id": 4,
-              "announcementTitle": "กิจกรรมพี่อ้อย พี่ฉอด On Tour 2566",
-              "announcementCategory": "ทั่วไป",
-              "publishDate": "2023-04-18T23:00:00Z",
-              "closeDate": "2023-05-08T11:00:00Z",
-              "announcementDisplay": "Y"
-          }, 
-          {
-              "id": 3,
-              "announcementTitle": "แนวปฎิบัติการสอบออนไลน์ พ.ศ. 2565",
-              "announcementCategory": "ทั่วไป",
-              "publishDate": "2023-01-26T23:00:00Z",
-              "closeDate": null,
-              "announcementDisplay": "Y"
-          }, 
-          {
-              "id": 2,
-              "announcementTitle": "รายชื่อนักศึกษาที่ได้รับทุนการศึกษาประเภท \"ทุนจ้างงาน\" 2/2565",
-              "announcementCategory": "ทุนการศึกษา",
-              "publishDate": null,
-              "closeDate": "2023-05-31T11:00:00Z",
-              "announcementDisplay": "Y"
-          }, 
-          {
-              "id": 1,
-              "announcementTitle": "บริษัท เน็ตเซอร์พลัส จำกัด รับสมัครงาน 2 ตำแหน่ง",
-              "announcementCategory": "หางาน",
-              "publishDate": null,
-              "closeDate": null,
-              "announcementDisplay": "N"
-          }
-      ],
-      "last": true,
-      "first": true,
-      "totalPages": 1,
-      "totalElements": 4,
-      "size": 5,
-      "page": 0
-  } )
+  async getAnnouncementPage(category, mode = 'active', page = 0, size = 5) {
+    try {
+      let params = ''
+      let paramCount = 0
+      if (mode || page || size || category) params = params + '?'
+      const addParam = (name, value) => {
+        if (value) {
+          if (paramCount > 0) params = params + '&'
+          params = params + name + '=' + value
+          paramCount++
+        }
+      }
+      addParam('mode', mode)
+      addParam('page', page)
+      addParam('size', size)
+      addParam('category', category)
+      const response = await fetch(
+        `${VITE_ROOT_API}/${ENDPOINT_PATH}/pages${params}`,
+        {
+          method: 'GET',
+        }
+      )
+      if (response.ok) {
+        const data = await response.json()
+        return data
+      } else {
+        return response.status
+      }
+    } catch (error) {
+      console.error(`ERROR cannot find announcement page` + error)
+    }
   }
 }
 class Announcement {

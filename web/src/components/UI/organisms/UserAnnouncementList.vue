@@ -2,12 +2,17 @@
 import { onMounted, ref, watch } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
 import { useRouter } from 'vue-router'
+import { useAnnouncementStore } from '@/stores/AnnouncementStore'
+import { storeToRefs } from 'pinia'
 
 const announcementService = new AnnouncementService()
 const pageData = ref({})
-const newData = ref({})
 
 const router = useRouter()
+const announcementStore = useAnnouncementStore()
+
+const { mode, page, category } = storeToRefs(announcementStore)
+
 const link = (announcementId) => {
   router.push({
     name: 'user-announcement-detail',
@@ -15,34 +20,21 @@ const link = (announcementId) => {
   })
 }
 
-const props = defineProps({
-  showAnnouncement: {
-    type: Boolean,
-    default: true,
-  },
+watch(mode, async (mode) => {
+  pageData.value = await announcementService.getAnnouncementPage(
+    category.value,
+    mode,
+    page.value
+  )
 })
 
 onMounted(async () => {
-  const data = await announcementService.getAnnouncementPage()
-  pageData.value = data.content
-  newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
-  // console.log(pageData.value)
-  // const data = await announcementService.getAllAnnouncements()
-  // if (data !== undefined && data.length !== 0) {
-  //   pageData.value = data
-  // }
+  pageData.value = await announcementService.getAnnouncementPage(
+    category.value,
+    mode.value,
+    page.value
+  )
 })
-
-watch(
-  () => props.showAnnouncement,
-  (isActive) => {
-    if (isActive) {
-      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'Y')
-    } else {
-      newData.value = pageData.value.filter((display) => display.announcementDisplay === 'N')
-    }
-  }
-)
 </script>
 
 <template>
@@ -55,7 +47,7 @@ watch(
           <th class="ann-category w-52">Category</th>
         </tr>
       </thead>
-      <tbody v-if="newData.length === 0">
+      <tbody v-if="pageData?.content?.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
@@ -63,7 +55,7 @@ watch(
       <tbody v-else>
         <tr
           @click="link(announcement.id)"
-          v-for="(announcement, index) of newData"
+          v-for="(announcement, index) of pageData.content"
           :key="announcement.id"
           :id="index"
           class="ann-item text-center h-fit w-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
@@ -92,7 +84,4 @@ td {
 th {
   padding: 0px 0;
 }
-/*.solidBoxShadow {*/
-/*  box-shadow: 5px 5px 0px 0px;*/
-/*}*/
 </style>
