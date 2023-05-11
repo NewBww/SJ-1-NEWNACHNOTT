@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, watchEffect } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
 import { useRouter } from 'vue-router'
 import { useAnnouncementStore } from '@/stores/AnnouncementStore'
@@ -20,15 +20,7 @@ const link = (announcementId) => {
   })
 }
 
-watch(mode, async (mode) => {
-  pageData.value = await announcementService.getAnnouncementPage(
-    category.value,
-    mode,
-    page.value
-  )
-})
-
-onMounted(async () => {
+watchEffect(async () => {
   pageData.value = await announcementService.getAnnouncementPage(
     category.value,
     mode.value,
