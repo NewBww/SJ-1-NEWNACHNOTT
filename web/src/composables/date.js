@@ -5,7 +5,7 @@ const useFormatTime = (dateTimeZone) => {
   }
   return dateTimeZone
     ? new Intl.DateTimeFormat('en-GB', options).format(new Date(dateTimeZone))
-    : `There's no input for the date and time.`
+    : `-`
 }
 
 const useMergeDateTime = (dateString, timeString) => {

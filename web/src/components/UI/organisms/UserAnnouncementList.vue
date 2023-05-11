@@ -31,12 +31,12 @@ watchEffect(async () => {
 
 <template>
   <div class="w-full h-full">
-    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
+    <table class="w-full h-full table-fixed border-separate border-spacing-y-4">
       <thead class="text-center">
         <tr>
-          <th class="w-24">No.</th>
+          <th class="w-20">No.</th>
           <th class="ann-title text-left">Title</th>
-          <th class="ann-category w-52">Category</th>
+          <th class="ann-category w-48">Category</th>
         </tr>
       </thead>
       <tbody v-if="pageData?.content?.length === 0">
@@ -50,7 +50,7 @@ watchEffect(async () => {
           v-for="(announcement, index) of pageData.content"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center h-fit w-full solidBoxShadow hover:bg-slate-50 cursor-pointer"
+          class="ann-item text-center h-full w-full hover:bg-slate-50 cursor-pointer"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
             {{ index + 1 }}
@@ -59,7 +59,7 @@ watchEffect(async () => {
             {{ announcement.announcementTitle }}
           </td>
           <td
-            class="ann-category flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+            class="ann-category justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             {{ announcement.announcementCategory }}
           </td>

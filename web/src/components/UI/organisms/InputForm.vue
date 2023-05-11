@@ -84,7 +84,8 @@ const submitHandler = async () => {
             display.value ? 'Y' : 'N'
           )
         )
-        await router.push({ name: 'admin-announcement-listing' })
+        // await router.push({ name: 'admin-announcement-listing' })
+        await router.push({ name: 'admin-announcement-detail' })
       } catch (error) {
         alert('There is an error: ' + error.message)
       }
@@ -133,7 +134,7 @@ onMounted(async () => {
   <!-- title -->
   <InputField header="Title">
     <input
-      class="ann-title px-2 py-3 border-t border-black text-base w-full"
+      class="ann-title w-[45rem] px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       type="text"
       placeholder="something"
       v-model="title"
@@ -142,9 +143,9 @@ onMounted(async () => {
   </InputField>
 
   <!-- category -->
-  <InputField header="Category">
+  <InputField header="Category" class="">
     <select
-      class="ann-category px-2 h-12 border-t border-black rounded text-base w-48"
+      class="ann-category text-center w-[12rem] px-4 py-3 rounded-xl bg-zinc-100 rounded-xl text-base outline outline-0"
       v-model="categoryId"
       @input="onChangeHandler"
     >
@@ -161,65 +162,66 @@ onMounted(async () => {
   <!-- description -->
   <InputField header="Description" class="h-56">
     <textarea
-      class="ann-description h-full px-2 py-1 border-t border-black text-base"
+      class="ann-description w-[50rem] h-full px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       placeholder="something"
       v-model="description"
       @input="onChangeHandler"
     ></textarea>
   </InputField>
 
-  <!-- publish date -->
-  <InputField header="Publish Date"
-    ><div class="flex flex-row items-center border-t border-black gap-4">
-      <input
-        class="ann-publish-date px-2 py-1 rounded text-base w-36 text-center"
-        type="date"
-        v-model="publishDate"
-        @input="onChangeHandler"
-      />
-      <input
-        class="ann-publish-time px-2 py-1 rounded text-base w-36 text-center"
-        type="time"
-        v-model="publishTime"
-        @input="onChangeHandler"
-      /></div
-  ></InputField>
+  <div class="flex flex-row gap-7">
+    <!-- publish date -->
+    <InputField header="Publish Date"
+      ><div class="flex flex-row items-center border-black gap-3">
+        <input
+          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="date"
+          v-model="publishDate"
+          @input="onChangeHandler"
+        />
+        <input
+          class="ann-publish-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="time"
+          v-model="publishTime"
+          @input="onChangeHandler"
+        /></div
+    ></InputField>
 
-  <!-- close date -->
-  <InputField header="Close Date"
-    ><div class="flex flex-row items-center gap-4 border-t border-black">
-      <input
-        class="ann-close-date px-2 py-1 rounded text-base w-36 text-center"
-        type="date"
-        v-model="closeDate"
-        @input="onChangeHandler"
-      />
-      <input
-        class="ann-close-time px-2 py-1 rounded text-base w-36 text-center"
-        type="time"
-        v-model="closeTime"
-        @input="onChangeHandler"
-      /></div
-  ></InputField>
+    <!-- close date -->
+    <InputField header="Close Date"
+      ><div class="flex flex-row items-center gap-3 border-black">
+        <input
+          class="ann-close-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="date"
+          v-model="closeDate"
+          @input="onChangeHandler"
+        />
+        <input
+          class="ann-close-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="time"
+          v-model="closeTime"
+          @input="onChangeHandler"
+        /></div
+    ></InputField>
+  </div>
 
   <!-- display -->
   <InputField header="Display">
-    <div class="flex flex-row items-center gap-2 border-t border-black">
-      <label
-        ><input
-          type="checkbox"
-          class="ann-display w-4 h-4"
-          v-model="display"
-          @input="onChangeHandler"
-        />
-        Check to show this announcement</label
-      >
-    </div>
+    <label class="flex flex-row items-center gap-2 border-black"
+      ><input
+        type="checkbox"
+        class="ann-display w-4 h-4"
+        v-model="display"
+        @input="onChangeHandler"
+      />
+      Check to show this announcement</label
+    >
   </InputField>
 
   <div class="flex flex-row w-fit gap-4">
     <!-- cancel button -->
-    <RouterLink :to="{ name: 'admin-announcement-listing' }">
+    <!--    <RouterLink :to="{ name: 'admin-announcement-listing' }">-->
+    <RouterLink :to="{ name: 'admin-announcement-detail' }">
       <SingleButton
         class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition ease-in-out hover:scale-110"
         :text="cancelText"

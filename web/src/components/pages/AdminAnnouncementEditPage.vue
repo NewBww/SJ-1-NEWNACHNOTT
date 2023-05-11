@@ -1,11 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
-import { useRoute, useRouter } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
+import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -26,22 +28,58 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-screen bg-[#f2f2f2]">
-    <div class="h-full max-w-[72rem] w-full m-auto bg-white flex flex-col">
-      <div class="flex flex-row items-center justify-center">
-        <PageTitle title="Announcement Edit" />
-      </div>
-
-      <ContentSection class="flex flex-col w-full h-full px-16 items-center">
-        <div class="ann-* flex flex-col w-full gap-6 h-full">
-          <InputForm
-            :announcement="announcementsData"
-            submit-text="Submit"
-            cancel-text="Back"
-            action="edit"
-          />
+  <div class="h-full bg-[#F4F4F4]">
+    <div class="bg-[#F4F4F4] max-w-[72rem] m-auto">
+      <!--      <div class="flex flex-row items-center justify-center">-->
+      <!--        <PageTitle title="Announcement Edit" />-->
+      <!--      </div>-->
+      <div class="grid grid-cols-1 py-12">
+        <div class="grid grid-cols-10">
+          <div class="grid content-center">
+            <RouterLink
+              class="w-fit"
+              :to="{ name: 'admin-announcement-listing' }"
+            >
+              <SingleButton
+                class="ann-button border border-black rounded-full hover:bg-gray-200 active:bg-black active:text-white"
+                text="Back"
+              >
+                <template #before-text-icon>
+                  <IconArrowBack class="w-[22px]" />
+                </template>
+              </SingleButton>
+            </RouterLink>
+          </div>
+          <div class="col-span-9">
+            <div class="flex items-center gap-7 w-fit">
+              <div class="text-4xl font-semibold tracking-wider">
+                Announcement<br />Edit
+              </div>
+            </div>
+          </div>
         </div>
-      </ContentSection>
+
+        <div class="grid grid-cols-10 pt-10 justify-items-center">
+          <div></div>
+          <ContentSection class="grid col-span-8 w-full h-full content-center">
+            <div class="ann-* flex flex-col w-full gap-6 h-full">
+              <InputForm
+                :announcement="announcementsData"
+                submit-text="Submit"
+                cancel-text="Back"
+                action="edit"
+              />
+            </div>
+          </ContentSection>
+          <div></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+</style>

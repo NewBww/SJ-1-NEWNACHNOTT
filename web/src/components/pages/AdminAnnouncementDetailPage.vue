@@ -54,9 +54,25 @@ onMounted(async () => {
             </div>
           </div>
         </div>
+
+        <div class="flex flex-row w-11/12 pt-4 pr-14">
+          <RouterLink
+            class="flex flex-row justify-end"
+            :to="{ name: 'admin-announcement-edit' }"
+          >
+            <SingleButton
+              class="w-fit text-lg bg-black text-white px-6 py-0.5 rounded-t-lg"
+              text="Edit"
+            >
+              <template #before-text-icon>
+                <IconPencilEdit />
+              </template>
+            </SingleButton>
+          </RouterLink>
+        </div>
         <!--      body-->
 
-        <div class="grid grid-cols-10 justify-items-center pt-12">
+        <div class="grid grid-cols-10 justify-items-center">
           <div></div>
           <ContentSection
             class="grid col-span-8 items-center w-full border-2 border-b-8 border-black rounded-2xl bg-white"

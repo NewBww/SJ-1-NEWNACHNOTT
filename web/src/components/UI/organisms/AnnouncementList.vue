@@ -31,15 +31,15 @@ onMounted(async () => {
 
 <template>
   <div class="w-full h-full">
-    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
+    <table class="w-full h-full table-fixed border-separate border-spacing-y-4">
       <thead class="text-center">
         <tr>
-          <th class="w-14">No.</th>
+          <th class="w-20">No.</th>
           <th class="ann-title text-left">Title</th>
           <th class="ann-category w-32">Category</th>
-          <th class="ann-publish-date w-52">Publish Date</th>
-          <th class="ann-close-date w-52">Close Date</th>
-          <th class="ann-display w-16">Display</th>
+          <th class="ann-publish-date w-44">Publish Date</th>
+          <th class="ann-close-date w-44">Close Date</th>
+          <th class="ann-display w-24">Display</th>
           <th class="w-60">Action</th>
         </tr>
       </thead>
@@ -53,7 +53,7 @@ onMounted(async () => {
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center h-full solidBoxShadow"
+          class="ann-item text-center h-full w-full"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
             {{ index + 1 }}
@@ -108,7 +108,7 @@ onMounted(async () => {
             <SingleButton
               @click="deleteId(announcement.id)"
               text="delete"
-              class="ann-button view bg-[#F0E7FE] hover:bg-[#E2D0FE] rounded-xl border border-black"
+              class="ann-button w-fit view bg-[#F0E7FE] hover:bg-[#E2D0FE] rounded-xl border border-black"
             />
           </td>
         </tr>
