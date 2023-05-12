@@ -20,4 +20,6 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
 
     @Query("SELECT a FROM Announcement a WHERE a.announcementDisplay='Y' AND (a.publishDate IS NULL OR a.publishDate<=NOW()) AND (a.closeDate IS NULL OR a.closeDate>NOW())")
     Page<Announcement> findAllByActiveMode(Pageable pageable);
+
+
 }

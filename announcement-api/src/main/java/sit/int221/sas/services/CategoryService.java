@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sit.int221.sas.entities.Category;
+import sit.int221.sas.exceptions.ItemNotFoundException;
 import sit.int221.sas.repositories.CategoryRepository;
 
 import java.util.List;
@@ -20,7 +21,15 @@ public class CategoryService {
         return repository.findByCategoryName(DEFAULT_CATEGORY_NAME);
     }
 
-    public Category findCategoryByName(String categoryName) {
-        return repository.findByCategoryName(categoryName);
+    public Category findCategoryById(Integer id) {
+        return repository.findById(id).orElseThrow(() -> new ItemNotFoundException("Category id " + id + " does not exits!!") );
+    }
+
+    public Category createCategory(Category category) {
+        if (repository.existsByCategoryName(category.getCategoryName())) {
+            return repository.findByCategoryName(category.getCategoryName());
+        }else{
+            return repository.saveAndFlush(category);
+        }
     }
 }
