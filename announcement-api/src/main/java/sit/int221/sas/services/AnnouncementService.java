@@ -23,10 +23,11 @@ public class AnnouncementService {
     private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
 
     public List<Announcement> findAll(String mode) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
         return switch (mode) {
-            case "active" -> announcementRepository.findAllByActiveMode();
-            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now());
-            default -> announcementRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+            case "active" -> announcementRepository.findAllByActiveMode(sort);
+            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now(), sort);
+            default -> announcementRepository.findAll(sort);
         };
     }
 

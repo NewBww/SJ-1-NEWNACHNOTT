@@ -1,9 +1,10 @@
 <script setup>
-import { onMounted, ref, watch, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
 import { useRouter } from 'vue-router'
 import { useAnnouncementStore } from '@/stores/AnnouncementStore'
 import { storeToRefs } from 'pinia'
+import PageNumber from '@/components/UI/molecules/PageNumber.vue'
 
 const announcementService = new AnnouncementService()
 const pageData = ref({})
@@ -67,6 +68,7 @@ watchEffect(async () => {
       </tbody>
     </table>
   </div>
+  <PageNumber :total-pages="pageData.totalPages" />
 </template>
 
 <style scoped>
@@ -74,6 +76,6 @@ td {
   padding: 0.7rem 0;
 }
 th {
-  padding: 0px 0;
+  padding: 0 0;
 }
 </style>

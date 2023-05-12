@@ -3,13 +3,17 @@ import { ref } from 'vue'
 
 export const useAnnouncementStore = defineStore('announcement', () => {
   const mode = ref('active')
-  const page = ref('0')
+  const page = ref(0)
   const category = ref(null)
 
   const toggleMode = () => {
     if (mode.value === 'active') {
-      mode.value = 'closed'
-    } else mode.value = 'active'
+      mode.value = 'close'
+      page.value = 0
+    } else {
+      mode.value = 'active'
+      page.value = 0
+    }
   }
   const isModeActive = () => mode.value === 'active'
 
