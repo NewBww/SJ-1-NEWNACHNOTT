@@ -54,7 +54,7 @@ watchEffect(async () => {
           class="ann-item text-center h-full w-full hover:bg-slate-50 cursor-pointer"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
-            {{ index + 1 }}
+            {{ pageData.page * pageData.size + index + 1 }}
           </td>
           <td class="ann-title text-left border-y border-black">
             {{ announcement.announcementTitle }}
