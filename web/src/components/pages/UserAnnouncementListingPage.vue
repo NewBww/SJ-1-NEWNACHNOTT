@@ -4,6 +4,7 @@ import TimeZone from '@/components/UI/atoms/TimeZone.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import UserAnnouncementList from '../UI/organisms/UserAnnouncementList.vue'
 import { useAnnouncementStore } from '@/stores/AnnouncementStore'
+import CategoryDropDown from '@/components/UI/atoms/CategoryDropDown.vue'
 
 const announcementStore = useAnnouncementStore()
 
@@ -24,13 +25,16 @@ const { toggleMode, isModeActive } = announcementStore
     <ContentSection>
       <div class="w-full h-12 justify-between items-center flex flex-row">
         <TimeZone />
-        <SingleButton
-          @click="toggleMode"
-          :text="
-            isModeActive() ? 'Closed Announcements' : 'Active Announcements'
-          "
-          class="ann-button transition w-fit bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 hover:-translate-y-1 hover:active:translate-x-0 hover:active:translate-y-0 ease-in-out active:bg-[#F4F4F4]"
-        />
+        <div class="flex flex-row w-full h-10 justify-end gap-6">
+          <CategoryDropDown />
+          <SingleButton
+            @click="toggleMode"
+            :text="
+              isModeActive() ? 'Closed Announcements' : 'Active Announcements'
+            "
+            class="ann-button transition w-fit bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 hover:-translate-y-1 hover:active:translate-x-0 hover:active:translate-y-0 ease-in-out active:bg-[#F4F4F4]"
+          />
+        </div>
       </div>
       <UserAnnouncementList />
     </ContentSection>

@@ -54,11 +54,12 @@ const nextPage = (next) => {
 
 <template>
   <div class="flex flex-row w-fit gap-4 py-4">
-    <button @click="nextPage(false)">Prev</button>
+    <button class="ann-page-prev" @click="nextPage(false)">Prev</button>
     <div class="flex flex-row border border-black">
       <button
         class="h-full w-12 px-4 py-2 border-r border-black"
         :class="[
+          'ann-page-' + pageNumber,
           pageNumber === page + 1 ? 'bg-black text-white' : 'hover:bg-zinc-400',
         ]"
         @click="clickPageHandler(pageNumber)"
@@ -69,6 +70,7 @@ const nextPage = (next) => {
       </button>
     </div>
     <button
+      class="ann-page-next"
       @click="nextPage(true)"
       :class="page >= totalPages - 1 ? 'bg-black' : 'bg-zinc-400'"
     >
