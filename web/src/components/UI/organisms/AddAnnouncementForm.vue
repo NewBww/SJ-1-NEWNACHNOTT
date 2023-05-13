@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import InputFill from '@/components/UI/molecules/InputField.vue'
+import InputField from '@/components/UI/molecules/InputField.vue'
 import CategoryService from '@/services/categoryService'
 import {
   Announcement,
@@ -50,17 +50,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <InputFill header="Title">
+  <InputField header="Title">
     <input
-      class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-6/12"
+      class="ann-title w-[45rem] px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       type="text"
       placeholder="something"
       v-model="title"
     />
-  </InputFill>
-  <InputFill header="Category">
+  </InputField>
+  <InputField header="Category">
     <select
-      class="px-2 py-1 rounded text-base w-48 bg-purple-100 text-purple-300"
+      class="ann-category text-center w-[12rem] px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       v-model="categoryId"
     >
       <option
@@ -70,48 +70,49 @@ onMounted(async () => {
       >
         {{ category.categoryName }}
       </option>
-    </select></InputFill
+    </select></InputField
   >
-  <InputFill header="Description" class="h-2/5">
+  <InputField header="Description" class="h-2/5">
     <textarea
-      class="h-full px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base"
+      class="ann-description w-[50rem] h-full px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       placeholder="something"
       v-model="description"
     ></textarea>
-  </InputFill>
-
-  <InputFill header="Publish Date"
-    ><div class="flex flex-row items-center gap-4">
-      <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
-        type="date"
-        v-model="publishDate"
-      />
-      <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
-        type="time"
-        v-model="publishTime"
-      /></div
-  ></InputFill>
-  <InputFill header="Close Date"
-    ><div class="flex flex-row items-center gap-4">
-      <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
-        type="date"
-        v-model="closeDate"
-      />
-      <input
-        class="px-2 py-1 rounded bg-purple-100 placeholder-purple-300 text-base w-36 text-center"
-        type="time"
-        v-model="closeTime"
-      /></div
-  ></InputFill>
-  <InputFill header="Display">
-    <div class="flex flex-row items-center gap-2">
-      <input type="checkbox" class="w-4 h-4" v-model="display" />
+  </InputField>
+  <div class="flex flex-row gap-7">
+    <InputField header="Publish Date"
+      ><div class="flex flex-row items-center border-black gap-3">
+        <input
+          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="date"
+          v-model="publishDate"
+        />
+        <input
+          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="time"
+          v-model="publishTime"
+        /></div
+    ></InputField>
+    <InputField header="Close Date"
+      ><div class="flex flex-row items-center gap-4">
+        <input
+          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="date"
+          v-model="closeDate"
+        />
+        <input
+          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          type="time"
+          v-model="closeTime"
+        /></div
+    ></InputField>
+  </div>
+  <InputField header="Display">
+    <div class="flex flex-row items-center gap-2 border-black">
+      <input type="checkbox" class="ann-display w-4 h-4" v-model="display" />
       <label>Show announcement</label>
     </div>
-  </InputFill>
+  </InputField>
 
   <div class="flex flex-row w-fit gap-4">
     <RouterLink :to="{ name: 'admin-announcement-listing' }">

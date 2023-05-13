@@ -3,6 +3,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 import ContentSection from '../UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
+import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 import { AnnouncementService } from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import { useFormatTime } from '@/composables/date'
@@ -64,9 +65,6 @@ onMounted(async () => {
               class="w-fit text-lg bg-black text-white px-6 py-0.5 rounded-t-lg"
               text="Edit"
             >
-              <template #before-text-icon>
-                <IconPencilEdit />
-              </template>
             </SingleButton>
           </RouterLink>
         </div>
