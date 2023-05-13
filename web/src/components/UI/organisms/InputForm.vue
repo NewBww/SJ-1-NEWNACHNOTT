@@ -7,7 +7,7 @@ import {
   AnnouncementService,
 } from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import {
   useMergeDateTime,
   useSplitTime,
@@ -144,7 +144,7 @@ onMounted(async () => {
   <!-- category -->
   <InputField header="Category" class="">
     <select
-      class="ann-category text-center w-[12rem] px-4 py-3 rounded-xl bg-zinc-100 rounded-xl text-base outline outline-0"
+      class="ann-category text-center w-[12rem] px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
       v-model="categoryId"
       @input="onChangeHandler"
     >

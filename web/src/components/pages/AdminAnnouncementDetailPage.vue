@@ -64,9 +64,6 @@ onMounted(async () => {
               class="w-fit text-lg bg-black text-white px-6 py-0.5 rounded-t-lg"
               text="Edit"
             >
-              <template #before-text-icon>
-                <IconPencilEdit />
-              </template>
             </SingleButton>
           </RouterLink>
         </div>
@@ -170,12 +167,3 @@ onMounted(async () => {
   <!--    </div>-->
   <!--  </div>-->
 </template>
-
-<style scoped>
-.solidBoxShadowBtnHover:hover {
-  box-shadow: 0.5rem 0 0 0;
-}
-.solidBoxShadowBtnHover:active {
-  box-shadow: inset 0.5rem 0 0 0;
-}
-</style>

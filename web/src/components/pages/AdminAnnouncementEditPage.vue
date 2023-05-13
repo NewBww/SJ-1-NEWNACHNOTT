@@ -7,6 +7,7 @@ import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 // import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
+import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -73,8 +74,4 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped>
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-</style>
+<style scoped></style>
