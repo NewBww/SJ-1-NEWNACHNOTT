@@ -23,6 +23,13 @@ onMounted(async () => {
     await router.push({ name: 'user-announcement-listing' })
   }
 })
+
+const checkClosedDate = () => {
+  // console.log(new Date(announcementsData.value.closeDate) <= new Date())
+  return announcementsData.value.closeDate === null
+    ? false
+    : new Date(announcementsData.value.closeDate) <= new Date()
+}
 </script>
 
 <template>
@@ -56,41 +63,43 @@ onMounted(async () => {
         </div>
         <!--      body-->
 
-        <div class="grid grid-cols-10 justify-items-center pt-12">
-          <div></div>
-          <ContentSection
-            class="grid col-span-8 items-center w-full border-2 border-black solidBoxShadow rounded-2xl bg-white"
+        <ContentSection
+          class="-center grid grid-cols-[1fr_auto] w-full mt-12 border-2 border-black solidBoxShadow rounded-2xl bg-white"
+        >
+          <div
+            class="w-full flex flex-row justify-between border-b border-r border-black"
           >
-            <div class="grid grid-cols-3 w-full border-b border-black">
-              <span
-                class="ann-title grid grid-col-span-2 content-center px-6 py-5 text-2xl font-medium"
-                >{{ announcementsData.announcementTitle }}
-              </span>
-              <div
-                class="grid grid-cols-2 items-center justify-items-end content-center py-5 text-lg text-red-600 font-semibold border-r border-black"
-              >
+            <h2
+              class="ann-title w-fit content-center px-6 py-5 text-2xl font-medium"
+            >
+              {{ announcementsData.announcementTitle }}
+            </h2>
+
+            <div
+              v-if="checkClosedDate()"
+              class="w-fit items-center justify-items-end content-center px-6 py-5 text-lg text-red-600 font-semibold"
+            >
+              <p class="ann-close-date justify-items-center">
                 Closed on:
-                <!--                  class="grid grid-cols-1  text-xl py-5"-->
-                <span
-                  class="ann-close-date grid grid-cols-1 text-black justify-items-center"
-                >
+                <span class="text-black">
                   {{ useFormatTime(announcementsData.closeDate) }}</span
                 >
-              </div>
-
-              <span
-                class="ann-category grid grid-col-span-1 content-center justify-items-center px-4 py-5 text-2xl font-medium"
-              >
-                {{ announcementsData.announcementCategory }}
-              </span>
+              </p>
             </div>
-            <div
-              class="ann-description grid justify-items-center content-center text-base px-20 py-12"
-            >
-              <span>{{ announcementsData.announcementDescription }}</span>
-            </div>
-          </ContentSection>
-        </div>
+          </div>
+          <div
+            class="ann-category w-64 border-b border-black content-center text-center py-5 text-2xl font-medium"
+          >
+            <p>
+              {{ announcementsData.announcementCategory }}
+            </p>
+          </div>
+          <div
+            class="ann-description col-span-2 justify-items-center content-center text-base px-20 py-12"
+          >
+            <p>{{ announcementsData.announcementDescription }}</p>
+          </div>
+        </ContentSection>
       </div>
     </div>
   </div>

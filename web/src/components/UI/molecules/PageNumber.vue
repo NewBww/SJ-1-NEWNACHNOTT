@@ -53,7 +53,7 @@ const nextPage = (next) => {
 </script>
 
 <template>
-  <div v-if="totalPages > 0" class="flex flex-row w-fit gap-4 py-4">
+  <div v-if="totalPages > 1" class="flex flex-row w-fit gap-4 py-4">
     <button class="ann-page-prev" @click="nextPage(false)">Prev</button>
     <div class="flex flex-row border border-black">
       <button
