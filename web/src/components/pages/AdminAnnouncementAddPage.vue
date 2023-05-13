@@ -5,7 +5,7 @@ import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
-import { RouterLink } from 'vue-router'
+// import { RouterLink } from 'vue-router'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
 </script>
 
