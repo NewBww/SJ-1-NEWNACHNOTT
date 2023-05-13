@@ -20,13 +20,13 @@ public class AnnouncementService {
     private AnnouncementRepository announcementRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป";
+    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป"; //fixed
 
     public List<Announcement> findAll(String mode) {
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
         return switch (mode) {
             case "active" -> announcementRepository.findAllByActiveMode(sort);
-            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now(), sort);
+            case "close" -> announcementRepository.findAllByCloseMode(sort);
             default -> announcementRepository.findAll(sort);
         };
     }
@@ -35,12 +35,12 @@ public class AnnouncementService {
         return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
     }
 
-    public Page<Announcement> findPage(String mode, int page, int size) {
+    public Page<Announcement> findPage(String mode, int page, int size, Integer category) {
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
         PageRequest pageRequest = PageRequest.of(page, size, sort);
         return switch (mode) {
-            case "active" -> announcementRepository.findAllByActiveMode(pageRequest);
-            case "close" -> announcementRepository.findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display.Y, ZonedDateTime.now(), pageRequest);
+            case "active" -> announcementRepository.findAllByActiveMode(pageRequest, category);
+            case "close" -> announcementRepository.findAllByCloseMode(pageRequest, category);
             default -> announcementRepository.findAll(pageRequest);
         };
     }

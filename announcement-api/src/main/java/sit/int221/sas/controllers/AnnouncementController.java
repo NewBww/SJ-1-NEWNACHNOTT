@@ -50,9 +50,10 @@ public class AnnouncementController {
     public ResponseEntity<PageDTO<AnnouncementListItemDTO>> getAnnouncementPage(
             @RequestParam(defaultValue = "admin") String mode,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(required = false) Integer category
     ) {
-        Page<Announcement> announcementPage = announcementService.findPage(mode, page, size);
+        Page<Announcement> announcementPage = announcementService.findPage(mode, page, size, category);
         PageDTO<AnnouncementListItemDTO> announcementPageDTO = listMapper.toPageDTO(announcementPage, AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
