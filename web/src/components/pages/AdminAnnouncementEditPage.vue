@@ -1,13 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
-import { RouterLink, useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
-import PageTitle from '@/components/UI/atoms/PageTitle.vue'
+// import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -36,19 +35,15 @@ onMounted(async () => {
       <div class="grid grid-cols-1 py-12">
         <div class="grid grid-cols-10">
           <div class="grid content-center">
-            <RouterLink
-              class="w-fit"
-              :to="{ name: 'admin-announcement-listing' }"
+            <SingleButton
+              @click="$router.back()"
+              class="ann-button border border-black rounded-full hover:bg-gray-200 active:bg-black active:text-white"
+              text="Back"
             >
-              <SingleButton
-                class="ann-button border border-black rounded-full hover:bg-gray-200 active:bg-black active:text-white"
-                text="Back"
-              >
-                <template #before-text-icon>
-                  <IconArrowBack class="w-[22px]" />
-                </template>
-              </SingleButton>
-            </RouterLink>
+              <template #before-text-icon>
+                <IconArrowBack class="w-[22px]" />
+              </template>
+            </SingleButton>
           </div>
           <div class="col-span-9">
             <div class="flex items-center gap-7 w-fit">

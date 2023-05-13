@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import { useAnnouncementStore } from '@/stores/AnnouncementStore'
 import { storeToRefs } from 'pinia'
 import PageNumber from '@/components/UI/molecules/PageNumber.vue'
+import { useFormatTime } from '../../../composables/date'
 
 const announcementService = new AnnouncementService()
 const pageData = ref({})
@@ -36,8 +37,9 @@ watchEffect(async () => {
       <thead class="text-center">
         <tr>
           <th class="w-20">No.</th>
-          <th class="ann-title text-left">Title</th>
-          <th class="ann-category w-48">Category</th>
+          <th class="text-left">Title</th>
+          <th>Closed Date</th>
+          <th class="w-48">Category</th>
         </tr>
       </thead>
       <tbody v-if="pageData?.content?.length === 0">
@@ -58,6 +60,11 @@ watchEffect(async () => {
           </td>
           <td class="ann-title text-left border-y border-black">
             {{ announcement.announcementTitle }}
+          </td>
+          <td
+            class="ann-close-date justify-center items-center border-y border-black"
+          >
+            {{ useFormatTime(announcement.closeDate) }}
           </td>
           <td
             class="ann-category justify-center items-center border-y border-black border-r rounded-r-2xl"

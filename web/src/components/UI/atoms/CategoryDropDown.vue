@@ -26,7 +26,7 @@ watchEffect(async () => {
     <select
       class="ann-category-filter text-center w-32 bg-zinc-100 rounded-md outline outline-0"
       v-model="inputCategoryId"
-      @input="setCategory(inputCategoryId)"
+      @change="setCategory(inputCategoryId)"
     >
       <option :value="null">ทั้งหมด</option>
       <option
@@ -37,6 +37,5 @@ watchEffect(async () => {
         {{ categoryFilter.categoryName }}
       </option>
     </select>
-  </div>
-  {{ inputCategoryId }}
+  </div> 
 </template>

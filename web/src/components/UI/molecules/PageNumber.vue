@@ -15,13 +15,13 @@ const props = defineProps({
 
 const pageArr = ref([])
 const maxPage = ref(0)
+const MAX_PAGE = 10
 watchEffect(() => {
-  if (props.totalPages < maxPage.value) {
+  if (props.totalPages < MAX_PAGE) {
     maxPage.value = props.totalPages
   } else {
     maxPage.value = 10
   }
-
   pageArr.value = [...Array(maxPage.value).keys()].map((i) => i + 1)
 })
 
@@ -53,7 +53,7 @@ const nextPage = (next) => {
 </script>
 
 <template>
-  <div class="flex flex-row w-fit gap-4 py-4">
+  <div v-if="totalPages > 0" class="flex flex-row w-fit gap-4 py-4">
     <button class="ann-page-prev" @click="nextPage(false)">Prev</button>
     <div class="flex flex-row border border-black">
       <button

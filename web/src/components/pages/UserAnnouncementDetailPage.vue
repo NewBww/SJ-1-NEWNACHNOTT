@@ -6,6 +6,7 @@ import { AnnouncementService } from '@/services/announcementService'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
+import { useFormatTime } from '@/composables/date'
 
 const route = useRoute()
 const router = useRouter()
@@ -60,23 +61,35 @@ onMounted(async () => {
           <ContentSection
             class="grid col-span-8 items-center w-full border-2 border-black solidBoxShadow rounded-2xl bg-white"
           >
-            <div class="grid grid-cols-4 w-full border-b border-black">
+            <div class="grid grid-cols-3 w-full border-b border-black">
               <span
-                class="grid col-span-3 content-center px-6 py-5 text-2xl font-medium border-r border-black"
-                >{{ announcementsData.announcementTitle }}</span
+                class="ann-title grid grid-col-span-2 content-center px-6 py-5 text-2xl font-medium"
+                >{{ announcementsData.announcementTitle }}
+              </span>
+              <div
+                class="grid grid-cols-2 items-center justify-items-end content-center py-5 text-lg text-red-600 font-semibold border-r border-black"
               >
+                Closed on:
+                <!--                  class="grid grid-cols-1  text-xl py-5"-->
+                <span
+                  class="ann-close-date grid grid-cols-1 text-black justify-items-center"
+                >
+                  {{ useFormatTime(announcementsData.closeDate) }}</span
+                >
+              </div>
+
               <span
-                class="grid grid-cols-1 justify-items-center content-center text-xl py-5"
-                >{{ announcementsData.announcementCategory }}</span
+                class="ann-category grid grid-col-span-1 content-center justify-items-center px-4 py-5 text-2xl font-medium"
               >
+                {{ announcementsData.announcementCategory }}
+              </span>
             </div>
             <div
-              class="grid justify-items-center content-center text-justify px-20 py-12"
+              class="ann-description grid justify-items-center content-center text-base px-20 py-12"
             >
               <span>{{ announcementsData.announcementDescription }}</span>
             </div>
           </ContentSection>
-          <div></div>
         </div>
       </div>
     </div>

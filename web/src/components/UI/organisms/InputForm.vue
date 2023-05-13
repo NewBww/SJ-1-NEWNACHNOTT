@@ -100,10 +100,9 @@ const onChangeHandler = () => {
 watchEffect(async () => {
   if (props.announcement?.id) {
     title.value = props.announcement.announcementTitle
-    categoryId.value = (
-      await categoryService.getCategoryByName(
-        props.announcement.announcementCategory
-      )
+    categoryId.value = (await categoryService.getAllCategories()).find(
+      (categoryName) =>
+        categoryName.categoryName === props.announcement?.announcementCategory
     ).id
     description.value = props.announcement.announcementDescription
     display.value = new Display(
@@ -221,12 +220,11 @@ onMounted(async () => {
   <div class="flex flex-row w-fit gap-4">
     <!-- cancel button -->
     <!--    <RouterLink :to="{ name: 'admin-announcement-listing' }">-->
-    <RouterLink :to="{ name: 'admin-announcement-detail' }">
-      <SingleButton
-        class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition ease-in-out hover:scale-110"
-        :text="cancelText"
-      />
-    </RouterLink>
+    <SingleButton
+      @click="$router.back()"
+      class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition ease-in-out hover:scale-110"
+      :text="cancelText"
+    />
 
     <!-- submit button -->
     <SingleButton

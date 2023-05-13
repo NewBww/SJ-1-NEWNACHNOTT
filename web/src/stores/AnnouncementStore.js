@@ -18,11 +18,8 @@ export const useAnnouncementStore = defineStore('announcement', () => {
   const isModeActive = () => mode.value === 'active'
 
   const setCategory = (id) => {
-    console.log(id)
-    if (category.value) {
       category.value = id
       page.value = 0
-    }
   }
   return { mode, page, category, toggleMode, isModeActive, setCategory }
 })
