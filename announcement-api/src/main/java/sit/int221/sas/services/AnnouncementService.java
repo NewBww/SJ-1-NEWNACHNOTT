@@ -41,7 +41,7 @@ public class AnnouncementService {
         return switch (mode) {
             case "active" -> announcementRepository.findAllByActiveMode(pageRequest, category);
             case "close" -> announcementRepository.findAllByCloseMode(pageRequest, category);
-            default -> announcementRepository.findAll(pageRequest);
+            default -> announcementRepository.findAllByAdminMode(pageRequest, category);
         };
     }
 
