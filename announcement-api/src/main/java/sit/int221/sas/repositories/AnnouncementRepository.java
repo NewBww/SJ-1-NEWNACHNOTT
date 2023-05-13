@@ -13,11 +13,6 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface AnnouncementRepository extends JpaRepository<Announcement, Integer> {
-    List<Announcement> findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display display, ZonedDateTime nowDate, Sort sort);
-    Page<Announcement> findAllByAnnouncementDisplayAndCloseDateIsLessThanEqual(Display display, ZonedDateTime nowDate, Pageable pageable);
-
-
-
     @Query("SELECT a FROM Announcement a WHERE a.announcementDisplay='Y' AND (a.publishDate IS NULL OR a.publishDate<=NOW()) AND (a.closeDate IS NULL OR a.closeDate>NOW())")
     List<Announcement> findAllByActiveMode(Sort sort);
 
