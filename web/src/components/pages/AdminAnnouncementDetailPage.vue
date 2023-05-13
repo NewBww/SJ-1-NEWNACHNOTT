@@ -3,7 +3,6 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 import ContentSection from '../UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
-import IconPencilEdit from '@/components/UI/atoms/IconPencilEdit.vue'
 import { AnnouncementService } from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import { useFormatTime } from '@/composables/date'
@@ -168,12 +167,3 @@ onMounted(async () => {
   <!--    </div>-->
   <!--  </div>-->
 </template>
-
-<style scoped>
-.solidBoxShadowBtnHover:hover {
-  box-shadow: 0.5rem 0 0 0;
-}
-.solidBoxShadowBtnHover:active {
-  box-shadow: inset 0.5rem 0 0 0;
-}
-</style>

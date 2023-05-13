@@ -7,7 +7,7 @@ import {
   AnnouncementService,
 } from '@/services/announcementService'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import {
   useMergeDateTime,
   useSplitTime,
