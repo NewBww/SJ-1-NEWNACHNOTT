@@ -11,6 +11,14 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  first: {
+    type: Boolean,
+    default: true,
+  },
+  last: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const pageArr = ref([])
@@ -54,16 +62,23 @@ const nextPage = (next) => {
 
 <template>
   <div v-if="totalPages > 1" class="flex flex-row w-fit gap-4 py-4">
-    <button class="ann-page-prev" @click="nextPage(false)">Prev</button>
+    <button
+      class="ann-page-prev"
+      :class="first ? 'bg-black' : 'bg-zinc-400'"
+      :disabled="first"
+      @click="nextPage(false)"
+    >
+      Prev
+    </button>
     <div class="flex flex-row border border-black">
       <button
         class="h-full w-12 px-4 py-2 border-r border-black"
         :class="[
-          'ann-page-' + pageNumber,
+          'ann-page-' + index,
           pageNumber === page + 1 ? 'bg-black text-white' : 'hover:bg-zinc-400',
         ]"
         @click="clickPageHandler(pageNumber)"
-        v-for="pageNumber in pageArr"
+        v-for="(pageNumber, index) in pageArr"
         :key="pageNumber"
       >
         {{ pageNumber }}
@@ -72,7 +87,8 @@ const nextPage = (next) => {
     <button
       class="ann-page-next"
       @click="nextPage(true)"
-      :class="page >= totalPages - 1 ? 'bg-black' : 'bg-zinc-400'"
+      :disabled="last"
+      :class="last ? 'bg-black' : 'bg-zinc-400'"
     >
       Next
     </button>

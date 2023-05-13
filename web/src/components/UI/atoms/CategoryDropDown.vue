@@ -20,7 +20,7 @@ watchEffect(async () => {
 
 <template>
   <div
-    class="ann-category-filter w-fit py-2 px-3 text-base border-black border rounded-md tracking-wider bg-white items-center"
+    class="w-fit py-2 px-3 text-base border-black border rounded-md tracking-wider bg-white items-center"
   >
     Choose category:
     <select
@@ -37,5 +37,5 @@ watchEffect(async () => {
         {{ categoryFilter.categoryName }}
       </option>
     </select>
-  </div> 
+  </div>
 </template>

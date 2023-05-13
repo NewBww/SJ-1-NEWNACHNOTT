@@ -76,7 +76,11 @@ watchEffect(async () => {
       </tbody>
     </table>
   </div>
-  <PageNumber :total-pages="pageData.totalPages" />
+  <PageNumber
+    :total-pages="pageData.totalPages"
+    :first="pageData.first"
+    :last="pageData.last"
+  />
 </template>
 
 <style scoped>
