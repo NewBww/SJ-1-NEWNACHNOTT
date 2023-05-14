@@ -11,8 +11,8 @@
     <groupId>sit.int221</groupId>
     <artifactId>SJ-1-NEWNACHNOTT-BACKEND</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SJ-1-NEWNACHNOTT-BACKEND</name>
-    <description>SJ-1-NEWNACHNOTT-BACKEND</description>
+    <name>announcement-api</name>
+    <description>announcement-api</description>
     <properties>
         <java.version>20</java.version>
     </properties>
@@ -71,6 +71,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <version>3.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-cdi</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-modules</artifactId>
+            <version>8.0.0.Final</version>
+            <classifier>wildfly-27.0.0.Alpha4-patch</classifier>
+            <type>zip</type>
         </dependency>
     </dependencies>
 

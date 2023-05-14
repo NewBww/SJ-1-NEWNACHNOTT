@@ -1,5 +1,8 @@
 package sit.int221.sas.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import sit.int221.sas.entities.Category;
@@ -10,7 +13,13 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @Data
 public class RequestAnnouncementDTO {
+    @NotNull
+    @NotBlank
+    @Size(min = 1, max = 200, message = "size must be between 1 and 200")
     private String announcementTitle;
+    @NotNull
+    @NotBlank
+    @Size(min = 1, max = 10000, message = "size must be between 1 and 10000")
     private String announcementDescription;
     private Category announcementCategory;
     private ZonedDateTime publishDate;
