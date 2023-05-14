@@ -25,7 +25,7 @@ onMounted(async () => {
 })
 
 const checkClosedDate = () => {
-  // console.log(new Date(announcementsData.value.closeDate) <= new Date())
+  console.log(new Date(announcementsData.value.closeDate) <= new Date())
   return announcementsData.value.closeDate === null
     ? false
     : new Date(announcementsData.value.closeDate) <= new Date()

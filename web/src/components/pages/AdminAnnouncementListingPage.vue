@@ -27,7 +27,6 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
           />
         </RouterLink>
       </div>
-
       <AnnouncementList />
     </ContentSection>
   </div>

@@ -132,15 +132,78 @@ class Announcement {
     categoryId,
     display = 'N'
   ) {
-    this.announcementTitle = title
-    this.announcementDescription = description
-    this.publishDate = publishDate
-    this.closeDate = closeDate
-    this.announcementDisplay =
-      display === 'N' || display === 'Y'
-        ? display
-        : Announcement.DEFAULT_DISPLAY
-    this.categoryId = categoryId
+    // title
+    if (title?.length !== 0 && title?.length <= 200) {
+      this.announcementTitle = title
+    } else {
+      this.addValidationError(
+        'announcementTitle',
+        'size must be between 1 and 200'
+      )
+    }
+
+    // description
+    if (description?.length !== 0 && description?.length <= 10000) {
+      this.announcementDescription = description
+    } else {
+      this.addValidationError(
+        'announcementDescription',
+        'size must be between 1 and 10000'
+      )
+    }
+
+    // publish date
+    if (publishDate === null) {
+      this.publishDate = publishDate
+    } else if (new Date(publishDate) < new Date()) {
+      this.addValidationError(
+        'publishDate',
+        'must be a date in the present or in the future'
+      )
+    } else {
+      this.publishDate = publishDate
+    }
+
+    // close date
+    if (closeDate === null) {
+      this.closeDate = closeDate
+    } else if (new Date(closeDate) < new Date()) {
+      this.addValidationError('closeDate', 'must be a future date')
+    } else if (new Date(closeDate) < new Date(publishDate)) {
+      this.addValidationError('closeDate', 'must be later than publish date')
+    } else {
+      this.closeDate = closeDate
+    }
+
+    // display
+    if (display !== 'N' && display !== 'Y') {
+      this.addValidationError('announcementDisplay', "must be 'Y' or 'N'")
+    } else {
+      this.announcementDisplay =
+        display === 'N' || display === 'Y'
+          ? display
+          : Announcement.DEFAULT_DISPLAY
+    }
+
+    // category
+    if (categoryId?.length !== null) {
+      this.categoryId = categoryId
+    } else {
+      this.addValidationError('categoryId', 'can not be null')
+    }
+
+    // error alert
+    if (this.errors !== undefined) {
+      alert('There is an error:' + JSON.stringify(this.errors))
+    }
+  }
+  addValidationError(field, message) {
+    if (this.errors === undefined) {
+      this.errors = []
+      this.errors.push({ field: field, errorMessage: message })
+    } else {
+      this.errors.push({ field: field, errorMessage: message })
+    }
   }
 }
 export { Announcement, AnnouncementService }

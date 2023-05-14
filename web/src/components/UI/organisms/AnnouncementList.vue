@@ -6,7 +6,7 @@ import { AnnouncementService } from '@/services/announcementService.js'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 
 const announcementService = new AnnouncementService()
-const announcementsData = ref({})
+const announcementsData = ref([])
 
 const deleteId = async (id) => {
   if (confirm('Do you want to delete?')) {
@@ -43,7 +43,7 @@ onMounted(async () => {
           <th class="w-60">Action</th>
         </tr>
       </thead>
-      <tbody v-if="announcementsData.length === 0">
+      <tbody v-if="announcementsData?.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>

@@ -15,7 +15,7 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
       <!--      <div class="flex flex-row items-center justify-center">-->
       <!--        <PageTitle title="Announcement Edit" />-->
       <!--      </div>-->
-      <div class="grid grid-cols-1 py-12">
+      <div class="grid grid-cols-1 pt-9">
         <div class="grid grid-cols-10">
           <div class="grid content-center">
             <RouterLink

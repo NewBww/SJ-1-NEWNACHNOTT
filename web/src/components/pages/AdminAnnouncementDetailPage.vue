@@ -61,7 +61,7 @@ onMounted(async () => {
             :to="{ name: 'admin-announcement-edit' }"
           >
             <SingleButton
-              class="w-fit text-lg bg-black text-white px-6 py-0.5 rounded-t-lg"
+              class="ann-button w-fit text-lg bg-black text-white px-6 py-0.5 rounded-t-lg"
               text="Edit"
             >
             </SingleButton>
@@ -76,17 +76,17 @@ onMounted(async () => {
           >
             <div class="grid grid-cols-4 w-full border-b border-black">
               <div
-                class="grid col-span-3 content-center px-6 py-5 text-2xl font-medium border-r border-black"
+                class="ann-title grid col-span-3 content-center px-6 py-5 text-2xl font-medium border-r border-black"
               >
                 {{ announcementsData.announcementTitle }}
               </div>
               <span
-                class="grid grid-cols-1 justify-items-center content-center text-xl py-5"
+                class="ann-category grid grid-cols-1 justify-items-center content-center text-xl py-5"
                 >{{ announcementsData.announcementCategory }}</span
               >
             </div>
             <div
-              class="grid justify-items-center content-center text-justify px-20 py-12"
+              class="ann-description grid justify-items-center content-center text-justify px-20 py-12"
             >
               {{ announcementsData.announcementDescription }}
             </div>

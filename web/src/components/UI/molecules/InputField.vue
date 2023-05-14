@@ -8,12 +8,11 @@ defineProps({
 
 <template>
   <div
-    class="flex flex-row w-fit border border-black rounded-xl overflow-hidden"
+    class="flex flex-row w-full justify-start border border-black rounded-xl overflow-hidden"
   >
-    <Header2
-      class="flex flex-row bg-white justify-center w-32 rounded-l-xl"
-      :header="header"
-    />
-    <div class="p-3 bg-white w-fit"><slot></slot></div>
+    <Header2 class="bg-white justify-center rounded-l-xl" :header="header" />
+    <div class="p-3 bg-white w-full">
+      <slot />
+    </div>
   </div>
 </template>
