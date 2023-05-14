@@ -124,6 +124,7 @@ class AnnouncementService {
 }
 class Announcement {
   static DEFAULT_DISPLAY = 'N'
+
   constructor(
     title,
     description,
@@ -206,4 +207,5 @@ class Announcement {
     }
   }
 }
+
 export { Announcement, AnnouncementService }
