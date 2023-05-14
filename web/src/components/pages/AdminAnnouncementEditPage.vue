@@ -38,7 +38,7 @@ onMounted(async () => {
           <div class="grid content-center">
             <SingleButton
               @click="$router.back()"
-              class="ann-button border border-black rounded-full hover:bg-gray-200 active:bg-black active:text-white"
+              class="ann-button w-fit border border-black rounded-full hover:bg-gray-200 active:bg-black active:text-white"
               text="Back"
             >
               <template #before-text-icon>
