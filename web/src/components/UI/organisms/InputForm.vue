@@ -90,6 +90,17 @@ const onChangeHandler = () => {
   changed.value = true
 }
 
+const setDefaultTime = (publish = true) => {
+  if (publish) {
+    if (publishTime.value === null) {
+      publishTime.value = '06:00'
+    }
+  } else {
+    if (closeTime.value === null) {
+      closeTime.value = '18:00'
+    }
+  }
+}
 watchEffect(async () => {
   if (props.announcement?.id) {
     title.value = props.announcement.announcementTitle
@@ -170,12 +181,15 @@ onMounted(async () => {
           class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
           type="date"
           v-model="publishDate"
+          :min="useSplitDate(new Date())"
           @input="onChangeHandler"
+          @change="setDefaultTime(true)"
         />
         <input
           class="ann-publish-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
           type="time"
           v-model="publishTime"
+          :disabled="publishDate === null"
           @input="onChangeHandler"
         />
       </div>
@@ -188,12 +202,15 @@ onMounted(async () => {
           class="ann-close-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
           type="date"
           v-model="closeDate"
+          :min="useSplitDate(new Date())"
           @input="onChangeHandler"
+          @change="setDefaultTime(false)"
         />
         <input
           class="ann-close-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
           type="time"
           v-model="closeTime"
+          :disabled="closeDate === null"
           @input="onChangeHandler"
         />
       </div>
