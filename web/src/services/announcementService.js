@@ -195,7 +195,16 @@ class Announcement {
 
     // error alert
     if (this.errors !== undefined) {
-      alert('There is an error:' + JSON.stringify(this.errors))
+      alert(
+        'There is an error: ' +
+          this.errors
+            .map(({ field, errorMessage }) => field + ' ' + errorMessage)
+            .join(' and ')
+            .replaceAll('announcement', '')
+            .replace('publishDate', 'Publish date')
+            .replace('closeDate', 'Close date')
+      )
+      // JSON.stringify(this.errors))
     }
   }
   addValidationError(field, message) {
