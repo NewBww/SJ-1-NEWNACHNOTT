@@ -1,0 +1,3550 @@
+{
+	"info": {
+		"_postman_id": "9b16faec-3cf1-41d8-a63b-92e1a3045499",
+		"name": "SAS-Test-Sprint-3-v2.3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7314284"
+	},
+	"item": [
+		{
+			"name": "Prepare-Data-PBI-8-9",
+			"item": [
+				{
+					"name": "(PBI8-9) Title 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"ids\",\"[]\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 1\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 1\",\n        \"publishDate\": \"2023-04-30T23:00:00Z\",\n        \"closeDate\": \"2023-12-31T11:00:00Z\",\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 2\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 2\",\n        \"publishDate\": \"2023-05-31T23:00:00Z\",\n        \"closeDate\": \"2023-12-31T11:00:00Z\",\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 3\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 3\",\n        \"publishDate\": null,\n        \"closeDate\": \"2023-12-31T11:00:00Z\",\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 4\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 4\",\n        \"publishDate\": null,\n        \"closeDate\": \"2023-05-01T11:00:00Z\",\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 5\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 5\",\n        \"publishDate\": \"2023-04-30T23:00:00Z\",\n        \"closeDate\": \"2023-05-02T11:00:00Z\",\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 6\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 6\",\n        \"publishDate\": \"2023-04-30T23:00:00Z\",\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 7\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 7\",\n        \"publishDate\": \"2023-05-31T23:00:00Z\",\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 8\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 8\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\",\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(PBI8-9) Title 9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"console.log(s_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"(PBI8-9) Title 9\",\n        \"announcementDescription\": \"(PBI8-9) Descripition 9\",\n        \"publishDate\": \"2023-04-30T23:00:00Z\",\n        \"closeDate\": \"2023-12-31T11:00:00Z\",\n        \"announcementDisplay\": \"N\",\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-8-USER-VIEW-ANNOUNCEMENT",
+			"item": [
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-1-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test announcement mode = admin (default)\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Expect length of announcements : 9\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"array\") ;",
+									"    pm.expect(jsonData.length).to.equal(9) ;",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-1-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test announcement mode = active\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Expect length of announcements : 4\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"array\") ;",
+									"    pm.expect(jsonData.length).to.equal(4) ;",
+									"})",
+									"",
+									"const ann1 = jsonData[0] ;",
+									"pm.test(\"Expect row 1 is (PBI8-9) Title 8 -> ทุนการศึกษา\",()=>{",
+									"    pm.expect(ann1.announcementTitle).to.equal(\"(PBI8-9) Title 8\") ;",
+									"    pm.expect(ann1.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"",
+									"const ann3 = jsonData[3] ;",
+									"pm.test(\"Expect row 4 is (PBI8-9) Title 1 -> ทั่วไป\",()=>{",
+									"    pm.expect(ann3.announcementTitle).to.equal(\"(PBI8-9) Title 1\") ;",
+									"    pm.expect(ann3.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements?mode=active",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-9-USER-ANNOUNCEMENT-CLOSE",
+			"item": [
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-CLOSE-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test announcement mode = close\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const jsonData = pm.response.json() ;",
+									"pm.test(\"Expect length of announcements : 2\",()=>{",
+									"    pm.expect(jsonData).to.be.an(\"array\") ;",
+									"    pm.expect(jsonData.length).to.equal(2) ;",
+									"})",
+									"",
+									"const ann1 = jsonData[0] ;",
+									"pm.test(\"Expect row 1 is (PBI8-9) Title 5 -> ทุนการศึกษา\",()=>{",
+									"    pm.expect(ann1.announcementTitle).to.equal(\"(PBI8-9) Title 5\") ;",
+									"    pm.expect(ann1.closeDate).to.equal(\"2023-05-02T11:00:00Z\") ;",
+									"    pm.expect(ann1.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"",
+									"const ann2 = jsonData[1] ;",
+									"pm.test(\"Expect row 2 is (PBI8-9) Title 4 -> ทั่วไป\",()=>{",
+									"    pm.expect(ann2.announcementTitle).to.equal(\"(PBI8-9) Title 4\") ;",
+									"    pm.expect(ann2.closeDate).to.equal(\"2023-05-01T11:00:00Z\") ;",
+									"    pm.expect(ann2.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements?mode=close",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "close"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clear-Data-PBI-8-9",
+			"item": [
+				{
+					"name": "Delete Announcement",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let aids = JSON.parse(ids)",
+									"console.log(aids)",
+									"let id = aids.shift()",
+									"pm.collectionVariables.set(\"ids\",JSON.stringify(aids))",
+									"pm.collectionVariables.set('id',id)",
+									"console.log('delete '+id)",
+									"if(aids.length>0){",
+									"    postman.setNextRequest(\"Delete Announcement\")",
+									"} else {",
+									"    postman.setNextRequest(null) ",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prepare-Data-PBI-10-11",
+			"item": [
+				{
+					"name": "Add Announcement Page",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let pid = Number(pm.collectionVariables.get(\"pid\"))",
+									"pm.variables.set('title','(PBI10) Title '+pid)",
+									"pm.variables.set('description','(PBI10) Description '+pid)",
+									"pm.variables.set('display','Y')",
+									"if(pid<15 || (pid>30 && pid<46)){",
+									"    pm.variables.set('publishDate',\"2023-04-30T23:00:00Z\")",
+									"} else {",
+									"    pm.variables.set('publishDate',\"\")",
+									"}",
+									"if(pid<31){",
+									"    pm.variables.set(\"closeDate\",\"2023-12-31T11:00:00Z\")",
+									"    pm.variables.set(\"category\",1)",
+									"}else if (pid<61){",
+									"    pm.variables.set(\"closeDate\",\"\")",
+									"    pm.variables.set(\"category\",2)",
+									"} else {",
+									"    pm.variables.set(\"closeDate\",\"2023-05-01T11:00:00Z\")",
+									"    pm.variables.set(\"category\",3)    ",
+									"}",
+									"if(pid==62){",
+									"    pm.variables.set('publishDate',\"2023-04-30T23:00:00Z\")",
+									"}",
+									"if(pid==63){",
+									"    pm.variables.set('display','N')",
+									"}",
+									"",
+									"if(pid<63){",
+									"    postman.setNextRequest(\"Add Announcement Page\")",
+									"} else {",
+									"    postman.setNextRequest(null) ",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let pid = pm.collectionVariables.get(\"pid\")",
+									"let count = Number(pid)+1",
+									"if(count==15){",
+									"    count = 16",
+									"}",
+									"pm.collectionVariables.set(\"pid\",count)",
+									"",
+									"var data = pm.response.json()",
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let a_ids = JSON.parse(ids)",
+									"a_ids.push(data.id)",
+									"let s_ids = JSON.stringify(a_ids)",
+									"pm.collectionVariables.set(\"ids\",s_ids)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"{{title}}\",\n        \"announcementDescription\": \"{{description}}\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"{{display}}\",\n        \"categoryId\": {{category}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-10-USER-VIEW-ANNOUNCEMENT-PAGE",
+			"item": [
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-PAGE-1-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = active]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: false, first: true, totalPages: 12, totalElements: 60, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.false ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(12) ;",
+									"    pm.expect(data.totalElements).to.equal(60) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 60\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 60\") ;",
+									"    pm.expect(row1.publishDate).to.be.null ;",
+									"    pm.expect(row1.closeDate).to.be.null ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-PAGE-1-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = active]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: false, first: true, totalPages: 12, totalElements: 60, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.false ;",
+									"    pm.expect(data.first).to.be.false ;",
+									"    pm.expect(data.totalPages).to.equal(12) ;",
+									"    pm.expect(data.totalElements).to.equal(60) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(1) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 55\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 55\") ;",
+									"    pm.expect(row1.publishDate).to.be.null ;",
+									"    pm.expect(row1.closeDate).to.be.null ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active&page=1&size=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-PAGE-2-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = close]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: true, first: true, totalPages: 1, totalElements: 2, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.true ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(1) ;",
+									"    pm.expect(data.totalElements).to.equal(2) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 62\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 62\") ;",
+									"    pm.expect(row1.publishDate).to.equal(\"2023-04-30T23:00:00Z\") ;",
+									"    pm.expect(row1.closeDate).to.be.equal(\"2023-05-01T11:00:00Z\") ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"หางาน\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=close&page=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "close"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-PAGE-2-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = close]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: true, first: true, totalPages: 1, totalElements: 2, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.true ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(1) ;",
+									"    pm.expect(data.totalElements).to.equal(2) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 62\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 62\") ;",
+									"    pm.expect(row1.publishDate).to.equal(\"2023-04-30T23:00:00Z\") ;",
+									"    pm.expect(row1.closeDate).to.be.equal(\"2023-05-01T11:00:00Z\") ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"หางาน\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=close&page=0&size=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "close"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-11-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY",
+			"item": [
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Category [mode = active, category=ทั้งหมด]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: false, first: true, totalPages: 12, totalElements: 60, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.false ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(12) ;",
+									"    pm.expect(data.totalElements).to.equal(60) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 60\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 60\") ;",
+									"    pm.expect(row1.publishDate).to.be.null ;",
+									"    pm.expect(row1.closeDate).to.be.null ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"ทุนการศึกษา\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = active, category=ทั่วไป]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: false, first: true, totalPages: 6, totalElements: 30, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.false ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(6) ;",
+									"    pm.expect(data.totalElements).to.equal(30) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 30\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 30\") ;",
+									"    pm.expect(row1.publishDate).to.be.null ;",
+									"    pm.expect(row1.closeDate).to.be.equal(\"2023-12-31T11:00:00Z\") ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active&category=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								},
+								{
+									"key": "category",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = active, category=ทั่วไป]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: false, first: true, totalPages: 6, totalElements: 30, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.false ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(6) ;",
+									"    pm.expect(data.totalElements).to.equal(30) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 30\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 30\") ;",
+									"    pm.expect(row1.publishDate).to.be.null ;",
+									"    pm.expect(row1.closeDate).to.be.equal(\"2023-12-31T11:00:00Z\") ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"ทั่วไป\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active&category=1&page=0&size=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								},
+								{
+									"key": "category",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = active, category=ฝึกงาน]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: true, first: true, totalPages: 0, totalElements: 0, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.true ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(0) ;",
+									"    pm.expect(data.totalElements).to.equal(0) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content",
+									"pm.test(\"Expect content is empty\",()=>{",
+									"    pm.expect(row1).be.empty ",
+									"",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=active&category=4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "active"
+								},
+								{
+									"key": "category",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = close, category = ทั่วไป]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: true, first: true, totalPages: 0, totalElements: 0, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.true ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(0) ;",
+									"    pm.expect(data.totalElements).to.equal(0) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content",
+									"pm.test(\"Expect content is empty\",()=>{",
+									"    pm.expect(row1).be.empty ",
+									"",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=close&category=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "close"
+								},
+								{
+									"key": "category",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-USER-VIEW-ANNOUNCEMENT-BY-CATEGORY-1-6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Announcement Page [mode = close, category = หางาน]\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json() ;",
+									"pm.test(\"Expect all keys [content, last,first,toalPages,totalElements,size,page]\",()=>{",
+									"    pm.expect(data).to.be.an(\"object\") ;",
+									"    pm.expect(data).to.have.all.keys('content','last','first','totalPages','totalElements','size','page')",
+									"})",
+									"",
+									"pm.test(\"Expect last: true, first: true, totalPages: 1, totalElements: 2, size: 5, page=0\",()=>{",
+									"    pm.expect(data.last).to.be.true ;",
+									"    pm.expect(data.first).to.be.true ;",
+									"    pm.expect(data.totalPages).to.equal(1) ;",
+									"    pm.expect(data.totalElements).to.equal(2) ;",
+									"    pm.expect(data.size).to.equal(5) ;",
+									"    pm.expect(data.page).to.equal(0) ;",
+									"})",
+									"",
+									"var row1 = data.content[0]",
+									"pm.test(\"Expect data the first row is (PBI10) Title 62\",()=>{",
+									"    pm.expect(row1.announcementTitle).to.equal(\"(PBI10) Title 62\") ;",
+									"    pm.expect(row1.publishDate).to.be.equal(\"2023-04-30T23:00:00Z\")  ;",
+									"    pm.expect(row1.closeDate).to.be.equal(\"2023-05-01T11:00:00Z\") ;",
+									"    pm.expect(row1.announcementDisplay).to.equal(\"Y\") ;",
+									"    pm.expect(row1.announcementCategory).to.equal(\"หางาน\") ;",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/pages?mode=close&category=3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "close"
+								},
+								{
+									"key": "category",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clear-Data-PBI-10-11",
+			"item": [
+				{
+					"name": "Delete Announcement PBI-10-11",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let ids = pm.collectionVariables.get(\"ids\")",
+									"let aids = JSON.parse(ids)",
+									"console.log(aids)",
+									"let id = aids.shift()",
+									"pm.collectionVariables.set(\"ids\",JSON.stringify(aids))",
+									"pm.collectionVariables.set('id',id)",
+									"console.log('delete '+id)",
+									"if(aids.length>0){",
+									"    postman.setNextRequest(\"Delete Announcement PBI-10-11\")",
+									"} else {",
+									"    postman.setNextRequest(null) ",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-12-VALIDATE-ANNOUNCEMENT-LENGTH",
+			"item": [
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-1-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Title is null\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementTitle\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementTitle\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementTitle\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must not be null/blank\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be null\",\"must not be blank\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be null\") ||(val == \"must not be blank\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be null\",\"must not be blank\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": null,\n        \"announcementDescription\": \"ทดสอบหัวข้อกรณีไม่ใส่ข้อมูล\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-1-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Title is ''\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementTitle\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementTitle\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementTitle\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : size must be between 1 and 200\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 200\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be blank\") || (val == \"size must be between 1 and 200\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 200\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"\",\n        \"announcementDescription\": \"ทดสอบหัวข้อกรณีไม่ใส่ข้อมูล\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-2-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Description is null\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementDescription\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementDescription\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementDescription\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must not be null/blank\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be null\",\"must not be blank\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be null\") ||(val == \"must not be blank\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be null\",\"must not be blank\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบรายละเอียดกรณีไม่ใส่\",\n        \"announcementDescription\": null,\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-2-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Description is ''\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementDescription\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementDescription\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementDescription\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : size must be between 1 and 10000\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 10000\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be blank\") || (val == \"size must be between 1 and 10000\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 10000\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบรายละเอียดกรณีไม่ใส่\",\n        \"announcementDescription\": \"\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-3-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : CategoryId is null\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : CategoryId\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'categoryId')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"categoryId\")",
+									"        pm.expect(foundKey).to.be.equal(\"categoryId\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must not be null\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'categoryId')",
+									"        pm.expect(detail.errorMessage).to.equal(\"must not be null\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must not be null\")",
+									"        pm.expect(foundVal).to.be.equal(\"must not be null\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบประเภทประกาศไม่ใส่ข้อมูล\",\n        \"announcementDescription\": \"รายละเอียดประเภทประกาศไม่ใส่ข้อมูล\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-3-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : CategoryId 999 is not exist\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : CategoryId\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'categoryId')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"categoryId\")",
+									"        pm.expect(foundKey).to.be.equal(\"categoryId\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : does not exists\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'categoryId')",
+									"        pm.expect(detail.errorMessage).to.equal(\"does not exists\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        console.log(vals)",
+									"        const foundVal = vals.find( val => val == \"Id is not exist\")",
+									"        pm.expect(foundVal).to.be.equal(\"does not exists\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบประเภทประกาศไม่ใส่ข้อมูล\",\n        \"announcementDescription\": \"รายละเอียดประเภทประกาศไม่ใส่ข้อมูล\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-4-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Title is '<space>'\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementTitle\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementTitle\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementTitle\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must not be blank\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementTitle')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 200\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be blank\") || (val == \"size must be between 1 and 200\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 200\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \" \",\n        \"announcementDescription\": \"ทดสอบหัวข้อกรณีไม่ใส่ข้อมูล\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-5-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : Description is '<space>'\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementDescription\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementDescription\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementDescription\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : size must be between 1 and 10000\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDescription')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 10000\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must not be blank\") || (val == \"size must be between 1 and 10000\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must not be blank\",\"size must be between 1 and 10000\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบรายละเอียดกรณีไม่ใส่\",\n        \"announcementDescription\": \" \",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-6-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : announcementDisplay is null and will be assinged 'N' \",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบกรณีไม่ใส่แสดงประกาศ\",\n        \"announcementDescription\": \"รายละเอียดกรณีไม่ใส่แสดงประกาศ\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": null ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://intproj22.sit.kmutt.ac.th:8080/or/api/announcements",
+							"protocol": "http",
+							"host": [
+								"intproj22",
+								"sit",
+								"kmutt",
+								"ac",
+								"th"
+							],
+							"port": "8080",
+							"path": [
+								"or",
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-6-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : announcementDisplay is ''\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementDisplay\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDisplay')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementDisplay\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementDisplay\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be either 'Y' or 'N'\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDisplay')",
+									"        pm.expect(detail.errorMessage).to.equal(\"must be either 'Y' or 'N'\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be either 'Y' or 'N'\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be either 'Y' or 'N'\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบกรณีไม่ใส่แสดงประกาศ\",\n        \"announcementDescription\": \"รายละเอียดกรณีไม่ใส่แสดงประกาศ\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-LENGTH-6-3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : announcementDisplay is 'A' (not allowed)\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : announcementDisplay\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDisplay')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"announcementDisplay\")",
+									"        pm.expect(foundKey).to.be.equal(\"announcementDisplay\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be either 'Y' or 'N\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'announcementDisplay')",
+									"        pm.expect(detail.errorMessage).to.equal(\"must be either 'Y' or 'N'\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be either 'Y' or 'N'\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be either 'Y' or 'N'\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบกรณีไม่ใส่แสดงประกาศ\",\n        \"announcementDescription\": \"รายละเอียดกรณีไม่ใส่แสดงประกาศ\",\n        \"publishDate\": null,\n        \"closeDate\": null,\n        \"announcementDisplay\": \"A\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PBI-13-VALIDATE-ANNOUNCEMENT-DATE",
+			"item": [
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : publishDate is <<CURRENT TIME - 1 MIN>>\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : publishDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'publishDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"publishDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"publishDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be a date in the present or in the future\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'publishDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be a date in the present or in the future\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be a date in the present or in the future\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be a date in the present or in the future\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const past = new Date();",
+									"past.setMinutes(past.getMinutes()-1)",
+									"pm.variables.set(\"pastDate\",past.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ประกาศเป็นวันเวลาในอดีต (กรณีเพิ่มข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{pastDate}}\",\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : closeDate is <<CURRENT TIME - 1 MIN>>\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be a future date\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be a future date\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be a future date\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be a future date\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const past = new Date();",
+									"past.setMinutes(past.getMinutes()-1)",
+									"pm.variables.set(\"pastDate\",past.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาในอดีต (กรณีเพิ่มข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": null,\n        \"closeDate\": \"{{pastDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : closeDate is before publishDate\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : [must be later than publish date] or [must be a future date]\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must be later than publish date\",\"must be a future date\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must be later than publish date\") || (val == \"must be a future date\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must be later than publish date\",\"must be a future date\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const closeDate = new Date();",
+									"const publishDate = new Date() ;",
+									"publishDate.setDate(publishDate.getDate()+1)",
+									"pm.variables.set(\"publishDate\",publishDate.toISOString());",
+									"pm.variables.set(\"closeDate\",closeDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาก่อนเวลาประกาศ (กรณีเพิ่มข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : closeDate is the same as publishDate\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be later than publish date\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be later than publish date\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be later than publish date\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be later than publish date\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const nextDate = new Date();",
+									"nextDate.setDate(nextDate.getDate()+1)",
+									"pm.variables.set(\"nextDate\",nextDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาก่อนเวลาประกาศ (กรณีเพิ่มข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{nextDate}}\",\n        \"closeDate\": \"{{nextDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-5-1 (Prepare)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : prepare data for testing 5-2\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"",
+									"pm.collectionVariables.set('id',data.id)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const publishDate = new Date() ;",
+									"publishDate.setDate(publishDate.getDate()+1)",
+									"pm.variables.set(\"publishDate\",publishDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ประกาศเป็นวันเวลาในอดีต (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-5-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let id = pm.collectionVariables.get(\"id\")",
+									"pm.test(\"Test Validation : Update id \"+id+\" set publishDate in past \",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : publishDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'publishDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"publishDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"publishDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be a date in the present or in the future\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'publishDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be a date in the present or in the future\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be a date in the present or in the future\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be a date in the present or in the future\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const publishDate = new Date() ;",
+									"publishDate.setMinutes(publishDate.getMinutes()-1)",
+									"pm.variables.set(\"publishDate\",publishDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ประกาศเป็นวันเวลาในอดีต (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": null,\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-6-1 (Prepare)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : prepare data for testing 6-2\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"",
+									"pm.collectionVariables.set('id',data.id)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const closeDate = new Date() ;",
+									"closeDate.setDate(closeDate.getDate()+1)",
+									"pm.variables.set(\"closeDate\",closeDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาในอดีต (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": null,\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-6-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let id = pm.collectionVariables.get(\"id\")",
+									"pm.test(\"Test Validation : Update id \"+id+\" set closeDate in past \",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be a future date\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be a future date\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be a future date\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be a future date\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const closeDate = new Date() ;",
+									"closeDate.setHours(closeDate.getHours()-1)",
+									"pm.variables.set(\"closeDate\",closeDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาในอดีต (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": null,\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-7-1 (Prepare)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test Validation : prepare data for testing 7-2\",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"",
+									"pm.collectionVariables.set('id',data.id)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const publishDate = new Date() ;",
+									"publishDate.setDate(publishDate.getDate()+1)",
+									"const closeDate = new Date() ;",
+									"closeDate.setDate(closeDate.getDate()+2)",
+									"pm.variables.set(\"publishDate\",publishDate.toISOString());",
+									"pm.variables.set(\"closeDate\",closeDate.toISOString());",
+									"pm.collectionVariables.set('publishDate',publishDate.toISOString())"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาก่อนเวลาประกาศ (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-7-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let id = pm.collectionVariables.get(\"id\")",
+									"pm.test(\"Test Validation : Update id \"+id+\" set closeDate before publishDate \",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : [must be later than publish date] or [must be a future date]\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.oneOf([\"must be later than publish date\",\"must be a future date\"])",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => (val == \"must be later than publish date\") || (val == \"must be a future date\"))",
+									"        pm.expect(foundVal).to.be.oneOf([\"must be later than publish date\",\"must be a future date\"])",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const publishDate = new Date() ;",
+									"publishDate.setDate(publishDate.getDate()+1)",
+									"const closeDate = new Date() ;",
+									"pm.variables.set(\"publishDate\",publishDate.toISOString());",
+									"pm.variables.set(\"closeDate\",closeDate.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาก่อนเวลาประกาศ (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC-VALIDATE-ANNOUNCEMENT-DATE-8-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let id = pm.collectionVariables.get(\"id\")",
+									"pm.test(\"Test Validation : Update id \"+id+\" set closeDate = publishDate \",function(){",
+									"})",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"var data = pm.response.json()",
+									"pm.test(\"Response should show the field name of the missing data : closeDate\",function(){",
+									"    let keys = Object.keys(data)",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail).to.be.not.null",
+									"    } else {",
+									"        const foundKey = keys.find( key => key == \"closeDate\")",
+									"        pm.expect(foundKey).to.be.equal(\"closeDate\")",
+									"    }",
+									"",
+									"})",
+									"",
+									"pm.test(\"Response should show the missing message : must be later than publish date\",function(){",
+									"",
+									"    if(data.hasOwnProperty('detail')){",
+									"        var detail = data.detail.find( d => d.field == 'closeDate')",
+									"        pm.expect(detail.errorMessage).to.be.equal(\"must be later than publish date\")",
+									"    } else {",
+									"        let vals = Object.values(data)",
+									"        const foundVal = vals.find( val => val == \"must be later than publish date\")",
+									"        pm.expect(foundVal).to.be.equal(\"must be later than publish date\")",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let publishDate = pm.collectionVariables.get('publishDate')",
+									"pm.variables.set(\"publishDate\",publishDate)",
+									"pm.variables.set(\"closeDate\",publishDate);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"announcementTitle\": \"ทดสอบวันที่ปิดประกาศเป็นวันเวลาก่อนเวลาประกาศ (กรณีแก้ไขข้อมูล)\",\n        \"announcementDescription\": \"รายละเอียดการทดสอบ\",\n        \"publishDate\": \"{{publishDate}}\",\n        \"closeDate\": \"{{closeDate}}\",\n        \"announcementDisplay\": \"Y\" ,\n        \"categoryId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/announcements/{{id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"announcements",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "ids",
+			"value": "[]",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "pid",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "publishDate",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

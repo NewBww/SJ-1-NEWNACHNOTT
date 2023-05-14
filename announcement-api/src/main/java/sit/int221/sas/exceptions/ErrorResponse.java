@@ -1,9 +1,6 @@
 package sit.int221.sas.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 
