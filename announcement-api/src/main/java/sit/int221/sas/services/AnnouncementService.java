@@ -1,18 +1,19 @@
 package sit.int221.sas.services;
 
+import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sit.int221.sas.entities.Announcement;
-import sit.int221.sas.entities.Display;
+import sit.int221.sas.entities.Category;
 import sit.int221.sas.exceptions.ItemNotFoundException;
 import sit.int221.sas.repositories.AnnouncementRepository;
 import sit.int221.sas.repositories.CategoryRepository;
 
-import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AnnouncementService {
@@ -20,7 +21,8 @@ public class AnnouncementService {
     private AnnouncementRepository announcementRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    private static final String DEFAULT_CATEGORY_NAME = "ทั่วไป"; //fixed
+    @Autowired
+    private Validator validator;
 
     public List<Announcement> findAll(String mode) {
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
@@ -46,8 +48,13 @@ public class AnnouncementService {
     }
 
     public Announcement createAnnouncement(Announcement announcement) {
-        announcement.setAnnouncementCategory(categoryRepository.findById(announcement.getAnnouncementCategory().getId())
-                .orElse(categoryRepository.findByCategoryName(DEFAULT_CATEGORY_NAME)));
+        Category category = categoryRepository.findById(announcement.getAnnouncementCategory().getId())
+                .orElse(new Category());
+        Set<ConstraintViolation<Category>> violations = validator.validate(category);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
+        announcement.setAnnouncementCategory(category);
         return announcementRepository.saveAndFlush(announcement);
     }
 

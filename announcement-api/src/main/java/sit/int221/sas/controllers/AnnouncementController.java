@@ -1,5 +1,6 @@
 package sit.int221.sas.controllers;
 
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -61,7 +62,7 @@ public class AnnouncementController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseAnnouncementDTO> postAnnouncement(@RequestBody RequestAnnouncementDTO requestAnnouncementDTO) {
+    public ResponseEntity<ResponseAnnouncementDTO> postAnnouncement(@RequestBody @Valid RequestAnnouncementDTO requestAnnouncementDTO) {
         Announcement announcement = modelMapper.map(requestAnnouncementDTO, Announcement.class);
         announcement = announcementService.createAnnouncement(announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
@@ -72,7 +73,7 @@ public class AnnouncementController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody RequestAnnouncementDTO requestedAnnouncement) {
+    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody @Valid RequestAnnouncementDTO requestedAnnouncement) {
         Announcement announcement = modelMapper.map(requestedAnnouncement, Announcement.class);
         announcement = announcementService.updateAnnouncement(id, announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
