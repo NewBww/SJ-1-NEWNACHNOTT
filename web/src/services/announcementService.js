@@ -178,7 +178,7 @@ class Announcement {
 
     // display
     if (display !== 'N' && display !== 'Y') {
-      this.addValidationError('announcementDisplay', "must be 'Y' or 'N'")
+      this.addValidationError('announcementDisplay:', "must be 'Y' or 'N'")
     } else {
       this.announcementDisplay =
         display === 'N' || display === 'Y'
@@ -190,7 +190,7 @@ class Announcement {
     if (categoryId?.length !== null) {
       this.categoryId = categoryId
     } else {
-      this.addValidationError('categoryId', 'can not be null')
+      this.addValidationError('categoryId:', 'can not be null.')
     }
 
     // error alert
@@ -199,7 +199,7 @@ class Announcement {
         'There is an error: ' +
           this.errors
             .map(({ field, errorMessage }) => field + ' ' + errorMessage)
-            .join(' and ')
+            .join(',\n')
             .replaceAll('announcement', '')
             .replace('publishDate', 'Publish date')
             .replace('closeDate', 'Close date')
