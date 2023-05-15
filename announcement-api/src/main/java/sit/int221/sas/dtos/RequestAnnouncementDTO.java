@@ -5,6 +5,7 @@ import lombok.Data;
 import sit.int221.sas.entities.Category;
 import sit.int221.sas.entities.Display;
 import sit.int221.sas.validators.ValidDate;
+import sit.int221.sas.validators.ValidateDisplay;
 
 import java.time.ZonedDateTime;
 
@@ -17,20 +18,28 @@ public class RequestAnnouncementDTO {
     @NotBlank
     @Size(min = 1, max = 10000, message = "size must be between 1 and 10000")
     private String announcementDescription;
+
     private Category announcementCategory;
     @FutureOrPresent(message = "must be a date in the present or in the future")
     private ZonedDateTime publishDate;
     @Future(message = "must be a future date")
     private ZonedDateTime closeDate;
+
+    @NotNull
     private Display announcementDisplay = Display.N;
 
+    @NotNull
+    private Integer categoryId;
 
-    public void setCategoryId(@NotNull(message = "can not be null") Integer id) {
+    private Integer id;
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
         this.announcementCategory = new Category();
-        this.announcementCategory.setId(id);
+        this.announcementCategory.setId(categoryId);
     }
 
-    public void setAnnouncementDisplay(@NotBlank(message = "must be either 'Y' or 'N'") String displayName) {
+    public void setAnnouncementDisplay(String displayName) {
         if (displayName == null) {
             this.announcementDisplay = Display.N;
         } else {

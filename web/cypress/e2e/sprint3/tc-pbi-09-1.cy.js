@@ -2,7 +2,6 @@ describe('TC-PBI9-USER-VIEW-ANNOUNCEMENT-CLOSE-1', () => {
     it('should have announcement items of 4',()=>{
         cy.visit("/announcement")
         cy.wait(200) ;
-
         cy.get('.ann-item').should('have.length',4)
       })
     
@@ -10,19 +9,13 @@ describe('TC-PBI9-USER-VIEW-ANNOUNCEMENT-CLOSE-1', () => {
       it('Click "Close Announcement" button',()=>{
         cy.visit("/announcement")
         cy.wait(200);
-
-        cy.get('.ann-button').contains('close',{matchCase: false}).should('exist').click()
-        cy.wait(500);
-
+        cy.get('.ann-button').click()
         cy.get('.ann-item').should('have.length',2)
       }) ;
 
       it('First item should be "(PBI8-9) Title 5"',()=>{
         cy.visit("/announcement")
-        cy.wait(500);
-
-        cy.get(".ann-button").contains('close',{matchCase: false}).should('exist').click()
-        cy.wait(500);
+        cy.get(".ann-button").click()
 
         cy.get('.ann-item').first().as('ann-1')
         cy.get('@ann-1').contains('.ann-title','(PBI8-9) Title 5')
@@ -33,10 +26,7 @@ describe('TC-PBI9-USER-VIEW-ANNOUNCEMENT-CLOSE-1', () => {
   
       it('Last item should be "(PBI8-9) Title 4"',()=>{
         cy.visit("/announcement")
-        cy.wait(200)
-
-        cy.get(".ann-button").contains('close',{matchCase: false}).should('exist').click()
-        cy.wait(500);
+        cy.get(".ann-button").click()
 
         cy.get('.ann-item').last().as('ann-1')
         cy.get('@ann-1').contains('.ann-title','(PBI8-9) Title 4')
@@ -47,11 +37,7 @@ describe('TC-PBI9-USER-VIEW-ANNOUNCEMENT-CLOSE-1', () => {
 
       it('Check data in first row detail click "back" to close announcement list page',()=>{
         cy.visit("/announcement")
-        cy.wait(500);
-
-        cy.get(".ann-button").contains('close',{matchCase: false}).should('exist').click()
-        cy.wait(500);
-
+        cy.get(".ann-button").click()
         cy.get('.ann-item').get('.ann-title').first().contains('(PBI8-9) Title 5').click()
         
         cy.wait(200)
@@ -61,9 +47,7 @@ describe('TC-PBI9-USER-VIEW-ANNOUNCEMENT-CLOSE-1', () => {
         cy.get('.ann-close-date').contains('2 May 2023')
         cy.get('.ann-close-date').contains('18:00')
 
-        cy.get('.ann-button').contains('back',{matchCase: false}).should('exist').click()
-        cy.wait(500);
-
+        cy.get('.ann-button').click()
         cy.get('.ann-item').should('have.length',2)
       }) ;
 })

@@ -52,6 +52,7 @@ public class AnnouncementService {
                 .orElse(new Category());
         Set<ConstraintViolation<Category>> violations = validator.validate(category);
         if (!violations.isEmpty()) {
+
             throw new ConstraintViolationException(violations);
         }
         announcement.setAnnouncementCategory(category);
