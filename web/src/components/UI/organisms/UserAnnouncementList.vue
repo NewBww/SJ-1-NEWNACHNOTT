@@ -45,7 +45,7 @@ watchEffect(async () => {
     </div>
     <div
       v-else
-      class="flex flex-row gap-6 border border-black border-b-2 border-r-2 p-5 rounded-2xl"
+      class="ann-item flex flex-row gap-6 border border-black border-b-2 border-r-2 p-5 rounded-2xl"
       v-for="(announcement, index) of pageData.content"
       :key="announcement.id"
       :id="index"
