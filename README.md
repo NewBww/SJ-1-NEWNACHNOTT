@@ -1,4 +1,4 @@
-﻿# 🚀 Integrated Project (Release v1.2.1)
+﻿# 🚀 Integrated Project (Release v1.3.0)
 
 ### **Group:  SJ-1-NEWNACHNOTT**
 
