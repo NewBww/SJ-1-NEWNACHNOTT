@@ -78,7 +78,7 @@ onMounted(async () => {
           >
             <!-- view button -->
             <RouterLink
-              class="w-fit h-fit"
+              class="w-fit h-fit no-underline text-black"
               :to="{
                 name: 'admin-announcement-detail',
                 params: { id: announcement.id },
@@ -92,7 +92,7 @@ onMounted(async () => {
 
             <!-- edit button -->
             <RouterLink
-              class="w-fit h-fit"
+              class="w-fit h-fit no-underline text-black"
               :to="{
                 name: 'admin-announcement-edit',
                 params: { id: announcement.id },

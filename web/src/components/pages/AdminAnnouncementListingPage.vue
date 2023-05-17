@@ -20,7 +20,10 @@ import AnnouncementList from '@/components/UI/organisms/AnnouncementList.vue'
     <ContentSection>
       <div class="w-full h-12 justify-between items-center flex flex-row">
         <TimeZone />
-        <RouterLink class="w-fit" :to="{ name: 'admin-announcement-add' }">
+        <RouterLink
+          class="w-fit no-underline text-black"
+          :to="{ name: 'admin-announcement-add' }"
+        >
           <SingleButton
             text="Add Announcement"
             class="ann-button transition bg-white border-black border rounded-md solidBoxShadowBtnHover hover:border-2 hover:-translate-x-1 hover:-translate-y-1 hover:active:translate-x-0 hover:active:translate-y-0 ease-in-out active:bg-[#F4F4F4]"

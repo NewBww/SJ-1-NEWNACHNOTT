@@ -137,22 +137,22 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="">
+  <div class="grid grid-cols-2 gap-6">
     <!-- title -->
     <InputField header="Title" class="col-span-2">
       <input
-        class="ann-title"
+        class="ann-title focus:outline-none w-full"
         type="text"
-        placeholder="please insert the title"
+        placeholder="insert title here"
         v-model="title"
         @input="onChangeHandler"
       />
     </InputField>
 
     <!-- category -->
-    <InputField header="Category">
+    <InputField header="Category" class="row-start-2 col-span-2">
       <select
-        class="ann-category"
+        class="ann-category w-full"
         v-model="categoryId"
         @input="onChangeHandler"
       >
@@ -167,14 +167,14 @@ onMounted(async () => {
     >
 
     <!-- description -->
-    <InputField header="Description" class="">
+    <InputField header="Description" class="row-start-3 col-span-2">
       <QuillEditor
         content-type="html"
         toolbar="full"
         class="ann-description"
         placeholder="something"
         v-model:content="description"
-        @input="onChangeHandler"
+        @update:content="onChangeHandler"
       />
     </InputField>
 
@@ -219,7 +219,7 @@ onMounted(async () => {
     <!--  </div>-->
 
     <!-- display -->
-    <InputField header="Display" class="">
+    <InputField header="Display" class="row-start-5 col-span-2">
       <label class="">
         <input
           type="checkbox"
@@ -231,22 +231,22 @@ onMounted(async () => {
       </label>
     </InputField>
 
-    <div class="">
+    <div class="row-start-6 flex flex-row">
       <!-- cancel button -->
       <!--    <RouterLink :to="{ name: 'admin-announcement-listing' }">-->
       <SingleButton
         @click="$router.back()"
-        class="ann-button"
+        class="ann-button transition ease-in-out hover:scale-110"
         :text="cancelText"
       />
 
       <!-- submit button -->
       <SingleButton
-        class="ann-button"
+        class="ann-button rounded-xl transition ease-in-out duration-200"
         :class="
           action === 'edit' && !changed
             ? 'bg-gray-400 border border-gray-400'
-            : 'bg-violet-500 border border-violet-500 hover:border-violet-500 hover:bg-white hover:text-violet-500 hover:scale-110'
+            : 'bg-violet-500 border border-violet-500 hover:border-violet-500 hover:bg-white hover:text-violet-500 hover:scale-110 text-white'
         "
         :text="submitText"
         :disabled="action === 'edit' ? !changed : false"
