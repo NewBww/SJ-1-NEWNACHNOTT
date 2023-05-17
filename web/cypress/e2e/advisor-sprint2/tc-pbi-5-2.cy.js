@@ -1,4 +1,4 @@
-describe('TC-CREATE-ANNOUNCEMENT-2: nomal - at boundary data', () => {
+describe('[Advisor] TC-CREATE-ANNOUNCEMENT-2: nomal - at boundary data', () => {
   
     it('should contain SAS and Timezone',()=>{
       cy.visit('/admin/announcement')

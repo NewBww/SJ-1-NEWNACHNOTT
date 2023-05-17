@@ -1,10 +1,11 @@
 package sit.int221.sas.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import sit.int221.sas.validators.CategoryIdNotNull;
 
+@CategoryIdNotNull
 @Entity
 @Data
 @Table(name = "categories")

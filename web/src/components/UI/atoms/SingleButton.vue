@@ -14,11 +14,11 @@ defineProps({
 
 <template>
   <button
-    class="text-center items-center justify-center w-fit flex flex-row py-2 px-3 text-base tracking-wider"
+    class="flex flex-row items-center justify-center py-2 px-3 text-base tracking-wider"
     :disabled="disabled"
   >
     <slot name="before-text-icon" />
-    {{ text }}
+    <span>{{ text }}</span>
     <slot name="after-text-icon" />
   </button>
 </template>

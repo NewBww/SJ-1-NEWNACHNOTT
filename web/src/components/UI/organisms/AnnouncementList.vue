@@ -8,15 +8,8 @@ import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 const announcementService = new AnnouncementService()
 const announcementsData = ref([])
 
-onMounted(async () => {
-  const data = await announcementService.getAllAnnouncements()
-  if (data !== undefined && data.length !== 0) {
-    announcementsData.value = data
-  }
-})
-
 const deleteId = async (id) => {
-  if (confirm('Do you want to delete')) {
+  if (confirm('Do you want to delete?')) {
     if ((await announcementService.deleteAnnouncement(id)) === 200) {
       announcementsData.value.splice(
         announcementsData.value.findIndex(
@@ -27,34 +20,40 @@ const deleteId = async (id) => {
     }
   }
 }
+
+onMounted(async () => {
+  const data = await announcementService.getAllAnnouncements()
+  if (data !== undefined && data.length !== 0) {
+    announcementsData.value = data
+  }
+})
 </script>
 
 <template>
   <div class="w-full h-full">
-    <table class="w-full h-full table-fixed border-separate border-spacing-y-6">
+    <table class="w-full h-full table-fixed border-separate border-spacing-y-4">
       <thead class="text-center">
         <tr>
-          <th class="w-16">No.</th>
-          <th class="ann-title text-center">Title</th>
+          <th class="w-20">No.</th>
+          <th class="ann-title text-left">Title</th>
           <th class="ann-category w-32">Category</th>
-          <th class="ann-publish-date w-52">Publish Date</th>
-          <th class="ann-close-date w-52">Close Date</th>
-          <th class="ann-display w-16">Display</th>
-          <th class="w-64">Action</th>
+          <th class="ann-publish-date w-44">Publish Date</th>
+          <th class="ann-close-date w-44">Close Date</th>
+          <th class="ann-display w-24">Display</th>
+          <th class="w-60">Action</th>
         </tr>
       </thead>
-      <tbody v-if="announcementsData.length === 0">
+      <tbody v-if="announcementsData?.length === 0">
         <tr class="w-full text-center text-lg font-semibold text-red-600">
           <td class="text-center" colspan="7">No Announcement</td>
         </tr>
       </tbody>
-      <tbody class="" v-else>
-        <!--        <div class="border">-->
+      <tbody v-else>
         <tr
           v-for="(announcement, index) of announcementsData"
           :key="announcement.id"
           :id="index"
-          class="ann-item text-center h-full solidBoxShadow"
+          class="ann-item text-center h-full w-full"
         >
           <td class="border-y border-black border-l rounded-l-2xl">
             {{ index + 1 }}
@@ -75,10 +74,11 @@ const deleteId = async (id) => {
             {{ announcement.announcementDisplay }}
           </td>
           <td
-            class="w-64 gap-2.5 h-full flex flex-row justify-center items-center border-y border-black border-r rounded-r-2xl"
+            class="h-full flex flex-row gap-2 justify-center items-center border-y border-black border-r rounded-r-2xl"
           >
             <!-- view button -->
             <RouterLink
+              class="w-fit h-fit no-underline text-black"
               :to="{
                 name: 'admin-announcement-detail',
                 params: { id: announcement.id },
@@ -92,6 +92,7 @@ const deleteId = async (id) => {
 
             <!-- edit button -->
             <RouterLink
+              class="w-fit h-fit no-underline text-black"
               :to="{
                 name: 'admin-announcement-edit',
                 params: { id: announcement.id },
@@ -107,11 +108,10 @@ const deleteId = async (id) => {
             <SingleButton
               @click="deleteId(announcement.id)"
               text="delete"
-              class="ann-button view bg-[#F0E7FE] hover:bg-[#E2D0FE] rounded-xl border border-black"
+              class="ann-button w-fit view bg-[#F0E7FE] hover:bg-[#E2D0FE] rounded-xl border border-black"
             />
           </td>
         </tr>
-        <!--        </div>-->
       </tbody>
     </table>
   </div>

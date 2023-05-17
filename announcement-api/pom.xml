@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>sit.int221</groupId>
-    <artifactId>SJ-1-NEWNACHNOTT-BACKEND</artifactId>
+    <artifactId>SJ-1-ANNOUNCEMENT-API</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SJ-1-NEWNACHNOTT-BACKEND</name>
-    <description>SJ-1-NEWNACHNOTT-BACKEND</description>
+    <name>announcement-api</name>
+    <description>announcement-api</description>
     <properties>
         <java.version>20</java.version>
     </properties>
@@ -25,7 +25,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -72,6 +71,10 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <version>3.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,5 +93,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

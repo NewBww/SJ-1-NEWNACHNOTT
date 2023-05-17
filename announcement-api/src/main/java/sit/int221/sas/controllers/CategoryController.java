@@ -22,6 +22,9 @@ public class CategoryController {
     @GetMapping("/default")
     public Category getDefaultCategory() {return service.findDefaultCategory();}
 
-    @GetMapping("/{categoryName}")
-    public Category getCategoryByName(@PathVariable String categoryName) {return service.findCategoryByName(categoryName);}
+    @GetMapping("/{id}")
+    public Category getCategoryById(@PathVariable Integer id) {return service.findCategoryById(id);}
+
+    @PostMapping
+    public Category postCategory(@RequestBody Category category) {return service.createCategory(category);}
 }

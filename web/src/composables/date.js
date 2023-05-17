@@ -5,7 +5,7 @@ const useFormatTime = (dateTimeZone) => {
   }
   return dateTimeZone
     ? new Intl.DateTimeFormat('en-GB', options).format(new Date(dateTimeZone))
-    : '-'
+    : `-`
 }
 
 const useMergeDateTime = (dateString, timeString) => {
@@ -40,4 +40,5 @@ const useSplitTime = (dateTimeUTC) => {
     ? new Intl.DateTimeFormat('en-GB', options).format(new Date(dateTimeUTC))
     : null
 }
+
 export { useFormatTime, useMergeDateTime, useSplitTime, useSplitDate }

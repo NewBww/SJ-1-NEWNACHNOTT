@@ -2,51 +2,37 @@
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
-import InputForm from '@/components/UI/organisms/InputForm.vue'
+
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 import { RouterLink } from 'vue-router'
+import InputForm from '@/components/UI/organisms/InputForm.vue'
 </script>
 
 <template>
-  <div class="h-full bg-[#F4F4F4]">
-    <div class="h-fit bg-[#F4F4F4]">
-      <div class="max-w-[72rem] w-full m-auto">
-        <!--      header-->
-        <div class="flex flex-row items-center pt-12 gap-7">
-          <RouterLink :to="{ name: 'admin-announcement-listing' }">
-            <SingleButton
-              class="ann-button border border-black rounded-full gap-1 hover:bg-gray-200 active:bg-black active:text-white"
-              text="Back"
-            >
-              <template #before-text-icon>
-                <IconArrowBack />
-              </template>
-            </SingleButton>
-          </RouterLink>
+  <div
+    class="max-w-[72rem] w-full h-full m-auto grid grid-cols-[8rem_1fr_8rem] gap-y-12 py-12"
+  >
+    <RouterLink
+      class="w-fit h-fit no-underline text-black self-center justify-self-center"
+      :to="{ name: 'admin-announcement-listing' }"
+    >
+      <SingleButton
+        class="ann-button border border-black rounded-full w-fit hover:bg-gray-200 active:bg-black active:text-white"
+        text="Back"
+      >
+        <template #before-text-icon>
+          <IconArrowBack class="w-[22px]" />
+        </template>
+      </SingleButton>
+    </RouterLink>
 
-          <!--        <PageTitle title="Announcement Detail" />-->
-          <div class="text-4xl font-semibold tracking-wider">
-            Announcement<br />Add
-          </div>
-        </div>
+    <PageTitle first="Announcement" second="Add" class="col-start-2" />
 
-        <ContentSection class="flex flex-row items-center w-full pt-10">
-          <div class="w-4/5 pb-5 px-12 rounded-3xl">
-            <div class="ann-* flex flex-col w-full gap-6 h-full">
-              <InputForm
-                submit-text="Submit"
-                cancel-text="Cancel"
-                action="add"
-              />
-            </div>
-          </div>
-          <!--            class="flex flex-col w-full h-full px-16 items-center"-->
-          <!--            <div class="flex flex-row items-center justify-center">-->
-          <!--              <PageTitle title="Announcement Add" />-->
-          <!--            </div>-->
-        </ContentSection>
+    <ContentSection class="col-start-2">
+      <div class="ann-*">
+        <InputForm submit-text="Submit" cancel-text="Cancel" action="add" />
       </div>
-    </div>
+    </ContentSection>
   </div>
 </template>

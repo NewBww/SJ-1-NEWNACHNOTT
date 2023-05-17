@@ -28,9 +28,22 @@ const router = createRouter({
         import('@/components/pages/AdminAnnouncementEditPage.vue'),
     },
     {
+      path: '/announcement',
+      name: 'user-announcement-listing',
+      component: () => 
+        import('@/components/pages/UserAnnouncementListingPage.vue')
+    },
+    {
+      path: '/announcement/:id',
+      name: 'user-announcement-detail',
+      component: () => 
+        import('@/components/pages/UserAnnouncementDetailPage.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/components/pages/NotFoundPage.vue'),
+      redirect: {name: 'user-announcement-listing'}
     },
   ],
 })

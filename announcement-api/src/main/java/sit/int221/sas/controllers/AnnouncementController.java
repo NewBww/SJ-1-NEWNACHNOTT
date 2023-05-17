@@ -1,22 +1,17 @@
 package sit.int221.sas.controllers;
 
+import jakarta.validation.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sit.int221.sas.dtos.AnnouncementListItemDTO;
-import sit.int221.sas.dtos.DetailedAnnouncementDTO;
-import sit.int221.sas.dtos.RequestAnnouncementDTO;
-import sit.int221.sas.dtos.ResponseAnnouncementDTO;
+import sit.int221.sas.dtos.*;
 import sit.int221.sas.entities.Announcement;
-import sit.int221.sas.exceptions.ErrorResponse;
 import sit.int221.sas.services.AnnouncementService;
 import sit.int221.sas.utils.ListMapper;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5173/", "http://localhost:4173/", "http://ip22sj1.sit.kmutt.ac.th/", "http://intproj22.sit.kmutt.ac.th/sj1/"})
@@ -24,15 +19,15 @@ import java.util.List;
 @RequestMapping("/api/announcements")
 public class AnnouncementController {
     @Autowired
-    private AnnouncementService service;
+    private AnnouncementService announcementService;
     @Autowired
     private ModelMapper modelMapper;
     @Autowired
     private ListMapper listMapper;
 
     @GetMapping
-    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements() {
-        List<AnnouncementListItemDTO> announcementList = listMapper.mapList(service.findAll(), AnnouncementListItemDTO.class, modelMapper);
+    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements(@RequestParam (defaultValue = "admin") String mode) {
+        List<AnnouncementListItemDTO> announcementList = listMapper.mapList(announcementService.findAll(mode), AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         if (announcementList.isEmpty()) {
@@ -40,23 +35,36 @@ public class AnnouncementController {
         } else {
             responseHeaders.set("Description", "get all announcements successfully");
         }
-
         return ResponseEntity.ok().headers(responseHeaders).body(announcementList);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<DetailedAnnouncementDTO> getAnnouncementById(@PathVariable Integer id) {
-        DetailedAnnouncementDTO announcement = modelMapper.map(service.findById(id), DetailedAnnouncementDTO.class);
+        DetailedAnnouncementDTO announcement = modelMapper.map(announcementService.findById(id), DetailedAnnouncementDTO.class);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         responseHeaders.set("Description", "get an announcement successfully");
         return ResponseEntity.ok().headers(responseHeaders).body(announcement);
     }
 
+    @GetMapping("pages")
+    public ResponseEntity<PageDTO<AnnouncementListItemDTO>> getAnnouncementPage(
+            @RequestParam(defaultValue = "admin") String mode,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(required = false) Integer category
+    ) {
+        Page<Announcement> announcementPage = announcementService.findPage(mode, page, size, category);
+        PageDTO<AnnouncementListItemDTO> announcementPageDTO = listMapper.toPageDTO(announcementPage, AnnouncementListItemDTO.class, modelMapper);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Content-Type", "application/json");
+        return ResponseEntity.ok().headers(responseHeaders).body(announcementPageDTO);
+    }
+
     @PostMapping
-    public ResponseEntity<ResponseAnnouncementDTO> postAnnouncement(@RequestBody RequestAnnouncementDTO requestAnnouncementDTO) {
+    public ResponseEntity<ResponseAnnouncementDTO> postAnnouncement(@RequestBody @Valid RequestAnnouncementDTO requestAnnouncementDTO) {
         Announcement announcement = modelMapper.map(requestAnnouncementDTO, Announcement.class);
-        announcement = service.createAnnouncement(announcement);
+        announcement = announcementService.createAnnouncement(announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
         response.set("Content-Type", "application/json");
@@ -65,9 +73,9 @@ public class AnnouncementController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody RequestAnnouncementDTO requestedAnnouncement) {
+    public ResponseEntity<ResponseAnnouncementDTO> updateAnnouncement(@PathVariable Integer id, @RequestBody @Valid RequestAnnouncementDTO requestedAnnouncement) {
         Announcement announcement = modelMapper.map(requestedAnnouncement, Announcement.class);
-        announcement = service.updateAnnouncement(id, announcement);
+        announcement = announcementService.updateAnnouncement(id, announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
         response.set("Content-Type", "application/json");
@@ -77,7 +85,7 @@ public class AnnouncementController {
 
     @DeleteMapping("{id}")
     public void deleteAnnouncement(@PathVariable Integer id) {
-        service.removeAnnouncement(id);
+        announcementService.removeAnnouncement(id);
     }
 }
 
