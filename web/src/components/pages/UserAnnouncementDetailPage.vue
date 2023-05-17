@@ -55,9 +55,7 @@ const checkClosedDate = () => {
           </div>
           <div class="col-span-9">
             <div class="flex items-center gap-7 w-fit">
-              <div class="text-4xl font-semibold tracking-wider">
-                Announcement<br />Detail
-              </div>
+              <PageTitle first="Announcement" second="Detail" />
             </div>
           </div>
         </div>

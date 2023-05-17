@@ -171,8 +171,8 @@ onMounted(async () => {
       <QuillEditor
         content-type="html"
         toolbar="full"
-        class="ann-description"
-        placeholder="something"
+        class="ann-description break-words border h-fit w-full min-h-[8rem]"
+        placeholder="insert description"
         v-model:content="description"
         @update:content="onChangeHandler"
       />

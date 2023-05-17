@@ -63,14 +63,14 @@ const nextPage = (next) => {
 <template>
   <div v-if="totalPages > 1" class="flex flex-row w-fit gap-4 py-4">
     <button
-      class="ann-page-prev"
-      :class="first ? 'bg-black' : 'bg-zinc-400'"
+      class="ann-page-prev px-3 rounded-xl"
+      :class="first ? 'bg-zinc-400   text-white' : 'bg-[#ABBDF1]'"
       :disabled="first"
       @click="nextPage(false)"
     >
       Prev
     </button>
-    <div class="flex flex-row border border-black">
+    <div class="flex flex-row border border-black rounded-md overflow-clip">
       <button
         class="h-full w-12 px-4 py-2 border-r border-black transition ease-in duration-100"
         :class="[
@@ -85,10 +85,10 @@ const nextPage = (next) => {
       </button>
     </div>
     <button
-      class="ann-page-next"
+      class="ann-page-next px-3 rounded-xl transition ease-in duration-100"
       @click="nextPage(true)"
       :disabled="last"
-      :class="last ? 'bg-black' : 'bg-zinc-400'"
+      :class="last ? 'bg-zinc-400 text-white' : 'bg-[#ABBDF1]'"
     >
       Next
     </button>

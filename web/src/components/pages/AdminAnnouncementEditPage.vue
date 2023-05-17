@@ -8,6 +8,7 @@ import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import InputForm from '@/components/UI/organisms/InputForm.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
+import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -48,9 +49,7 @@ onMounted(async () => {
           </div>
           <div class="col-span-9">
             <div class="flex items-center gap-7 w-fit">
-              <div class="text-4xl font-semibold tracking-wider">
-                Announcement<br />Edit
-              </div>
+              <PageTitle first="Announcement" second="Edit" />
             </div>
           </div>
         </div>
