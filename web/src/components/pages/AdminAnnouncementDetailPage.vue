@@ -6,6 +6,7 @@ import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 import { AnnouncementService } from '@/services/announcementService'
 import { onMounted, ref } from 'vue'
 import { useFormatTime } from '@/composables/date'
+import { QuillEditor } from '@vueup/vue-quill'
 import DetailText from '@/components/UI/atoms/DetailText.vue'
 
 const route = useRoute()
@@ -85,10 +86,8 @@ onMounted(async () => {
                 >{{ announcementsData.announcementCategory }}</span
               >
             </div>
-            <div
-              class="ann-description grid justify-items-center content-center text-justify px-20 py-12"
-            >
-              {{ announcementsData.announcementDescription }}
+            <div class="grid justify-items-center content-center text-justify px-20 py-12">
+              <p class="ann-description ql-editor" v-html="announcementsData.announcementDescription"></p>
             </div>
             <div
               class="grid grid-cols-6 justify-items-center content-center text-justify border-t border-black"

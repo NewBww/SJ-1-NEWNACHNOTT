@@ -95,9 +95,9 @@ const checkClosedDate = () => {
             </p>
           </div>
           <div
-            class="ann-description col-span-2 justify-items-center content-center text-base px-20 py-12"
+            class="col-span-2 justify-items-center content-center text-base px-20 py-12"
           >
-            <p>{{ announcementsData.announcementDescription }}</p>
+            <p class="ann-description ql-editor" v-html="announcementsData.announcementDescription"></p>
           </div>
         </ContentSection>
       </div>

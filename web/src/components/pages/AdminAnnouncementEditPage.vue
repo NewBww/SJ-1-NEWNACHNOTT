@@ -56,9 +56,8 @@ onMounted(async () => {
         </div>
 
         <div class="grid grid-cols-10 pt-10 justify-items-center">
-          <div></div>
-          <ContentSection class="grid col-span-8 w-full h-full content-center">
-            <div class="ann-* flex flex-col w-full gap-6 h-full">
+          <ContentSection class="grid col-span-8 col-start-2 w-full h-full content-center">
+            <div class="ann-* w-full gap-6 h-full">
               <InputForm
                 :announcement="announcementsData"
                 submit-text="Submit"
@@ -67,7 +66,6 @@ onMounted(async () => {
               />
             </div>
           </ContentSection>
-          <div></div>
         </div>
       </div>
     </div>
