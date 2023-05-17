@@ -1,5 +1,8 @@
 <script setup>
 import { onMounted, ref, watchEffect } from 'vue'
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import '@vueup/vue-quill/dist/vue-quill.bubble.css'
 import InputField from '@/components/UI/molecules/InputField.vue'
 import CategoryService from '@/services/categoryService'
 import {
@@ -134,22 +137,22 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-6">
+  <div class="">
     <!-- title -->
     <InputField header="Title" class="col-span-2">
       <input
-        class="ann-title px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
+        class="ann-title"
         type="text"
-        placeholder="Please insert the title"
+        placeholder="please insert the title"
         v-model="title"
         @input="onChangeHandler"
       />
     </InputField>
 
     <!-- category -->
-    <InputField header="Category" class="">
+    <InputField header="Category">
       <select
-        class="ann-category text-center px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
+        class="ann-category"
         v-model="categoryId"
         @input="onChangeHandler"
       >
@@ -164,21 +167,23 @@ onMounted(async () => {
     >
 
     <!-- description -->
-    <InputField header="Description" class="h-56 row-start-3 col-span-2">
-      <textarea
-        class="ann-description h-full px-4 py-3 rounded-xl bg-zinc-100 text-base outline outline-0"
+    <InputField header="Description" class="">
+      <QuillEditor
+        content-type="html"
+        toolbar="full"
+        class="ann-description"
         placeholder="something"
-        v-model="description"
+        v-model:content="description"
         @input="onChangeHandler"
-      ></textarea>
+      />
     </InputField>
 
     <!--  <div class="flex flex-row gap-7">-->
     <!-- publish date -->
-    <InputField header="Publish Date" class="row-start-4">
-      <div class="flex flex-row items-center border-black gap-3">
+    <InputField header="Publish Date" class="">
+      <div class="">
         <input
-          class="ann-publish-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          class="ann-publish-date"
           type="date"
           v-model="publishDate"
           :min="useSplitDate(new Date())"
@@ -186,7 +191,7 @@ onMounted(async () => {
           @change="setDefaultTime(true)"
         />
         <input
-          class="ann-publish-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          class="ann-publish-time"
           type="time"
           v-model="publishTime"
           :disabled="publishDate === null"
@@ -196,10 +201,10 @@ onMounted(async () => {
     </InputField>
 
     <!-- close date -->
-    <InputField header="Close Date" class="row-start-4">
-      <div class="flex flex-row items-center gap-3 border-black">
+    <InputField header="Close Date" class="">
+      <div class="">
         <input
-          class="ann-close-date px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          class="ann-close-date"
           type="date"
           v-model="closeDate"
           :min="useSplitDate(new Date())"
@@ -207,7 +212,7 @@ onMounted(async () => {
           @change="setDefaultTime(false)"
         />
         <input
-          class="ann-close-time px-4 py-3 rounded-xl bg-zinc-100 text-base w-36 text-center outline outline-0"
+          class="ann-close-time"
           type="time"
           v-model="closeTime"
           :disabled="closeDate === null"
@@ -218,11 +223,11 @@ onMounted(async () => {
     <!--  </div>-->
 
     <!-- display -->
-    <InputField header="Display" class="row-start-5 col-span-2">
-      <label class="flex flex-row items-center gap-2 border-black">
+    <InputField header="Display" class="">
+      <label class="">
         <input
           type="checkbox"
-          class="ann-display w-4 h-4"
+          class="ann-display"
           v-model="display"
           @input="onChangeHandler"
         />
@@ -230,18 +235,18 @@ onMounted(async () => {
       </label>
     </InputField>
 
-    <div class="flex flex-row w-fit gap-4 row-start-6">
+    <div class="">
       <!-- cancel button -->
       <!--    <RouterLink :to="{ name: 'admin-announcement-listing' }">-->
       <SingleButton
         @click="$router.back()"
-        class="ann-button bg-white border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-500 hover:text-white transition ease-in-out hover:scale-110"
+        class="ann-button"
         :text="cancelText"
       />
 
       <!-- submit button -->
       <SingleButton
-        class="ann-button text-white rounded-lg w-[83px] transition ease-in-out"
+        class="ann-button"
         :class="
           action === 'edit' && !changed
             ? 'bg-gray-400 border border-gray-400'
@@ -253,4 +258,5 @@ onMounted(async () => {
       />
     </div>
   </div>
+  <div ></div>
 </template>
