@@ -72,7 +72,7 @@ const nextPage = (next) => {
     </button>
     <div class="flex flex-row border border-black">
       <button
-        class="h-full w-12 px-4 py-2 border-r border-black"
+        class="h-full w-12 px-4 py-2 border-r border-black transition ease-in duration-100"
         :class="[
           'ann-page-' + index,
           pageNumber === page + 1 ? 'bg-black text-white' : 'hover:bg-zinc-400',

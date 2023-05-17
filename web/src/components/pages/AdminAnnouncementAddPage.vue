@@ -10,8 +10,13 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
 </script>
 
 <template>
-  <div class="grid">
-    <RouterLink class="w-fit" :to="{ name: 'admin-announcement-listing' }">
+  <div
+    class="max-w-[72rem] w-full h-full m-auto grid grid-cols-[8rem_1fr_8rem] gap-y-12 py-12"
+  >
+    <RouterLink
+      class="w-fit h-fit no-underline text-black self-center justify-self-center"
+      :to="{ name: 'admin-announcement-listing' }"
+    >
       <SingleButton
         class="ann-button border border-black rounded-full w-fit hover:bg-gray-200 active:bg-black active:text-white"
         text="Back"
@@ -22,14 +27,12 @@ import InputForm from '@/components/UI/organisms/InputForm.vue'
       </SingleButton>
     </RouterLink>
 
-    <PageTitle first="Announcement" second="Add" />
+    <PageTitle first="Announcement" second="Add" class="col-start-2" />
+
+    <ContentSection class="col-start-2">
+      <div class="ann-*">
+        <InputForm submit-text="Submit" cancel-text="Cancel" action="add" />
+      </div>
+    </ContentSection>
   </div>
-
-
-
-  <ContentSection class="">
-    <div class="ann-*">
-      <InputForm submit-text="Submit" cancel-text="Cancel" action="add" />
-    </div>
-  </ContentSection>
 </template>

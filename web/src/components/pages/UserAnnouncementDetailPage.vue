@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
-
+import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import { AnnouncementService } from '@/services/announcementService'
 import ContentSection from '@/components/UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
@@ -25,7 +25,7 @@ onMounted(async () => {
 })
 
 const checkClosedDate = () => {
-  console.log(new Date(announcementsData.value.closeDate) <= new Date())
+  // console.log(new Date(announcementsData.value.closeDate) <= new Date())
   return announcementsData.value.closeDate === null
     ? false
     : new Date(announcementsData.value.closeDate) <= new Date()
@@ -40,7 +40,7 @@ const checkClosedDate = () => {
         <div class="grid grid-cols-10">
           <div class="grid content-center">
             <RouterLink
-              class="w-fit"
+              class="w-fit no-underline text-black"
               :to="{ name: 'user-announcement-listing' }"
             >
               <SingleButton
@@ -97,7 +97,10 @@ const checkClosedDate = () => {
           <div
             class="col-span-2 justify-items-center content-center text-base px-20 py-12"
           >
-            <p class="ann-description ql-editor" v-html="announcementsData.announcementDescription"></p>
+            <p
+              class="ann-description ql-editor"
+              v-html="announcementsData.announcementDescription"
+            ></p>
           </div>
         </ContentSection>
       </div>

@@ -180,45 +180,41 @@ onMounted(async () => {
 
     <!--  <div class="flex flex-row gap-7">-->
     <!-- publish date -->
-    <InputField header="Publish Date" class="">
-      <div class="">
-        <input
-          class="ann-publish-date"
-          type="date"
-          v-model="publishDate"
-          :min="useSplitDate(new Date())"
-          @input="onChangeHandler"
-          @change="setDefaultTime(true)"
-        />
-        <input
-          class="ann-publish-time"
-          type="time"
-          v-model="publishTime"
-          :disabled="publishDate === null"
-          @input="onChangeHandler"
-        />
-      </div>
+    <InputField header="Publish Date" class="row-start-4">
+      <input
+        class="ann-publish-date w-full"
+        type="date"
+        v-model="publishDate"
+        :min="useSplitDate(new Date())"
+        @input="onChangeHandler"
+        @change="setDefaultTime(true)"
+      />
+      <input
+        class="ann-publish-time w-full"
+        type="time"
+        v-model="publishTime"
+        :disabled="publishDate === null"
+        @input="onChangeHandler"
+      />
     </InputField>
 
     <!-- close date -->
-    <InputField header="Close Date" class="">
-      <div class="">
-        <input
-          class="ann-close-date"
-          type="date"
-          v-model="closeDate"
-          :min="useSplitDate(new Date())"
-          @input="onChangeHandler"
-          @change="setDefaultTime(false)"
-        />
-        <input
-          class="ann-close-time"
-          type="time"
-          v-model="closeTime"
-          :disabled="closeDate === null"
-          @input="onChangeHandler"
-        />
-      </div>
+    <InputField header="Close Date" class="row-start-4">
+      <input
+        class="ann-close-date w-full"
+        type="date"
+        v-model="closeDate"
+        :min="useSplitDate(new Date())"
+        @input="onChangeHandler"
+        @change="setDefaultTime(false)"
+      />
+      <input
+        class="ann-close-time w-full"
+        type="time"
+        v-model="closeTime"
+        :disabled="closeDate === null"
+        @input="onChangeHandler"
+      />
     </InputField>
     <!--  </div>-->
 
@@ -258,5 +254,4 @@ onMounted(async () => {
       />
     </div>
   </div>
-  <div ></div>
 </template>

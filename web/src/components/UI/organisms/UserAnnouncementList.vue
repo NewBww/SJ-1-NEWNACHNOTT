@@ -1,25 +1,23 @@
 <script setup>
 import { ref, watchEffect } from 'vue'
 import { AnnouncementService } from '@/services/announcementService.js'
-import { useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { useAnnouncementStore } from '@/stores/AnnouncementStore'
 import { storeToRefs } from 'pinia'
 import PageNumber from '@/components/UI/molecules/PageNumber.vue'
 import { useFormatTime } from '@/composables/date'
+import { ViewCountService } from '@/services/announcementViewCountService'
 
 const announcementService = new AnnouncementService()
+const annViewsCount = new ViewCountService()
 const pageData = ref({})
-
-const router = useRouter()
 const announcementStore = useAnnouncementStore()
 
 const { mode, page, category } = storeToRefs(announcementStore)
 
-const link = (announcementId) => {
-  router.push({
-    name: 'user-announcement-detail',
-    params: { id: announcementId },
-  })
+const addCount = (id) => {
+  annViewsCount.addCount(id)
+  console.log('viewCounter was add')
 }
 
 watchEffect(async () => {
@@ -32,49 +30,50 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div class="w-full h-full">
-    <table class="w-full h-full table-fixed border-separate border-spacing-y-4">
-      <thead class="text-center">
-        <tr>
-          <th class="w-20">No.</th>
-          <th class="text-left">Title</th>
-          <th v-if="mode === 'close'">Closed Date</th>
-          <th class="w-48">Category</th>
-        </tr>
-      </thead>
-      <tbody v-if="pageData?.content?.length === 0">
-        <tr class="w-full text-center text-lg font-semibold text-red-600">
-          <td class="text-center" colspan="7">No Announcement</td>
-        </tr>
-      </tbody>
-      <tbody v-else>
-        <tr
-          @click="link(announcement.id)"
-          v-for="(announcement, index) of pageData.content"
-          :key="announcement.id"
-          :id="index"
-          class="ann-item text-center h-full w-full hover:bg-slate-50 cursor-pointer"
+  <div class="w-full h-full flex flex-col gap-5 py-5">
+    <div class="flex flex-row gap-6 pb-2 px-5 font-semibold">
+      <h4 class="text-center w-20">No.</h4>
+      <h4 class="text-left flex-grow">Title</h4>
+      <h4 class="text-center w-32" v-if="mode === 'close'">Closed Date</h4>
+      <h4 class="text-center w-32">Category</h4>
+    </div>
+    <div
+      v-if="pageData?.content?.length === 0"
+      class="w-full text-center text-2xl text-red-600"
+    >
+      No Announcement
+    </div>
+    <div
+      v-else
+      class="flex flex-row gap-6 border border-black border-b-2 border-r-2 p-5 rounded-2xl"
+      v-for="(announcement, index) of pageData.content"
+      :key="announcement.id"
+      :id="index"
+    >
+      <div class="w-20 text-center">
+        {{ pageData.page * pageData.size + index + 1 }}
+      </div>
+      <div
+        class="text-left flex-grow ann-title"
+        @click="addCount(announcement.id)"
+      >
+        <RouterLink
+          class="no-underline text-blue-600 hover:text-black hover:underline"
+          :to="{
+            name: 'user-announcement-detail',
+            params: { id: announcement.id },
+          }"
         >
-          <td class="border-y border-black border-l rounded-l-2xl">
-            {{ pageData.page * pageData.size + index + 1 }}
-          </td>
-          <td class="ann-title text-left border-y border-black">
-            {{ announcement.announcementTitle }}
-          </td>
-          <td
-            v-if="mode === 'close'"
-            class="ann-close-date justify-center items-center border-y border-black"
-          >
-            {{ useFormatTime(announcement.closeDate) }}
-          </td>
-          <td
-            class="ann-category justify-center items-center border-y border-black border-r rounded-r-2xl"
-          >
-            {{ announcement.announcementCategory }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          {{ announcement.announcementTitle }}
+        </RouterLink>
+      </div>
+      <div class="ann-close-date w-32" v-if="mode === 'close'">
+        {{ useFormatTime(announcement.closeDate) }}
+      </div>
+      <div class="ann-category w-32 text-center">
+        {{ announcement.announcementCategory }}
+      </div>
+    </div>
   </div>
   <PageNumber
     :total-pages="pageData.totalPages"
