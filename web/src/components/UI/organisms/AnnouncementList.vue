@@ -40,6 +40,7 @@ onMounted(async () => {
           <th class="ann-publish-date w-44">Publish Date</th>
           <th class="ann-close-date w-44">Close Date</th>
           <th class="ann-display w-24">Display</th>
+          <th class="ann-counter w-20">#Views</th>
           <th class="w-60">Action</th>
         </tr>
       </thead>
@@ -72,6 +73,9 @@ onMounted(async () => {
           </td>
           <td class="ann-display border-y border-black">
             {{ announcement.announcementDisplay }}
+          </td>
+          <td class="ann-counter border-y border-black">
+            {{ announcement.viewCount }}
           </td>
           <td
             class="h-full flex flex-row gap-2 justify-center items-center border-y border-black border-r rounded-r-2xl"

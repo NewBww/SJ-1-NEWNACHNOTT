@@ -4,7 +4,6 @@ import ContentSection from '../UI/organisms/ContentSection.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 import { AnnouncementService } from '@/services/announcementService'
-import { ViewCountService } from '@/services/announcementViewCountService'
 import { onMounted, ref } from 'vue'
 import { useFormatTime } from '@/composables/date'
 import PageTitle from '@/components/UI/atoms/PageTitle.vue'
@@ -13,8 +12,6 @@ import DetailText from '@/components/UI/atoms/DetailText.vue'
 const route = useRoute()
 const router = useRouter()
 const announcementService = new AnnouncementService()
-const annViewsCount = new ViewCountService()
-const views = ref(0)
 const announcementsData = ref({})
 onMounted(async () => {
   const data = await announcementService.getAnnouncementById(
@@ -22,12 +19,11 @@ onMounted(async () => {
   )
   if (data !== undefined && data !== 404 && data !== 400) {
     announcementsData.value = data
+    console.log(announcementsData.value)
   } else {
     alert('There is an error: The request page is not available')
     await router.push({ name: 'admin-announcement-listing' })
   }
-
-  views.value = await annViewsCount.getCount(`${route.params.id}`)
 })
 </script>
 <!--test github-->
@@ -117,9 +113,9 @@ onMounted(async () => {
           <p
             class="bg-gradient-to-r from-black to-zinc-600 text-white px-2 py-0.5 rounded -lg tracking-wider"
           >
-            views >
+            #views >
           </p>
-          <p class="ann-counter pl-1 pr-2">{{ views }}</p>
+          <p class="ann-counter pl-1 pr-2">{{ announcementsData.viewCount }}</p>
         </div>
       </div>
     </ContentSection>

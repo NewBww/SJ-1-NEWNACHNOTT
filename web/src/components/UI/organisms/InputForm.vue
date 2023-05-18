@@ -242,11 +242,11 @@ onMounted(async () => {
 
       <!-- submit button -->
       <SingleButton
-        class="ann-button rounded-xl transition ease-in-out duration-200"
+        class="ann-button"
         :class="
           action === 'edit' && !changed
             ? 'bg-gray-400 border border-gray-400'
-            : 'bg-violet-500 border border-violet-500 hover:border-violet-500 hover:bg-white hover:text-violet-500 hover:scale-110 text-white'
+            : 'bg-violet-500 border border-violet-500 hover:border-violet-500 hover:bg-white hover:text-violet-500 hover:scale-110'
         "
         :text="submitText"
         :disabled="action === 'edit' ? !changed : false"
@@ -254,4 +254,5 @@ onMounted(async () => {
       />
     </div>
   </div>
+  <div ></div>
 </template>
