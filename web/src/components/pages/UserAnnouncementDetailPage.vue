@@ -14,7 +14,8 @@ const announcementService = new AnnouncementService()
 const announcementsData = ref({})
 onMounted(async () => {
   const data = await announcementService.getAnnouncementById(
-    `${route.params.id}`
+    `${route.params.id}`,
+    true
   )
   if (data !== undefined && data !== 404 && data !== 400) {
     announcementsData.value = data

@@ -15,11 +15,14 @@ class AnnouncementService {
     }
   }
 
-  async getAnnouncementById(id) {
+  async getAnnouncementById(id, count = false) {
     try {
-      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
-        method: 'GET',
-      })
+      const response = await fetch(
+        `${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}?count=${count}`,
+        {
+          method: 'GET',
+        }
+      )
       if (response.ok) {
         const data = await response.json()
         // console.log(data)
