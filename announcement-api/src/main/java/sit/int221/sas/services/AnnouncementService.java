@@ -33,8 +33,10 @@ public class AnnouncementService {
         };
     }
 
-    public Announcement findById(Integer id) {
-        return announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
+    public Announcement findById(Integer id, boolean count) {
+        Announcement announcement = announcementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Announcement id " + id + " does not exist!"));
+        if (count) announcement.setViewCount(announcement.getViewCount() + 1);
+        return announcementRepository.saveAndFlush(announcement);
     }
 
     public Page<Announcement> findPage(String mode, int page, int size, Integer category) {

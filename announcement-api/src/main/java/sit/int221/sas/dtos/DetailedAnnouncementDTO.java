@@ -16,6 +16,7 @@ DetailedAnnouncementDTO {
     private ZonedDateTime publishDate;
     private ZonedDateTime closeDate;
     private Display announcementDisplay = Display.N;
+    private Integer viewCount;
 
     public String getAnnouncementCategory() {
         return this.announcementCategory.getCategoryName();
