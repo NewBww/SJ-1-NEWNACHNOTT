@@ -242,7 +242,7 @@ onMounted(async () => {
 
       <!-- submit button -->
       <SingleButton
-        class="ann-button"
+        class="ann-button rounded-lg transition ease-in-out text-white"
         :class="
           action === 'edit' && !changed
             ? 'bg-gray-400 border border-gray-400'
@@ -254,5 +254,5 @@ onMounted(async () => {
       />
     </div>
   </div>
-  <div ></div>
+  <div></div>
 </template>
