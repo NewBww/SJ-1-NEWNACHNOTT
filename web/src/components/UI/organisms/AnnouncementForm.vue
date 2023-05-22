@@ -173,13 +173,11 @@ onMounted(async () => {
         toolbar="full"
         class="ann-description break-words border h-fit w-full min-h-[8rem]"
         placeholder="insert description"
+        :modules="[]"
         v-model:content="description"
         @update:content="onChangeHandler"
       />
     </InputField>
-
-    <!--  <div class="flex flex-row gap-7">-->
-    <!-- publish date -->
     <InputField header="Publish Date" class="row-start-4">
       <input
         class="ann-publish-date w-full"
@@ -216,7 +214,6 @@ onMounted(async () => {
         @input="onChangeHandler"
       />
     </InputField>
-    <!--  </div>-->
 
     <!-- display -->
     <InputField header="Display" class="row-start-5 col-span-2">
@@ -233,7 +230,6 @@ onMounted(async () => {
 
     <div class="row-start-6 flex flex-row">
       <!-- cancel button -->
-      <!--    <RouterLink :to="{ name: 'admin-announcement-listing' }">-->
       <SingleButton
         @click="$router.back()"
         class="ann-button transition ease-in-out hover:scale-110"
