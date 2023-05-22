@@ -16,7 +16,9 @@ import {
   useSplitTime,
   useSplitDate,
 } from '@/composables/date'
+import ImageUploader from 'quill-image-uploader'
 import { Display } from '@/composables/display'
+import { FileService } from '@/services/fileService'
 
 const router = useRouter()
 const categoryData = ref([])
@@ -40,6 +42,16 @@ const props = defineProps({
   },
 })
 
+const modules = {
+  name: 'imageUploader',
+  module: ImageUploader,
+  options: {
+    upload: (file) => {
+      fileService.uploadFile(file)
+    },
+  },
+}
+
 const title = ref(null)
 const categoryId = ref(null)
 const description = ref(null)
@@ -52,6 +64,7 @@ const changed = ref(false)
 
 const announcementService = new AnnouncementService()
 const categoryService = new CategoryService()
+const fileService = new FileService()
 
 const submitHandler = async () => {
   const newAnnouncement = new Announcement(
@@ -171,9 +184,9 @@ onMounted(async () => {
       <QuillEditor
         content-type="html"
         toolbar="full"
-        class="ann-description break-words border h-fit w-full min-h-[8rem]"
+        class="ann-description break-words border h-fit w-full"
         placeholder="insert description"
-        :modules="[]"
+        :modules="modules"
         v-model:content="description"
         @update:content="onChangeHandler"
       />

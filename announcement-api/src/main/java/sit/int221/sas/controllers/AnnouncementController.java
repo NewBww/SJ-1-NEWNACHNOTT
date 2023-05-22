@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sit.int221.sas.dtos.*;
@@ -29,7 +30,7 @@ public class AnnouncementController {
     public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements(@RequestParam(defaultValue = "admin") String mode) {
         List<AnnouncementListItemDTO> announcementList = listMapper.mapList(announcementService.findAll(mode), AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Content-Type", "application/json");
+        responseHeaders.set("Content-Type", MediaType.APPLICATION_JSON.toString());
         if (announcementList.isEmpty()) {
             responseHeaders.set("Description", "no announcement data");
         } else {
@@ -44,7 +45,7 @@ public class AnnouncementController {
             @RequestParam(defaultValue = "false", required = false) boolean count) {
         DetailedAnnouncementDTO announcement = modelMapper.map(announcementService.findById(id, count), DetailedAnnouncementDTO.class);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Content-Type", "application/json");
+        responseHeaders.set("Content-Type", MediaType.APPLICATION_JSON.toString());
         responseHeaders.set("Description", "get an announcement successfully");
         return ResponseEntity.ok().headers(responseHeaders).body(announcement);
     }
@@ -59,7 +60,7 @@ public class AnnouncementController {
         Page<Announcement> announcementPage = announcementService.findPage(mode, page, size, category);
         PageDTO<AnnouncementListItemDTO> announcementPageDTO = listMapper.toPageDTO(announcementPage, AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Content-Type", "application/json");
+        responseHeaders.set("Content-Type", MediaType.APPLICATION_JSON.toString());
         return ResponseEntity.ok().headers(responseHeaders).body(announcementPageDTO);
     }
 
@@ -69,7 +70,7 @@ public class AnnouncementController {
         announcement = announcementService.createAnnouncement(announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
-        response.set("Content-Type", "application/json");
+        response.set("Content-Type", MediaType.APPLICATION_JSON.toString());
         response.set("Description", "an announcement item created");
         return ResponseEntity.ok().headers(response).body(responseAnnouncementDTO);
     }
@@ -80,7 +81,7 @@ public class AnnouncementController {
         announcement = announcementService.updateAnnouncement(id, announcement);
         ResponseAnnouncementDTO responseAnnouncementDTO = modelMapper.map(announcement, ResponseAnnouncementDTO.class);
         HttpHeaders response = new HttpHeaders();
-        response.set("Content-Type", "application/json");
+        response.set("Content-Type", MediaType.APPLICATION_JSON.toString());
         response.set("Description", "Update the announcement successfully");
         return ResponseEntity.ok().headers(response).body(responseAnnouncementDTO);
     }
