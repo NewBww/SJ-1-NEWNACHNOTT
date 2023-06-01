@@ -27,7 +27,6 @@ class AnnouncementService {
         const data = await response.json()
         return data
       } else {
-        // console.log(response)
         return response.status
       }
     } catch (error) {
@@ -45,7 +44,6 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
-      // console.log(response)
       if (response.ok) {
         return data
       } else {
@@ -79,7 +77,6 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
-      // console.log(response)
       if (response.ok) {
         return data
       } else {
