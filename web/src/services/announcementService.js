@@ -25,7 +25,6 @@ class AnnouncementService {
       )
       if (response.ok) {
         const data = await response.json()
-        // console.log(data)
         return data
       } else {
         // console.log(response)
@@ -207,7 +206,6 @@ class Announcement {
             .replace('publishDate', 'Publish date')
             .replace('closeDate', 'Close date')
       )
-      // JSON.stringify(this.errors))
     }
   }
   addValidationError(field, message) {
