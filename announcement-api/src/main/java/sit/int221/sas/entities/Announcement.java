@@ -29,5 +29,6 @@ public class Announcement {
     @Column(columnDefinition = "ENUM('N','Y')")
     @Enumerated(EnumType.STRING)
     private Display announcementDisplay = Display.N;
+    private Integer viewCount = 0;
 }
 

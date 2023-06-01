@@ -2,7 +2,6 @@ const useValidateDisplay = (display) => {
   if (display === 'N' || display === 'Y') return display
   return 'N'
 }
-
 class Display {
   constructor(display) {
     this.name = useValidateDisplay(display)

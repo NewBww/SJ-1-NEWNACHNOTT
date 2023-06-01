@@ -15,17 +15,18 @@ class AnnouncementService {
     }
   }
 
-  async getAnnouncementById(id) {
+  async getAnnouncementById(id, count = false) {
     try {
-      const response = await fetch(`${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}`, {
-        method: 'GET',
-      })
+      const response = await fetch(
+        `${VITE_ROOT_API}/${ENDPOINT_PATH}/${id}?count=${count}`,
+        {
+          method: 'GET',
+        }
+      )
       if (response.ok) {
         const data = await response.json()
-        // console.log(data)
         return data
       } else {
-        // console.log(response)
         return response.status
       }
     } catch (error) {
@@ -43,7 +44,6 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
-      // console.log(response)
       if (response.ok) {
         return data
       } else {
@@ -77,7 +77,6 @@ class AnnouncementService {
         body: JSON.stringify(announcement),
       })
       const data = await response.json()
-      // console.log(response)
       if (response.ok) {
         return data
       } else {
@@ -204,7 +203,6 @@ class Announcement {
             .replace('publishDate', 'Publish date')
             .replace('closeDate', 'Close date')
       )
-      // JSON.stringify(this.errors))
     }
   }
   addValidationError(field, message) {

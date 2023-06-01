@@ -6,19 +6,12 @@ import { useAnnouncementStore } from '@/stores/AnnouncementStore'
 import { storeToRefs } from 'pinia'
 import PageNumber from '@/components/UI/molecules/PageNumber.vue'
 import { useFormatTime } from '@/composables/date'
-import { ViewCountService } from '@/services/announcementViewCountService'
 
 const announcementService = new AnnouncementService()
-const annViewsCount = new ViewCountService()
 const pageData = ref({})
 const announcementStore = useAnnouncementStore()
 
 const { mode, page, category } = storeToRefs(announcementStore)
-
-const addCount = (id) => {
-  annViewsCount.addCount(id)
-  console.log('viewCounter was add')
-}
 
 watchEffect(async () => {
   pageData.value = await announcementService.getAnnouncementPage(
@@ -53,10 +46,7 @@ watchEffect(async () => {
       <div class="w-20 text-center">
         {{ pageData.page * pageData.size + index + 1 }}
       </div>
-      <div
-        class="text-left flex-grow ann-title"
-        @click="addCount(announcement.id)"
-      >
+      <div class="text-left flex-grow ann-title">
         <RouterLink
           class="no-underline text-blue-600 hover:text-black hover:underline"
           :to="{

@@ -14,7 +14,8 @@ const announcementService = new AnnouncementService()
 const announcementsData = ref({})
 onMounted(async () => {
   const data = await announcementService.getAnnouncementById(
-    `${route.params.id}`
+    `${route.params.id}`,
+    true
   )
   if (data !== undefined && data !== 404 && data !== 400) {
     announcementsData.value = data
@@ -25,7 +26,6 @@ onMounted(async () => {
 })
 
 const checkClosedDate = () => {
-  // console.log(new Date(announcementsData.value.closeDate) <= new Date())
   return announcementsData.value.closeDate === null
     ? false
     : new Date(announcementsData.value.closeDate) <= new Date()

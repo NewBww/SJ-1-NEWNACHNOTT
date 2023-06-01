@@ -18,7 +18,6 @@ services:
       DB_PORT: 3306
     depends_on:
       - database
-#      condition: service_completed_successfully
     build:
       context: ./announcement-api
       dockerfile: Dockerfile

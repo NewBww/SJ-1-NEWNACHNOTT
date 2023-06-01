@@ -1,4 +1,4 @@
-﻿# 🚀 Integrated Project (Release v1.3.0)
+﻿# 🚀 Integrated Project (Release v1.3.1)
 
 ### **Group:  SJ-1-NEWNACHNOTT**
 
@@ -32,9 +32,9 @@ The two primary branches in the project are `main` and `dev`.
 ## Contributors: 
 | Student ID 	| Name | Email | Github Username | Contributions (%) |
 | - | - | - | - | - |
-| 64130500019 | Nach Phunsawat| nach.phun@kmutt.ac.th | [NACHUNACHA]| - |
-| 64130500052 | Pongsapak Rattanajuntranon | pongsapak.ratt@kmutt.ac.th | [pongsapark]| - |
-| 64130500119| Bowonwit Anothaisintavee | Bowonwit.anot@kmutt.ac.th | [NewBww] | - |
+| 64130500019 | Nach Phunsawat| nach.phun@kmutt.ac.th | [NACHUNACHA]| 33.33% |
+| 64130500052 | Pongsapak Rattanajuntranon | pongsapak.ratt@kmutt.ac.th | [pongsapark]| 33.33% |
+| 64130500119| Bowonwit Anothaisintavee | Bowonwit.anot@kmutt.ac.th | [NewBww] | 33.33% |
 
 [//]: # 'Contributors Links' 
 [NACHUNACHA]: https://github.com/NACHUNACHA

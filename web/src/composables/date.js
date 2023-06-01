@@ -9,7 +9,6 @@ const useFormatTime = (dateTimeZone) => {
 }
 
 const useMergeDateTime = (dateString, timeString) => {
-  // console.log(dateString ?? 'date missing' + timeString ?? 'time missing')
   if (
     dateString === null ||
     timeString === null ||

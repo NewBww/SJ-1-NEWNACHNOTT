@@ -26,7 +26,7 @@ public class AnnouncementController {
     private ListMapper listMapper;
 
     @GetMapping
-    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements(@RequestParam (defaultValue = "admin") String mode) {
+    public ResponseEntity<List<AnnouncementListItemDTO>> getAllAnnouncements(@RequestParam(defaultValue = "admin") String mode) {
         List<AnnouncementListItemDTO> announcementList = listMapper.mapList(announcementService.findAll(mode), AnnouncementListItemDTO.class, modelMapper);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
@@ -39,8 +39,10 @@ public class AnnouncementController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<DetailedAnnouncementDTO> getAnnouncementById(@PathVariable Integer id) {
-        DetailedAnnouncementDTO announcement = modelMapper.map(announcementService.findById(id), DetailedAnnouncementDTO.class);
+    public ResponseEntity<DetailedAnnouncementDTO> getAnnouncementById(
+            @PathVariable Integer id,
+            @RequestParam(defaultValue = "false", required = false) boolean count) {
+        DetailedAnnouncementDTO announcement = modelMapper.map(announcementService.findById(id, count), DetailedAnnouncementDTO.class);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Content-Type", "application/json");
         responseHeaders.set("Description", "get an announcement successfully");
