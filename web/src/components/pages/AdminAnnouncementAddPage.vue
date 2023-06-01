@@ -6,7 +6,7 @@ import PageTitle from '@/components/UI/atoms/PageTitle.vue'
 import SingleButton from '@/components/UI/atoms/SingleButton.vue'
 import IconArrowBack from '@/components/UI/atoms/IconArrowBack.vue'
 import { RouterLink } from 'vue-router'
-import InputForm from '@/components/UI/organisms/AnnouncementForm.vue'
+import AnnouncementForm from '@/components/UI/organisms/AnnouncementForm.vue'
 </script>
 
 <template>
@@ -31,7 +31,11 @@ import InputForm from '@/components/UI/organisms/AnnouncementForm.vue'
 
     <ContentSection class="col-start-2">
       <div class="ann-*">
-        <InputForm submit-text="Submit" cancel-text="Cancel" action="add" />
+        <AnnouncementForm
+          submit-text="Submit"
+          cancel-text="Cancel"
+          action="add"
+        />
       </div>
     </ContentSection>
   </div>
